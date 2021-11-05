@@ -14,16 +14,16 @@ void add_csv(string file, int id, string name, int age, string department);
 void read_json();
 void create_json();
 
-int main()
-{
-	//read_csv();
-   // read_json();
-   // create_json();
-   // create_csv();
-	add_csv("Text.csv", 4889, "Oleg", 19, "It");
-	read_id_csv("Text.csv", 4889);
-
-}
+//int main()
+//{
+//	//read_csv();
+//   // read_json();
+//   // create_json();
+//   // create_csv();
+//	add_csv("Text.csv", 4889, "Oleg", 19, "It");
+//	read_id_csv("Text.csv", 4889);
+//
+//}
 
 void add_csv(string file_name, int id, string name, int age, string department)
 {
