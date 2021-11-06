@@ -13,21 +13,57 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Файлы заголовков\JSON">
+      <UniqueIdentifier>{d6ed6817-bc2d-4448-9789-44796ead5fde}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы ресурсов\file_manipulators">
+      <UniqueIdentifier>{8f6894cf-bead-4937-b8b5-f0a3d08cec32}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MyForm.cpp">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
     <ClCompile Include="scv_manipulator.cpp">
-      <Filter>Файлы ресурсов</Filter>
+      <Filter>Файлы ресурсов\file_manipulators</Filter>
+    </ClCompile>
+    <ClCompile Include="json_manipulator.cpp">
+      <Filter>Файлы ресурсов\file_manipulators</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyForm.h">
       <Filter>Файлы ресурсов</Filter>
     </ClInclude>
-    <ClInclude Include="scv_manipulator.h">
-      <Filter>Файлы ресурсов</Filter>
+    <ClInclude Include="json\json_features.h">
+      <Filter>Файлы заголовков\JSON</Filter>
+    </ClInclude>
+    <ClInclude Include="json\allocator.h">
+      <Filter>Файлы заголовков\JSON</Filter>
+    </ClInclude>
+    <ClInclude Include="json\assertions.h">
+      <Filter>Файлы заголовков\JSON</Filter>
+    </ClInclude>
+    <ClInclude Include="json\config.h">
+      <Filter>Файлы заголовков\JSON</Filter>
+    </ClInclude>
+    <ClInclude Include="json\forwards.h">
+      <Filter>Файлы заголовков\JSON</Filter>
+    </ClInclude>
+    <ClInclude Include="json\json.h">
+      <Filter>Файлы заголовков\JSON</Filter>
+    </ClInclude>
+    <ClInclude Include="json\reader.h">
+      <Filter>Файлы заголовков\JSON</Filter>
+    </ClInclude>
+    <ClInclude Include="json\value.h">
+      <Filter>Файлы заголовков\JSON</Filter>
+    </ClInclude>
+    <ClInclude Include="json\version.h">
+      <Filter>Файлы заголовков\JSON</Filter>
+    </ClInclude>
+    <ClInclude Include="json\writer.h">
+      <Filter>Файлы заголовков\JSON</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

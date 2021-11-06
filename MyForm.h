@@ -1,4 +1,6 @@
 #pragma once
+#include "scv_manipulator.cpp"
+#include <msclr/marshal_cppstd.h>
 
 namespace Project1 {
 
@@ -323,16 +325,32 @@ namespace Project1 {
 	}
 private: System::Void searchButton_Click(System::Object^ sender, System::EventArgs^ e) {
 }
-private: System::Void voteConfirm_Click(System::Object^ sender, System::EventArgs^ e) {
+private: System::Void voteConfirm_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+					//ID
+	String^ id_str = passportID->Text;
+	string conv_id_str = msclr::interop::marshal_as<string>(id_str);
+	long id = atoi(conv_id_str.c_str());
+
+					//Name
+	String^ name_str = PIB->Text;
+	string name = msclr::interop::marshal_as<string>(name_str);
+
+					//vote
+	String^ vote_str = voteOptions->SelectedText;
+	string vote = msclr::interop::marshal_as<string>(vote_str);
+
+	scv_manipulator::add_csv("vote_chain.csv", id, name, vote);
+
 }
 private: System::Void checkBox1_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void openFileButton_Click(System::Object^ sender, System::EventArgs^ e) {
+	String^ fileName = "";
 
-	String^ openFileName = "";
-
-	if (openFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK) {
-		openFileName = openFileDialog->FileName;
+	if (openFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK) 
+	{
+		fileName = openFileDialog->FileName;
 	} // Исключение для ОТКРЫТИЯ файла писать сюда
 }
 private: System::Void saveFileButton_Click(System::Object^ sender, System::EventArgs^ e) {
