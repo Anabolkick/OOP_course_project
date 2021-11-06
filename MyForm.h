@@ -96,9 +96,9 @@ namespace Project1 {
 			this->searchButton = (gcnew System::Windows::Forms::Button());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
+			this->saveFileButton = (gcnew System::Windows::Forms::Button());
 			this->openFileButton = (gcnew System::Windows::Forms::Button());
 			this->openFileDialog = (gcnew System::Windows::Forms::OpenFileDialog());
-			this->saveFileButton = (gcnew System::Windows::Forms::Button());
 			this->saveFileDialog = (gcnew System::Windows::Forms::SaveFileDialog());
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
@@ -268,20 +268,6 @@ namespace Project1 {
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"Файли";
 			// 
-			// openFileButton
-			// 
-			this->openFileButton->Location = System::Drawing::Point(24, 40);
-			this->openFileButton->Name = L"openFileButton";
-			this->openFileButton->Size = System::Drawing::Size(184, 48);
-			this->openFileButton->TabIndex = 0;
-			this->openFileButton->Text = L"Відкрити файл";
-			this->openFileButton->UseVisualStyleBackColor = true;
-			this->openFileButton->Click += gcnew System::EventHandler(this, &MyForm::openFileButton_Click);
-			// 
-			// openFileDialog
-			// 
-			this->openFileDialog->FileName = L"openFileDialog1";
-			// 
 			// saveFileButton
 			// 
 			this->saveFileButton->Location = System::Drawing::Point(248, 40);
@@ -291,6 +277,16 @@ namespace Project1 {
 			this->saveFileButton->Text = L"Зберегти файл";
 			this->saveFileButton->UseVisualStyleBackColor = true;
 			this->saveFileButton->Click += gcnew System::EventHandler(this, &MyForm::saveFileButton_Click);
+			// 
+			// openFileButton
+			// 
+			this->openFileButton->Location = System::Drawing::Point(24, 40);
+			this->openFileButton->Name = L"openFileButton";
+			this->openFileButton->Size = System::Drawing::Size(184, 48);
+			this->openFileButton->TabIndex = 0;
+			this->openFileButton->Text = L"Відкрити файл";
+			this->openFileButton->UseVisualStyleBackColor = true;
+			this->openFileButton->Click += gcnew System::EventHandler(this, &MyForm::openFileButton_Click);
 			// 
 			// MyForm
 			// 
