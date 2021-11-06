@@ -117,4 +117,90 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="openFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="saveFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>150, 17</value>
+  </metadata>
+  <metadata name="$this.DrawGrid" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAABAAABMLAAATCwAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2loqANpaKgDaWioA2loqANpa
+        KjraWiq52loqx9paKknaWioD2loqANpaKgDaWioAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2loqANpaKgDaWioA2loqANpa
+        Kh7aWiqD2loq5dpaKv/aWir/2loq7NpaKpPaWioo2loqANpaKgDaWioA2loqAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2loqANpaKgDaWioA2loqANpa
+        Kg/aWipm2loq09paKv/aWir/2loq/9paKv/aWir/2loq/9paKt3aWipz2loqFNpaKgDaWioA2loqANpa
+        KgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAEBANpaKgDaWioA2loqANpa
+        KgXaWipK2loqvNpaKvzaWir/2loq/9paKv/aWir/2loq/9paKv/aWir/2loq/9paKv7aWirE2loqUtpa
+        KgfaWioA2loqANpaKgBeJxEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANpaKgDaWioA2loqANpa
+        KgDaWiox2loqoNpaKvPaWir/2loq/9paKv/aWir/2loq/9paKv/aWir/2loq/9paKv/aWir/2loq/9pa
+        Kv/aWir12loqptpaKjTaWioA2loqANpaKgDaWioAAAAAAAAAAAAAAAAAAAAAANpaKgDaWioA2loqANpa
+        KgDaWiod2loqgtpaKuXaWir/2loq/9paKv/aWir/2loq/9paKv/aWir/2loq/9paKv/aWir/2loq/9pa
+        Kv/aWir/2loq/9paKv/aWir/2loq59paKoTaWiod2loqANpaKgDaWioA2loqAAAAAADaWioA2loqANpa
+        KgDaWioO2loqZNpaKtLaWir/2loq/9paKv/aWir/2loq/9paKv/aWir/2loq/9paKv/aWiri2loq4tpa
+        Kv/aWir/2loq/9paKv/aWir/2loq/9paKv/aWir/2loq/9paKtHaWipj2loqDtpaKgDaWioA2loqANpa
+        KgDaWioB2loqRNpaKrraWir72loq/9paKv/aWir/2loq/9paKv/aWir/2loq/9paKv/aWirw2loql9pa
+        KiraWior2loqmdpaKvDaWir/2loq/9paKv/aWir/2loq/9paKv/aWir/2loq/9paKvvaWiq42loqQtpa
+        KgHaWioA2loqANpaKg7aWirI2loq/9paKv/aWir/2loq/9paKv/aWir/2loq/9paKv/aWir62loqttpa
+        KkPaWioD2loqANpaKgDaWioD2loqRNpaKrfaWir72loq/9paKv/aWir/2loq/9paKv/aWir/2loq/9pa
+        Kv/aWirG2loqDdpaKgDaWioA2loqENpaKs7aWir/2loq/9paKv/aWir/2loq/9paKv/aWir/2loq0Npa
+        KmHaWioN2loqANpaKgDaWioA2loqANpaKgDaWioA2loqDdpaKmLaWirR2loq/9paKv/aWir/2loq/9pa
+        Kv/aWir/2loq/9paKsvaWioP2loqANpaKgDaWioQ2loqzdpaKv/aWir/2loq/9paKv/aWir/2loq5Npa
+        KoHaWioc2loqANpaKgDaWioA2loqAAAAAAAAAAAA2loqANpaKgDaWioA2loqANpaKh3aWiqC2loq5dpa
+        Kv/aWir/2loq/9paKv/aWir/2loqy9paKg/aWioA2loqANpaKhDaWirN2loq/9paKv/aWir/2loq/9pa
+        KuraWipC2loqANpaKgDaWioA2loqAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANpaKgDaWioA2loqANpa
+        KgDaWipE2loq7NpaKv/aWir/2loq/9paKv/aWirL2loqD9paKgDaWioA2loqENpaKs3aWir/2loq/9pa
+        Kv/aWir/2loq39paKhzaWioA2loqAAIBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEH
+        AwDaWioA2loqANpaKh7aWirh2loq/9paKv/aWir/2loq/9paKsvaWioP2loqANpaKgDaWioQ2loqzdpa
+        Kv/aWir/2loq/9paKv/aWirf2loqHtpaKgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAADaWioA2loqINpaKuHaWir/2loq/9paKv/aWir/2loqy9paKg/aWioA2loqANpa
+        KhDaWirN2loq/9paKv/aWir/2loq/9paKt/aWioe2loqAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAANpaKgDaWiog2loq4dpaKv/aWir/2loq/9paKv/aWirL2loqD9pa
+        KgDaWioA2loqENpaKs3aWir/2loq/9paKv/aWir/2loq39paKh7aWioAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2loqANpaKiDaWirh2loq/9paKv/aWir/2loq/9pa
+        KsvaWioP2loqANpaKgDaWioQ2loqzdpaKv/aWir/2loq/9paKv/aWirf2loqHtpaKgAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADaWioA2loqINpaKuHaWir/2loq/9pa
+        Kv/aWir/2loqy9paKg/aWioA2loqANpaKhDaWirN2loq/9paKv/aWir/2loq/9paKt/aWioe2loqAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANpaKgDaWiog2loq4dpa
+        Kv/aWir/2loq/9paKv/aWirL2loqD9paKgDaWioA2loqENpaKs3aWir/2loq/9paKv/aWir/2loq39pa
+        Kh7aWioAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA2loqANpa
+        KiDaWirh2loq/9paKv/aWir/2loq/9paKsvaWioP2loqANpaKgDaWioQ2loqzdpaKv/aWir/2loq/9pa
+        Kv/aWirf2loqHNpaKgDaWioAAQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEQcDANpa
+        KgDaWioA2loqHtpaKuHaWir/2loq/9paKv/aWir/2loqy9paKg/aWioA2loqANpaKhDaWirN2loq/9pa
+        Kv/aWir/2loq/9paKuraWipC2loqANpaKgDaWioA2loqAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANpa
+        KgDaWioA2loqANpaKgDaWipE2loq7NpaKv/aWir/2loq/9paKv/aWirL2loqD9paKgDaWioA2loqENpa
+        Ks3aWir/2loq/9paKv/aWir/2loq/9paKuTaWiqB2loqHNpaKgDaWioA2loqANpaKgAAAAAAAAAAANpa
+        KgDaWioA2loqANpaKgDaWiod2loqgtpaKuXaWir/2loq/9paKv/aWir/2loq/9paKsvaWioP2loqANpa
+        KgDaWioQ2loqztpaKv/aWir/2loq/9paKv/aWir/2loq/9paKv/aWirQ2loqYdpaKg3aWioA2loqANpa
+        KgDaWioA2loqANpaKgDaWioN2loqYtpaKtHaWir/2loq/9paKv/aWir/2loq/9paKv/aWir/2loqy9pa
+        Kg/aWioA2loqANpaKg7aWirI2loq/9paKv/aWir/2loq/9paKv/aWir/2loq/9paKv/aWir62loqttpa
+        KkPaWioD2loqANpaKgDaWioD2loqRNpaKrfaWir72loq/9paKv/aWir/2loq/9paKv/aWir/2loq/9pa
+        Kv/aWirG2loqDdpaKgDaWioA2loqAdpaKkTaWiq62loq+9paKv/aWir/2loq/9paKv/aWir/2loq/9pa
+        Kv/aWir/2loq8NpaKpfaWioq2loqK9paKpnaWirw2loq/9paKv/aWir/2loq/9paKv/aWir/2loq/9pa
+        Kv/aWir72loquNpaKkLaWioB2loqANpaKgDaWioA2loqANpaKg7aWipk2loq0tpaKv/aWir/2loq/9pa
+        Kv/aWir/2loq/9paKv/aWir/2loq/9paKuLaWiri2loq/9paKv/aWir/2loq/9paKv/aWir/2loq/9pa
+        Kv/aWir/2loq0dpaKmPaWioO2loqANpaKgDaWioAAAAAANpaKgDaWioA2loqANpaKgDaWioe2loqhNpa
+        KubaWir/2loq/9paKv/aWir/2loq/9paKv/aWir/2loq/9paKv/aWir/2loq/9paKv/aWir/2loq/9pa
+        Kv/aWir/2loq5tpaKoLaWiod2loqANpaKgDaWioA2loqAAAAAAAAAAAAAAAAAAAAAADaWioA2lorANpa
+        KgDaWioA2loqM9paKqTaWir02loq/9paKv/aWir/2loq/9paKv/aWir/2loq/9paKv/aWir/2loq/9pa
+        Kv/aWir/2loq9NpaKqLaWioy2loqANpaKgDaWioA2loqAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AABXJQ8A2loqANpaKgDaWioA2loqBtpaKk7aWirB2loq/dpaKv/aWir/2loq/9paKv/aWir/2loq/9pa
+        Kv/aWir/2loq/dpaKr/aWipN2loqBtpaKgDaWioA2loqAAQBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAA2loqANpaKgDaWioA2loqANpaKhLaWipt2loq2dpaKv/aWir/2loq/9pa
+        Kv/aWir/2loq/9paKtjaWips2loqEdpaKgDaWioA2loqANpaKgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANpaKgDaWioA2loqANpaKgDaWioj2loqjNpa
+        KunaWir/2loq/9paKujaWiqL2loqItpaKgDaWioA2loqANpaKgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADaWioA2loqANpa
+        KgDaWioB2loqQtpaKsHaWirA2loqQdpaKgHaWioA2loqANpaKgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAA/8AD//8AAP/8AAA/8AAAD+AAAAeAAAABAAAAAAAAAAAAAAAAAAAAAAAB
+        gAAAB+AAAA/wAAA//AAAP/wAAD/8AAA//AAAP/wAAD/8AAAP8AAAB+AAAAGAAAAAAAAAAAAAAAAAAAAA
+        AACAAAAB4AAAB/AAAA/8AAA//wAA///AA/8=
+</value>
+  </data>
 </root>
