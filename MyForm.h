@@ -112,33 +112,33 @@ namespace Project1 {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label1->Location = System::Drawing::Point(34, 36);
+			this->label1->Location = System::Drawing::Point(20, 32);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(146, 20);
+			this->label1->Size = System::Drawing::Size(150, 20);
 			this->label1->TabIndex = 0;
-			this->label1->Text = L"Введіть ваше ПІБ";
+			this->label1->Text = L"Enter your full name";
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label2->Location = System::Drawing::Point(265, 36);
+			this->label2->Location = System::Drawing::Point(265, 32);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(164, 20);
+			this->label2->Size = System::Drawing::Size(135, 20);
 			this->label2->TabIndex = 1;
-			this->label2->Text = L"Введіть ID паспорту";
+			this->label2->Text = L"Enter passport ID";
 			// 
 			// PIB
 			// 
-			this->PIB->Location = System::Drawing::Point(38, 59);
+			this->PIB->Location = System::Drawing::Point(24, 55);
 			this->PIB->Name = L"PIB";
-			this->PIB->Size = System::Drawing::Size(142, 22);
+			this->PIB->Size = System::Drawing::Size(216, 22);
 			this->PIB->TabIndex = 2;
 			// 
 			// passportID
 			// 
-			this->passportID->Location = System::Drawing::Point(269, 59);
+			this->passportID->Location = System::Drawing::Point(269, 55);
 			this->passportID->Name = L"passportID";
 			this->passportID->Size = System::Drawing::Size(156, 22);
 			this->passportID->TabIndex = 3;
@@ -148,26 +148,31 @@ namespace Project1 {
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label3->Location = System::Drawing::Point(34, 101);
+			this->label3->Location = System::Drawing::Point(20, 97);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(380, 20);
+			this->label3->Size = System::Drawing::Size(134, 20);
 			this->label3->TabIndex = 4;
-			this->label3->Text = L"Оберіть варіант, за який бажаєте проголосувати";
+			this->label3->Text = L"Choose an option";
 			this->label3->Click += gcnew System::EventHandler(this, &MyForm::label3_Click);
 			// 
 			// voteOptions
 			// 
+			this->voteOptions->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->voteOptions->FormattingEnabled = true;
-			this->voteOptions->Location = System::Drawing::Point(38, 124);
+			this->voteOptions->Items->AddRange(gcnew cli::array< System::Object^  >(3) {
+				L"Somov Ivan Nikolaevich", L"Sokolenko Maria Dmitrievna",
+					L"Dushnarev Nikita Aleksandrovich"
+			});
+			this->voteOptions->Location = System::Drawing::Point(24, 120);
 			this->voteOptions->Name = L"voteOptions";
-			this->voteOptions->Size = System::Drawing::Size(387, 24);
+			this->voteOptions->Size = System::Drawing::Size(400, 24);
 			this->voteOptions->TabIndex = 5;
 			// 
 			// searchByID
 			// 
 			this->searchByID->Location = System::Drawing::Point(64, 48);
 			this->searchByID->Name = L"searchByID";
-			this->searchByID->Size = System::Drawing::Size(156, 22);
+			this->searchByID->Size = System::Drawing::Size(200, 22);
 			this->searchByID->TabIndex = 6;
 			// 
 			// label4
@@ -177,20 +182,20 @@ namespace Project1 {
 				static_cast<System::Byte>(204)));
 			this->label4->Location = System::Drawing::Point(60, 25);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(100, 20);
+			this->label4->Size = System::Drawing::Size(101, 20);
 			this->label4->TabIndex = 7;
-			this->label4->Text = L"Пошук за ID";
+			this->label4->Text = L"Search by ID";
 			// 
 			// checkBox1
 			// 
 			this->checkBox1->AutoSize = true;
 			this->checkBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->checkBox1->Location = System::Drawing::Point(38, 172);
+			this->checkBox1->Location = System::Drawing::Point(24, 168);
 			this->checkBox1->Name = L"checkBox1";
-			this->checkBox1->Size = System::Drawing::Size(303, 24);
+			this->checkBox1->Size = System::Drawing::Size(280, 24);
 			this->checkBox1->TabIndex = 8;
-			this->checkBox1->Text = L"Погоджуюсь на обробку мого голосу";
+			this->checkBox1->Text = L"I agree to the processing of my vote";
 			this->checkBox1->UseVisualStyleBackColor = true;
 			this->checkBox1->CheckedChanged += gcnew System::EventHandler(this, &MyForm::checkBox1_CheckedChanged);
 			// 
@@ -199,11 +204,11 @@ namespace Project1 {
 			this->voteConfirm->BackColor = System::Drawing::SystemColors::Control;
 			this->voteConfirm->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->voteConfirm->Location = System::Drawing::Point(38, 212);
+			this->voteConfirm->Location = System::Drawing::Point(24, 208);
 			this->voteConfirm->Name = L"voteConfirm";
 			this->voteConfirm->Size = System::Drawing::Size(134, 28);
 			this->voteConfirm->TabIndex = 9;
-			this->voteConfirm->Text = L"Проголосувати";
+			this->voteConfirm->Text = L"Submit vote";
 			this->voteConfirm->UseVisualStyleBackColor = false;
 			this->voteConfirm->Click += gcnew System::EventHandler(this, &MyForm::voteConfirm_Click);
 			// 
@@ -221,7 +226,7 @@ namespace Project1 {
 			this->groupBox1->Size = System::Drawing::Size(460, 105);
 			this->groupBox1->TabIndex = 10;
 			this->groupBox1->TabStop = false;
-			this->groupBox1->Text = L"Пошук";
+			this->groupBox1->Text = L"Search";
 			// 
 			// searchButton
 			// 
@@ -232,7 +237,7 @@ namespace Project1 {
 			this->searchButton->Name = L"searchButton";
 			this->searchButton->Size = System::Drawing::Size(97, 22);
 			this->searchButton->TabIndex = 8;
-			this->searchButton->Text = L"Пошук";
+			this->searchButton->Text = L"Search";
 			this->searchButton->UseVisualStyleBackColor = false;
 			this->searchButton->Click += gcnew System::EventHandler(this, &MyForm::searchButton_Click);
 			// 
@@ -253,7 +258,7 @@ namespace Project1 {
 			this->groupBox2->Size = System::Drawing::Size(460, 255);
 			this->groupBox2->TabIndex = 11;
 			this->groupBox2->TabStop = false;
-			this->groupBox2->Text = L"Голосування";
+			this->groupBox2->Text = L"Voting";
 			// 
 			// groupBox3
 			// 
@@ -268,7 +273,7 @@ namespace Project1 {
 			this->groupBox3->Size = System::Drawing::Size(460, 128);
 			this->groupBox3->TabIndex = 11;
 			this->groupBox3->TabStop = false;
-			this->groupBox3->Text = L"Файли";
+			this->groupBox3->Text = L"Files";
 			// 
 			// saveFileButton
 			// 
@@ -276,7 +281,7 @@ namespace Project1 {
 			this->saveFileButton->Name = L"saveFileButton";
 			this->saveFileButton->Size = System::Drawing::Size(184, 48);
 			this->saveFileButton->TabIndex = 1;
-			this->saveFileButton->Text = L"Зберегти файл";
+			this->saveFileButton->Text = L"Save file";
 			this->saveFileButton->UseVisualStyleBackColor = true;
 			this->saveFileButton->Click += gcnew System::EventHandler(this, &MyForm::saveFileButton_Click);
 			// 
@@ -286,7 +291,7 @@ namespace Project1 {
 			this->openFileButton->Name = L"openFileButton";
 			this->openFileButton->Size = System::Drawing::Size(184, 48);
 			this->openFileButton->TabIndex = 0;
-			this->openFileButton->Text = L"Відкрити файл";
+			this->openFileButton->Text = L"Open file";
 			this->openFileButton->UseVisualStyleBackColor = true;
 			this->openFileButton->Click += gcnew System::EventHandler(this, &MyForm::openFileButton_Click);
 			// 
