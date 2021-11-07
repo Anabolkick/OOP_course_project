@@ -338,11 +338,15 @@ namespace Project1 {
 	private: System::Void voteConfirm_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 
-		if (checkBox1->Checked) {
-			if (PIB->Text == "" || passportID->Text == "" || voteOptions->SelectedText == "") {
-				MessageBox::Show(this, "Enter a full info!", "Warning!", MessageBoxButtons::OK, MessageBoxIcon::Warning);
-			}
-			else {
+		if (checkBox1->Checked) 
+		{
+			try
+			{
+				if (PIB->Text == "" || passportID->Text == "" || voteOptions->SelectedItem->ToString() == "")
+				{
+					throw false;
+				}
+
 				//ID
 				String^ id_str = passportID->Text;
 				string conv_id_str = msclr::interop::marshal_as<string>(id_str);
@@ -352,17 +356,21 @@ namespace Project1 {
 				String^ name_str = PIB->Text;
 				string name = msclr::interop::marshal_as<string>(name_str);
 
-				//vote
-				String^ vote_str = voteOptions->SelectedText;
+				//Vote
+				String^ vote_str = voteOptions->SelectedItem->ToString();
 				string vote = msclr::interop::marshal_as<string>(vote_str);
 
 				scv_manipulator::add_csv("vote_chain.csv", id, name, vote);
-
-
 				MessageBox::Show(this, "Vote submited!", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
-			};
+
+			}
+			catch (bool)
+			{
+				MessageBox::Show(this, "Enter a full info!", "Warning!", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			}
 		}
-		else {
+		else
+		{
 			MessageBox::Show(this, "Accept the agreement!", "Error!", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 		}
 	}
@@ -424,7 +432,7 @@ namespace Project1 {
 			{
 				MessageBox::Show(this, "Can`t found vote_chain.csv!", "Error 1!", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 			}
-	
+
 		}
 	}
 	};
