@@ -2,6 +2,8 @@
 #include "scv_manipulator.cpp"
 #include <msclr/marshal_cppstd.h>
 
+#include <experimental/filesystem>
+
 namespace Project1 {
 
 	using namespace System;
@@ -11,7 +13,8 @@ namespace Project1 {
 	using namespace System::Data;
 	using namespace System::Drawing;
 	using namespace System::IO;
-
+	using namespace std;
+	using namespace std::experimental::filesystem::v1;
 	/// <summary>
 	/// Сводка для MyForm
 	/// </summary>
@@ -282,7 +285,7 @@ namespace Project1 {
 			this->saveFileButton->Name = L"saveFileButton";
 			this->saveFileButton->Size = System::Drawing::Size(184, 48);
 			this->saveFileButton->TabIndex = 1;
-			this->saveFileButton->Text = L"Save file";
+			this->saveFileButton->Text = L"Import file";
 			this->saveFileButton->UseVisualStyleBackColor = true;
 			this->saveFileButton->Click += gcnew System::EventHandler(this, &MyForm::saveFileButton_Click);
 			// 
@@ -339,32 +342,32 @@ private: System::Void voteConfirm_Click(System::Object^ sender, System::EventArg
 {
 
 	if (checkBox1->Checked) {
-		if (PIB->Text == "" || passportID->Text == "" || voteOptions->Text == "") {
+		if (PIB->Text == "" || passportID->Text == "" || voteOptions->SelectedText == "") {
 			MessageBox::Show(this, "Enter a full info!", "Warning!", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 		}
 		else {
+			//ID
+			String^ id_str = passportID->Text;
+			string conv_id_str = msclr::interop::marshal_as<string>(id_str);
+			long id = atoi(conv_id_str.c_str());
+
+			//Name
+			String^ name_str = PIB->Text;
+			string name = msclr::interop::marshal_as<string>(name_str);
+
+			//vote
+			String^ vote_str = voteOptions->SelectedText;
+			string vote = msclr::interop::marshal_as<string>(vote_str);
+
+			scv_manipulator::add_csv("vote_chain.csv", id, name, vote);
+
+
 			MessageBox::Show(this, "Vote submited!", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		};
 	}
 	else {
 		MessageBox::Show(this, "Accept the agreement!", "Error!", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 	}
-
-					//ID
-	String^ id_str = passportID->Text;
-	string conv_id_str = msclr::interop::marshal_as<string>(id_str);
-	long id = atoi(conv_id_str.c_str());
-
-					//Name
-	String^ name_str = PIB->Text;
-	string name = msclr::interop::marshal_as<string>(name_str);
-
-					//vote
-	String^ vote_str = voteOptions->SelectedText;
-	string vote = msclr::interop::marshal_as<string>(vote_str);
-
-	scv_manipulator::add_csv("vote_chain.csv", id, name, vote);
-
 }
 private: System::Void checkBox1_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 }
@@ -377,11 +380,14 @@ private: System::Void openFileButton_Click(System::Object^ sender, System::Event
 	} // Исключение для ОТКРЫТИЯ файла писать сюда
 }
 private: System::Void saveFileButton_Click(System::Object^ sender, System::EventArgs^ e) {
-	String^ saveFileName = "";
+	String^ fileName = "";
+	saveFileDialog->Filter = "Files scv (*.scv)|*.scv";
+	if (saveFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK) 
+	{
+		fileName = saveFileDialog->FileName;
+		string conv_file_name = msclr::interop::marshal_as<string>(fileName);
 
-	if (saveFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK) {
-		saveFileName = saveFileDialog->FileName;
-
+		copy_file("vote_chain.csv", conv_file_name);
 	}
 }
 };

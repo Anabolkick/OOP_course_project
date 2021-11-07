@@ -51,7 +51,6 @@ public:
 
 		fin.close();    //todo exeptions on not open
 		fout.close();
-
 	}
 
 	void read_id_csv(string file_name, int id)
