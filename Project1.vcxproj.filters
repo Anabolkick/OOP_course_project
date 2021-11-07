@@ -30,6 +30,9 @@
     <ClCompile Include="json_manipulator.cpp">
       <Filter>Файлы ресурсов\file_manipulators</Filter>
     </ClCompile>
+    <ClCompile Include="string_manipulator.cpp">
+      <Filter>Файлы ресурсов\file_manipulators</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyForm.h">

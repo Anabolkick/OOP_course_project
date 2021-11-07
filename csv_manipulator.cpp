@@ -97,7 +97,7 @@ public:
 		}
 	}
 
-	void read_id_csv(string file_name, int id)
+	static void read_id_csv(string file_name, int id)
 	{
 		ifstream fin(file_name);
 

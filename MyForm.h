@@ -1,6 +1,6 @@
 #pragma once
 #include "csv_manipulator.cpp"
-#include <msclr/marshal_cppstd.h>
+#include "string_manipulator.cpp"
 
 namespace Project1 {
 
@@ -57,17 +57,11 @@ namespace Project1 {
 	private: System::Windows::Forms::GroupBox^ groupBox3;
 
 
-
-
 	private: System::Windows::Forms::OpenFileDialog^ openFileDialog;
 	private: System::Windows::Forms::Button^ openFileButton;
 	private: System::Windows::Forms::Button^ saveFileButton;
 	private: System::Windows::Forms::SaveFileDialog^ saveFileDialog;
 	private: System::Windows::Forms::Button^ saveResultsBtn;
-
-
-
-
 
 	protected:
 
@@ -332,6 +326,9 @@ namespace Project1 {
 
 		}
 #pragma endregion
+
+
+
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -361,17 +358,14 @@ namespace Project1 {
 				}
 
 				//ID
-				String^ id_str = passportID->Text;
-				string conv_id_str = msclr::interop::marshal_as<string>(id_str);
-				long id = atoi(conv_id_str.c_str());
+				string id_str = string_manipulator::std_string(passportID->Text);
+				long id = atoi(id_str.c_str());
 
 				//Name
-				String^ name_str = PIB->Text;
-				string name = msclr::interop::marshal_as<string>(name_str);
+				string name = string_manipulator::std_string(PIB->Text);
 
 				//Vote
-				String^ vote_str = voteOptions->SelectedItem->ToString();
-				string vote = msclr::interop::marshal_as<string>(vote_str);
+				string vote = string_manipulator::std_string(voteOptions->SelectedItem->ToString());
 
 				if (csv_manipulator::add_csv("vote_chain.csv", id, name, vote))	 // TODO try catch
 				{
@@ -396,26 +390,22 @@ namespace Project1 {
 	}
 	private: System::Void openFileButton_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		String^ fileName = "";
 		openFileDialog->Filter = "Files csv (*.csv)|*.csv";
 
 		if (openFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK)
 		{
-			fileName = openFileDialog->FileName;
-			string conv_file_name = msclr::interop::marshal_as<string>(fileName);
-			csv_manipulator::copy_csv(conv_file_name, "vote_chain.csv");
+			string file_name = string_manipulator::std_string(openFileDialog->FileName);
+			csv_manipulator::copy_csv(file_name, "vote_chain.csv");
 		}
 	}
 	private: System::Void saveFileButton_Click(System::Object^ sender, System::EventArgs^ e)   // TODO try catch  файла не существует
 	{
-		String^ fileName = "";
 		saveFileDialog->Filter = "Files csv (*.csv)|*.csv";
 
 		if (saveFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK)
 		{
-			fileName = saveFileDialog->FileName;
-			string conv_file_name = msclr::interop::marshal_as<string>(fileName);
-			csv_manipulator::copy_csv("vote_chain.csv", conv_file_name);
+			string file_name = string_manipulator::std_string(saveFileDialog->FileName);
+			csv_manipulator::copy_csv("vote_chain.csv", file_name);
 		}
 	}
 	private: System::Void saveResultsBtn_Click(System::Object^ sender, System::EventArgs^ e)
