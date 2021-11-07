@@ -54,6 +54,49 @@ public:
 		return IsIdNew;
 	}
 
+	static void copy_csv(string from, string to)
+	{
+		ifstream fin;
+		ofstream fout;
+		try
+		{
+			fin.open(from, ios::binary);
+
+			if (fin.is_open() == false)
+			{
+				throw false;
+			}
+
+			try
+			{
+				fout.open(to, ios::binary);
+
+				if (fin.is_open() == false)
+				{
+					throw false;
+				}
+
+				fout << fin.rdbuf();
+
+				fin.close();
+				fout.close();
+
+			}
+			catch (bool)
+			{
+				//new exeption
+				/*string ex = "Can`t import file to " + conv_file_name;
+				String^ ex_cli = gcnew String(ex.c_str());
+				MessageBox::Show(this, ex_cli, "Error 2!", MessageBoxButtons::OK, MessageBoxIcon::Warning);*/
+			}
+		}
+		catch (bool)
+		{
+			//new exeption
+			//MessageBox::Show(this, "Can`t open vote_chain.csv!", "Error 1!", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+		}
+	}
+
 	void read_id_csv(string file_name, int id)
 	{
 		ifstream fin(file_name);

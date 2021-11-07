@@ -351,7 +351,7 @@ namespace Project1 {
 	private: System::Void voteConfirm_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 
-		if (checkBox1->Checked) 
+		if (checkBox1->Checked)
 		{
 			try
 			{
@@ -394,69 +394,34 @@ namespace Project1 {
 	}
 	private: System::Void checkBox1_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
-	private: System::Void openFileButton_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void openFileButton_Click(System::Object^ sender, System::EventArgs^ e)
+	{
 		String^ fileName = "";
+		openFileDialog->Filter = "Files scv (*.scv)|*.scv";
 
 		if (openFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK)
 		{
 			fileName = openFileDialog->FileName;
-		} // »сключение дл€ ќ“ –џ“»я файла писать сюда
+			string conv_file_name = msclr::interop::marshal_as<string>(fileName);
+			scv_manipulator::copy_csv(conv_file_name, "vote_chain.csv");
+		}
 	}
 	private: System::Void saveFileButton_Click(System::Object^ sender, System::EventArgs^ e)   // TODO try catch  файла не существует
 	{
-
 		String^ fileName = "";
 		saveFileDialog->Filter = "Files scv (*.scv)|*.scv";
+
 		if (saveFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK)
 		{
 			fileName = saveFileDialog->FileName;
 			string conv_file_name = msclr::interop::marshal_as<string>(fileName);
-
-			ifstream fin;
-			ofstream fout;
-			try
-			{
-				fin.open("vote_chain.csv", ios::binary);
-
-				if (fin.is_open() == false)
-				{
-					throw false;
-				}
-
-				try
-				{
-					fout.open(conv_file_name, ios::binary);
-
-					if (fin.is_open() == false)
-					{
-						throw false;
-					}
-
-					fout << fin.rdbuf();
-
-					fin.close();
-					fout.close();
-
-				}
-				catch (bool)
-				{
-					string ex = "Can`t import file to " + conv_file_name;
-					String^ ex_cli = gcnew String(ex.c_str());
-
-					MessageBox::Show(this, ex_cli, "Error 2!", MessageBoxButtons::OK, MessageBoxIcon::Warning);
-				}
-			}
-			catch (bool)
-			{
-				MessageBox::Show(this, "Can`t found vote_chain.csv!", "Error 1!", MessageBoxButtons::OK, MessageBoxIcon::Warning);
-			}
-
+			scv_manipulator::copy_csv("vote_chain.csv", conv_file_name);
 		}
 	}
-	private: System::Void saveResultsBtn_Click(System::Object^ sender, System::EventArgs^ e) 
+	private: System::Void saveResultsBtn_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 
 	}
-};
+	};
 
 }
