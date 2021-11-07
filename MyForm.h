@@ -63,6 +63,7 @@ namespace Project1 {
 	private: System::Windows::Forms::Button^ openFileButton;
 	private: System::Windows::Forms::Button^ saveFileButton;
 	private: System::Windows::Forms::SaveFileDialog^ saveFileDialog;
+	private: System::Windows::Forms::Button^ saveResultsBtn;
 
 
 
@@ -102,6 +103,7 @@ namespace Project1 {
 			this->openFileButton = (gcnew System::Windows::Forms::Button());
 			this->openFileDialog = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->saveFileDialog = (gcnew System::Windows::Forms::SaveFileDialog());
+			this->saveResultsBtn = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->groupBox3->SuspendLayout();
@@ -264,6 +266,7 @@ namespace Project1 {
 			// groupBox3
 			// 
 			this->groupBox3->BackColor = System::Drawing::SystemColors::Control;
+			this->groupBox3->Controls->Add(this->saveResultsBtn);
 			this->groupBox3->Controls->Add(this->saveFileButton);
 			this->groupBox3->Controls->Add(this->openFileButton);
 			this->groupBox3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
@@ -271,7 +274,7 @@ namespace Project1 {
 			this->groupBox3->ForeColor = System::Drawing::SystemColors::ControlText;
 			this->groupBox3->Location = System::Drawing::Point(8, 416);
 			this->groupBox3->Name = L"groupBox3";
-			this->groupBox3->Size = System::Drawing::Size(460, 128);
+			this->groupBox3->Size = System::Drawing::Size(460, 165);
 			this->groupBox3->TabIndex = 11;
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"Files";
@@ -296,12 +299,22 @@ namespace Project1 {
 			this->openFileButton->UseVisualStyleBackColor = true;
 			this->openFileButton->Click += gcnew System::EventHandler(this, &MyForm::openFileButton_Click);
 			// 
+			// saveResultsBtn
+			// 
+			this->saveResultsBtn->Location = System::Drawing::Point(132, 111);
+			this->saveResultsBtn->Name = L"saveResultsBtn";
+			this->saveResultsBtn->Size = System::Drawing::Size(184, 48);
+			this->saveResultsBtn->TabIndex = 2;
+			this->saveResultsBtn->Text = L"Save results";
+			this->saveResultsBtn->UseVisualStyleBackColor = true;
+			this->saveResultsBtn->Click += gcnew System::EventHandler(this, &MyForm::saveResultsBtn_Click);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::Control;
-			this->ClientSize = System::Drawing::Size(484, 561);
+			this->ClientSize = System::Drawing::Size(484, 593);
 			this->Controls->Add(this->groupBox3);
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->groupBox1);
@@ -368,8 +381,6 @@ namespace Project1 {
 				{
 					MessageBox::Show(this, "You have already voted!", "Error 4!", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 				}
-			
-
 			}
 			catch (bool)
 			{
@@ -442,6 +453,10 @@ namespace Project1 {
 
 		}
 	}
-	};
+	private: System::Void saveResultsBtn_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+
+	}
+};
 
 }
