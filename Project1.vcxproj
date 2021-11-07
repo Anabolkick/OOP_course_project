@@ -125,7 +125,7 @@
   <ItemGroup>
     <ClCompile Include="json_manipulator.cpp" />
     <ClCompile Include="MyForm.cpp" />
-    <ClCompile Include="scv_manipulator.cpp" />
+    <ClCompile Include="csv_manipulator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="json\allocator.h" />

@@ -24,7 +24,7 @@
     <ClCompile Include="MyForm.cpp">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
-    <ClCompile Include="scv_manipulator.cpp">
+    <ClCompile Include="csv_manipulator.cpp">
       <Filter>Файлы ресурсов\file_manipulators</Filter>
     </ClCompile>
     <ClCompile Include="json_manipulator.cpp">

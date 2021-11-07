@@ -6,7 +6,7 @@
 
 using namespace std;
 
-public class scv_manipulator
+public class csv_manipulator
 {
 public:
 	static bool add_csv(string file_name, int id, string name, string vote)

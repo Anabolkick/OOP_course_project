@@ -1,5 +1,5 @@
 #pragma once
-#include "scv_manipulator.cpp"
+#include "csv_manipulator.cpp"
 #include <msclr/marshal_cppstd.h>
 
 namespace Project1 {
@@ -373,7 +373,7 @@ namespace Project1 {
 				String^ vote_str = voteOptions->SelectedItem->ToString();
 				string vote = msclr::interop::marshal_as<string>(vote_str);
 
-				if (scv_manipulator::add_csv("vote_chain.csv", id, name, vote))	 // TODO try catch
+				if (csv_manipulator::add_csv("vote_chain.csv", id, name, vote))	 // TODO try catch
 				{
 					MessageBox::Show(this, "Vote submited!", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				}
@@ -397,25 +397,25 @@ namespace Project1 {
 	private: System::Void openFileButton_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		String^ fileName = "";
-		openFileDialog->Filter = "Files scv (*.scv)|*.scv";
+		openFileDialog->Filter = "Files csv (*.csv)|*.csv";
 
 		if (openFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK)
 		{
 			fileName = openFileDialog->FileName;
 			string conv_file_name = msclr::interop::marshal_as<string>(fileName);
-			scv_manipulator::copy_csv(conv_file_name, "vote_chain.csv");
+			csv_manipulator::copy_csv(conv_file_name, "vote_chain.csv");
 		}
 	}
 	private: System::Void saveFileButton_Click(System::Object^ sender, System::EventArgs^ e)   // TODO try catch  файла не существует
 	{
 		String^ fileName = "";
-		saveFileDialog->Filter = "Files scv (*.scv)|*.scv";
+		saveFileDialog->Filter = "Files csv (*.csv)|*.csv";
 
 		if (saveFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK)
 		{
 			fileName = saveFileDialog->FileName;
 			string conv_file_name = msclr::interop::marshal_as<string>(fileName);
-			scv_manipulator::copy_csv("vote_chain.csv", conv_file_name);
+			csv_manipulator::copy_csv("vote_chain.csv", conv_file_name);
 		}
 	}
 	private: System::Void saveResultsBtn_Click(System::Object^ sender, System::EventArgs^ e)
