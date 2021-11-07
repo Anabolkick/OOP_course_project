@@ -139,6 +139,7 @@ namespace Project1 {
 			// passportID
 			// 
 			this->passportID->Location = System::Drawing::Point(269, 55);
+			this->passportID->MaxLength = 8;
 			this->passportID->Name = L"passportID";
 			this->passportID->Size = System::Drawing::Size(156, 22);
 			this->passportID->TabIndex = 3;
@@ -325,9 +326,30 @@ namespace Project1 {
 	private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 private: System::Void searchButton_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	if (searchByID->Text != "") {
+		MessageBox::Show(this, "ID [number] voted for [full name]", "Found!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+	}
+	else {
+		MessageBox::Show(this, "ID [number] not voted yet", "Failure!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+	}
+
 }
 private: System::Void voteConfirm_Click(System::Object^ sender, System::EventArgs^ e) 
 {
+
+	if (checkBox1->Checked) {
+		if (PIB->Text == "" || passportID->Text == "" || voteOptions->Text == "") {
+			MessageBox::Show(this, "Enter a full info!", "Warning!", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+		}
+		else {
+			MessageBox::Show(this, "Vote submited!", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		};
+	}
+	else {
+		MessageBox::Show(this, "Accept the agreement!", "Error!", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+	}
+
 					//ID
 	String^ id_str = passportID->Text;
 	string conv_id_str = msclr::interop::marshal_as<string>(id_str);
