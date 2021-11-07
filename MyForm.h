@@ -360,18 +360,25 @@ namespace Project1 {
 				String^ vote_str = voteOptions->SelectedItem->ToString();
 				string vote = msclr::interop::marshal_as<string>(vote_str);
 
-				scv_manipulator::add_csv("vote_chain.csv", id, name, vote);
-				MessageBox::Show(this, "Vote submited!", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				if (scv_manipulator::add_csv("vote_chain.csv", id, name, vote))	 // TODO try catch
+				{
+					MessageBox::Show(this, "Vote submited!", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				}
+				else
+				{
+					MessageBox::Show(this, "You have already voted!", "Error 4!", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				}
+			
 
 			}
 			catch (bool)
 			{
-				MessageBox::Show(this, "Enter a full info!", "Warning!", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				MessageBox::Show(this, "Enter a full info!", "Error 3!", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 			}
 		}
 		else
 		{
-			MessageBox::Show(this, "Accept the agreement!", "Error!", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			MessageBox::Show(this, "Accept the agreement!", "Error 5!", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 		}
 	}
 	private: System::Void checkBox1_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {

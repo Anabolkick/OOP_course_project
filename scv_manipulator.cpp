@@ -9,7 +9,7 @@ using namespace std;
 public class scv_manipulator
 {
 public:
-	static void add_csv(string file_name, int id, string name, string vote)
+	static bool add_csv(string file_name, int id, string name, string vote)
 	{
 		ofstream fout;
 		ifstream fin;
@@ -32,17 +32,17 @@ public:
 			}
 		}
 
-		bool found = false;
+		bool IsIdNew = true;
 		for (int i = 0; i < all_id.capacity(); i++)
 		{
 			if (id == all_id[i])
 			{
-				found = true;
+				IsIdNew = false;
 			}
 		}
 
 		fout.open(file_name, fstream::app);
-		if (fout.is_open() && found == false)
+		if (fout.is_open() && IsIdNew == true)
 		{
 			fout << id << ','
 				<< name << ','
@@ -51,6 +51,7 @@ public:
 
 		fin.close();    //todo exeptions on not open
 		fout.close();
+		return IsIdNew;
 	}
 
 	void read_id_csv(string file_name, int id)
