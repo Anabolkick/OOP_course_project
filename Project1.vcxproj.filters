@@ -72,7 +72,7 @@
       <Filter>Файлы заголовков\JSON</Filter>
     </ClInclude>
     <ClInclude Include="Hash.h">
-      <Filter>Файлы ресурсов\file_manipulators</Filter>
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
