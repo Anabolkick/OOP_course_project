@@ -129,6 +129,7 @@
     <ClCompile Include="string_manipulator.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Hash.h" />
     <ClInclude Include="json\allocator.h" />
     <ClInclude Include="json\assertions.h" />
     <ClInclude Include="json\config.h" />

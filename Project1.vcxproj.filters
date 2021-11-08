@@ -68,5 +68,8 @@
     <ClInclude Include="json\writer.h">
       <Filter>Файлы заголовков\JSON</Filter>
     </ClInclude>
+    <ClInclude Include="Hash.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
