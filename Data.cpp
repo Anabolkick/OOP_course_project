@@ -4,7 +4,7 @@
 using namespace hash;
 
 
-struct Data {	//хранение даннных проголосовавшего
+struct DataD {	//хранение даннных проголосовавшего
 	string FullName;
 	long ID;
 	string HAsh;
@@ -16,8 +16,9 @@ class Set {
 	public:
 		Dyn* pNext;	//хранение ссылок на следущие
 		Dyn* pPrev;
-		Data Inf;
-		Dyn(Data In, Dyn* prev, Dyn* next = nullptr);
+		DataD Inf;
+		Dyn(DataD In, Dyn* prev, Dyn* next = nullptr);
+
 	};
 private:
 	Dyn* Head;
@@ -26,7 +27,7 @@ public:
 	Set();
 	~Set();
 	Set(const Set& Rop);
-	bool include(Data V);//добавление в список
+	bool include(DataD V);//добавление в список
 	void exclude(string H);//удаление со списка
 	int CompHash(Dyn* Head, string H);//поиск по хешу
 	int CompId(Dyn* Head, long Id);//поиск по ID
@@ -105,7 +106,7 @@ int Set::CompId(Dyn* Head, long Id)//сравнение по id
 
 }
 
-bool Set::include(Data V) //добавление нового элемента
+bool Set::include(DataD V) //добавление нового элемента
 {
 	if (Head == nullptr) {
 		Head = new Dyn(V, nullptr);
@@ -152,13 +153,11 @@ void Set::exclude(string H)//удаление по хешу
 	}
 	else cout << "no hash";
 }
-}
 
-Set::Dyn::Dyn(Data In, Dyn* prev, Dyn* next)
+
+Set::Dyn::Dyn(DataD In, Dyn* prev, Dyn* next)
 {
 	Inf = In;
 	pPrev = prev;
 	pNext = next;
-
-
 }
