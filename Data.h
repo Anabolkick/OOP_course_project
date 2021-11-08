@@ -1,14 +1,21 @@
+#pragma once
+
 #include <iostream>
 #include "Hash.h"
-#include "Data.h"
 
 using namespace hash;
 
+class Voting {
+public:
+	string NameC;
+	int point;
+};
 
 struct DataD {	//хранение даннных проголосовавшего
 	string FullName;
 	long ID;
 	string HAsh;
+	string VOTE;
 };
 
 class Set {
@@ -22,23 +29,25 @@ class Set {
 
 	};
 private:
-	
+
 	int size;
 public:
 	Dyn* Head;
-	Set(Dyn* Head);
+	Set();
 	~Set();
 	Set(const Set& Rop);
 	bool include(DataD V);//добавление в список
 	void exclude(string H);//удаление со списка
 	int CompHash(Dyn* Head, string H);//поиск по хешу
 	int CompId(Dyn* Head, long Id);//поиск по ID
+	friend Voting Rez(Voting* rez);
 };
 
 
-Set::Set(Dyn* Head)
+Set::Set()
 {
 	Head = nullptr;
+
 	size = 0;
 }
 
@@ -139,9 +148,9 @@ void Set::exclude(string H)//удаление по хешу
 		Head->pPrev = nullptr;
 		delete[] current;
 	}
-	else if (CompHash(Head, H) !=-1)
+	else if (CompHash(Head, H) != -1)
 	{
-		Dyn* current = Head, * prev = nullptr,*tmp;
+		Dyn* current = Head, * prev = nullptr, * tmp;
 		while (current->Inf.HAsh != H) {
 			prev = current;
 			current = current->pNext;
@@ -150,7 +159,7 @@ void Set::exclude(string H)//удаление по хешу
 		tmp = current->pNext;
 		tmp->pPrev = prev;
 		delete current;
-		
+
 	}
 	else cout << "no hash";
 }
@@ -163,12 +172,3 @@ Set::Dyn::Dyn(DataD In, Dyn* prev, Dyn* next)
 	pNext = next;
 }
 
-Voting Rez(Voting* rez)
-{
-
-	return Voting();
-}
-
-Set::Set(Dyn* Head)
-{
-}

@@ -1,7 +1,9 @@
 #pragma once
 #include "csv_manipulator.cpp"
 #include "string_manipulator.cpp"
-#include "Data.cpp"
+#include "Data.h"
+#using "Data.cpp"
+
 
 namespace Project1 {
 
@@ -329,7 +331,7 @@ namespace Project1 {
 #pragma endregion
 
 
-
+		Set* Vote=new Set[1];//хранение списка
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -338,7 +340,10 @@ namespace Project1 {
 	}
 	private: System::Void searchButton_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		if (searchByID->Text != "") {
+		
+
+		if ( searchByID->Text!="") { /*Vote[0].CompId(Vote.Head, searchByID->Text)!=-1*/
+
 			MessageBox::Show(this, "ID [number] voted for [full name]", "Found!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		}
 		else {
