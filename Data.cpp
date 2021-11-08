@@ -1,13 +1,21 @@
 #include <iostream>
 #include "Hash.h"
 
+
 using namespace hash;
 
+
+class votting {
+public:
+	string FullName;
+	int amount;
+};
 
 struct DataD {	//хранение даннных проголосовавшего
 	string FullName;
 	long ID;
 	string HAsh;
+	string Vote;
 };
 
 class Set {
@@ -31,6 +39,7 @@ public:
 	void exclude(string H);//удаление со списка
 	int CompHash(Dyn* Head, string H);//поиск по хешу
 	int CompId(Dyn* Head, long Id);//поиск по ID
+	votting* Win(votting* VOTE, int amount, Dyn* Head);
 };
 
 
@@ -106,6 +115,25 @@ int Set::CompId(Dyn* Head, long Id)//сравнение по id
 
 }
 
+votting* Set::Win(votting* VOTE,int amount, Dyn* Head)
+{
+	Dyn* tmp;
+	tmp = Head;
+	int counter = 0;
+	for (int i = 0; i < amount; i++) {
+		int counter = 0;
+		while (tmp != nullptr) {
+			if (tmp->Inf.Vote == VOTE[i].FullName) {
+				counter++;
+			}
+
+			tmp = tmp->pNext;
+		}
+		
+	}
+	return VOTE;
+}
+
 bool Set::include(DataD V) //добавление нового элемента
 {
 	if (Head == nullptr) {
@@ -161,3 +189,5 @@ Set::Dyn::Dyn(DataD In, Dyn* prev, Dyn* next)
 	pPrev = prev;
 	pNext = next;
 }
+
+
