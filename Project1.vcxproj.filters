@@ -33,8 +33,20 @@
     <ClCompile Include="string_manipulator.cpp">
       <Filter>Файлы ресурсов\file_manipulators</Filter>
     </ClCompile>
-    <ClCompile Include="Data.cpp">
-      <Filter>Исходные файлы</Filter>
+    <ClCompile Include="votting.cpp">
+      <Filter>Файлы ресурсов</Filter>
+    </ClCompile>
+    <ClCompile Include="DataD.cpp">
+      <Filter>Файлы ресурсов</Filter>
+    </ClCompile>
+    <ClCompile Include="Hash.cpp">
+      <Filter>Файлы ресурсов</Filter>
+    </ClCompile>
+    <ClCompile Include="Dyn.cpp">
+      <Filter>Файлы ресурсов</Filter>
+    </ClCompile>
+    <ClCompile Include="Set.cpp">
+      <Filter>Файлы ресурсов</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -71,7 +83,16 @@
     <ClInclude Include="json\writer.h">
       <Filter>Файлы заголовков\JSON</Filter>
     </ClInclude>
+    <ClInclude Include="DataD.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
     <ClInclude Include="Hash.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Dyn.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Set.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
