@@ -123,14 +123,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Data.cpp" />
     <ClCompile Include="json_manipulator.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="csv_manipulator.cpp" />
     <ClCompile Include="string_manipulator.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Hash.h" />
     <ClInclude Include="json\allocator.h" />
     <ClInclude Include="json\assertions.h" />
     <ClInclude Include="json\config.h" />

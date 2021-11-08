@@ -1,6 +1,5 @@
 #include <iostream>
 #include "Hash.h"
-#include "Data.h"
 
 using namespace hash;
 
@@ -22,11 +21,10 @@ class Set {
 
 	};
 private:
-	
+	Dyn* Head;
 	int size;
 public:
-	Dyn* Head;
-	Set(Dyn* Head);
+	Set();
 	~Set();
 	Set(const Set& Rop);
 	bool include(DataD V);//добавление в список
@@ -36,9 +34,10 @@ public:
 };
 
 
-Set::Set(Dyn* Head)
+Set::Set()
 {
 	Head = nullptr;
+
 	size = 0;
 }
 
@@ -161,14 +160,4 @@ Set::Dyn::Dyn(DataD In, Dyn* prev, Dyn* next)
 	Inf = In;
 	pPrev = prev;
 	pNext = next;
-}
-
-Voting Rez(Voting* rez)
-{
-
-	return Voting();
-}
-
-Set::Set(Dyn* Head)
-{
 }

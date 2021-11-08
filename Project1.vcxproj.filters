@@ -33,9 +33,6 @@
     <ClCompile Include="string_manipulator.cpp">
       <Filter>Файлы ресурсов\file_manipulators</Filter>
     </ClCompile>
-    <ClCompile Include="Data.cpp">
-      <Filter>Файлы ресурсов\file_manipulators</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyForm.h">
@@ -70,9 +67,6 @@
     </ClInclude>
     <ClInclude Include="json\writer.h">
       <Filter>Файлы заголовков\JSON</Filter>
-    </ClInclude>
-    <ClInclude Include="Hash.h">
-      <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
