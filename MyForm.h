@@ -1,6 +1,7 @@
 #pragma once
-#include "csv_manipulator.cpp"
-#include "string_manipulator.cpp"
+#include "Csv_manipulator.cpp"
+#include "String_manipulator.h"
+#include "Exeption_data.cpp"
 
 namespace Project1 {
 
@@ -21,6 +22,7 @@ namespace Project1 {
 		MyForm(void)
 		{
 			InitializeComponent();
+			
 			//
 			//TODO: добавьте код конструктора
 			//
@@ -327,7 +329,12 @@ namespace Project1 {
 		}
 #pragma endregion
 
-
+		void Show_exeption(Exeption_data ex)
+		{
+			String^ name = ex.getName();
+			String^ message = ex.getMessage();
+			MessageBox::Show(this, message, name, MessageBoxButtons::OK, MessageBoxIcon::Warning);
+		}
 
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
@@ -358,16 +365,16 @@ namespace Project1 {
 				}
 
 				//ID
-				string id_str = string_manipulator::std_string(passportID->Text);
+				string id_str = String_manipulator::std_string(passportID->Text);
 				long id = atoi(id_str.c_str());
 
 				//Name
-				string name = string_manipulator::std_string(PIB->Text);
+				string name = String_manipulator::std_string(PIB->Text);
 
 				//Vote
-				string vote = string_manipulator::std_string(voteOptions->SelectedItem->ToString());
+				string vote = String_manipulator::std_string(voteOptions->SelectedItem->ToString());
 
-				if (csv_manipulator::add_csv("vote_chain.csv", id, name, vote))	 // TODO try catch
+				if (Csv_manipulator::add_csv("vote_chain.csv", id, name, vote))	 // TODO try catch
 				{
 					MessageBox::Show(this, "Vote submited!", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				}
@@ -378,7 +385,8 @@ namespace Project1 {
 			}
 			catch (bool)
 			{
-				MessageBox::Show(this, "Enter a full info!", "Error 3!", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				Exeption_data ex("Enter a full info", 3);
+				Show_exeption(ex);
 			}
 		}
 		else
@@ -394,8 +402,8 @@ namespace Project1 {
 
 		if (openFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK)
 		{
-			string file_name = string_manipulator::std_string(openFileDialog->FileName);
-			csv_manipulator::copy_csv(file_name, "vote_chain.csv");
+			string file_name = String_manipulator::std_string(openFileDialog->FileName);
+			Csv_manipulator::copy_csv(file_name, "vote_chain.csv");
 		}
 	}
 	private: System::Void saveFileButton_Click(System::Object^ sender, System::EventArgs^ e)   // TODO try catch  файла не существует
@@ -404,8 +412,8 @@ namespace Project1 {
 
 		if (saveFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK)
 		{
-			string file_name = string_manipulator::std_string(saveFileDialog->FileName);
-			csv_manipulator::copy_csv("vote_chain.csv", file_name);
+			string file_name = String_manipulator::std_string(saveFileDialog->FileName);
+			Csv_manipulator::copy_csv("vote_chain.csv", file_name);
 		}
 	}
 	private: System::Void saveResultsBtn_Click(System::Object^ sender, System::EventArgs^ e)
