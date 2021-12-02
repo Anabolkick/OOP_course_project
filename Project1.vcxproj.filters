@@ -24,13 +24,10 @@
     <ClCompile Include="MyForm.cpp">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
-    <ClCompile Include="csv_manipulator.cpp">
+    <ClCompile Include="Csv_manipulator.cpp">
       <Filter>Файлы ресурсов\file_manipulators</Filter>
     </ClCompile>
-    <ClCompile Include="json_manipulator.cpp">
-      <Filter>Файлы ресурсов\file_manipulators</Filter>
-    </ClCompile>
-    <ClCompile Include="string_manipulator.cpp">
+    <ClCompile Include="Json_manipulator.cpp">
       <Filter>Файлы ресурсов\file_manipulators</Filter>
     </ClCompile>
     <ClCompile Include="Hash.cpp">
@@ -38,6 +35,12 @@
     </ClCompile>
     <ClCompile Include="Set.cpp">
       <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Exeption_data.cpp">
+      <Filter>Файлы ресурсов</Filter>
+    </ClCompile>
+    <ClCompile Include="String_manipulator.cpp">
+      <Filter>Файлы ресурсов\file_manipulators</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -78,6 +81,12 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Set.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Exeption_data.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="String_manipulator.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

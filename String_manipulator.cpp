@@ -4,11 +4,12 @@
 #include <string>
 #include <sstream>
 #include <msclr/marshal_cppstd.h>
+#include "String_manipulator.h"
 
 using namespace std;
 using namespace System;
 
-public class string_manipulator
+static class String_manipulator
 {
 public:
 	static string std_string(String^ str)

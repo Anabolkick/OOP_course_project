@@ -5,7 +5,7 @@
 using namespace Json;
 using namespace std;
 
-static class json_manipulator
+static class Json_manipulator
 {
 	static void read_json()
 	{
