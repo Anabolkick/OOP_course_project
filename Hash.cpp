@@ -21,10 +21,12 @@ private:
 	}
 
 public:
-
+	string GetH() {
+		return hash;
+	}
 	string getHash(string PasID, unsigned int lengHash) {//генерация хеша
 		if (lengHash > 3) {
-			unsigned int minLen = 2, realMinLen = 0, OrgSaul = this->getSaul(PasID), OrgLen = (PasID.size());
+			unsigned long int minLen = 2, realMinLen = 0, OrgSaul = this->getSaul(PasID), OrgLen = (PasID.size());
 
 			while (minLen <= lengHash)	//получаем длину нужной строки
 				realMinLen = (minLen *= 2);

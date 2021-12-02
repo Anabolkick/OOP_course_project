@@ -1,6 +1,9 @@
 #pragma once
 #include "csv_manipulator.cpp"
 #include "string_manipulator.cpp"
+#include "Set.h"
+
+Chain block;
 
 namespace Project1 {
 
@@ -160,6 +163,8 @@ namespace Project1 {
 				L"Somov Ivan Nikolaevich", L"Sokolenko Maria Dmitrievna",
 					L"Dushnarev Nikita Aleksandrovich"
 			});
+				
+		
 			this->voteOptions->Location = System::Drawing::Point(24, 120);
 			this->voteOptions->Name = L"voteOptions";
 			this->voteOptions->Size = System::Drawing::Size(400, 24);
@@ -327,7 +332,7 @@ namespace Project1 {
 		}
 #pragma endregion
 
-
+		
 
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
@@ -337,25 +342,30 @@ namespace Project1 {
 	}
 	private: System::Void searchButton_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		if (searchByID->Text != "") {
-			MessageBox::Show(this, "ID [number] voted for [full name]", "Found!", MessageBoxButtons::OK, MessageBoxIcon::Information);
-		}
-		else {
-			MessageBox::Show(this, "ID [number] not voted yet", "Failure!", MessageBoxButtons::OK, MessageBoxIcon::Information);
-		}
+		//ID
+		string id_str = string_manipulator::std_string(searchByID ->Text);
+		long id = atoi(id_str.c_str());
+		string c=block.ShowV(id);
+		String^ search;
+		search=gcnew System::String(c.c_str());
+
+			MessageBox::Show(this,search , "Failure!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		
 
 	}
 	private: System::Void voteConfirm_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-
 		if (checkBox1->Checked)
 		{
 			try
 			{
+				Node Pears;
+
 				if (PIB->Text == "" || passportID->Text == "" || voteOptions->SelectedItem->ToString() == "")
 				{
 					throw false;
 				}
+
 
 				//ID
 				string id_str = string_manipulator::std_string(passportID->Text);
@@ -366,11 +376,17 @@ namespace Project1 {
 
 				//Vote
 				string vote = string_manipulator::std_string(voteOptions->SelectedItem->ToString());
-
-				if (csv_manipulator::add_csv("vote_chain.csv", id, name, vote))	 // TODO try catch
-				{
+				
+				if (block.CompId(id) == -1|| block.CompId(id) == 0  ) {
+					Pears.SetAC(name, id, vote);
+					block.add(Pears);
 					MessageBox::Show(this, "Vote submited!", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				}
+
+				//if (csv_manipulator::add_csv("vote_chain.csv", id, name, vote))	 // TODO try catch
+				//{
+				//	MessageBox::Show(this, "Vote submited!", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				//}
 				else
 				{
 					MessageBox::Show(this, "You have already voted!", "Error 4!", MessageBoxButtons::OK, MessageBoxIcon::Warning);

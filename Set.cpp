@@ -1,164 +1,323 @@
 #include "Set.h"
-#include "votting.cpp"
-#include "Hash.cpp"
-#include "Hash.h"
-#include "Dyn.h"
-#include "Dyn.cpp"
+
+INF::INF()
+{
+	FullName = "";
+	Id = 0;
+	HAsh = "";
+	Vote = "";
+}
+
+void INF::SetN(string N)
+{
+	FullName = N;
+}
+
+void INF::SetID(long int id)
+{
+	Id = id;
+}
+
+void INF::SetH(string hash)
+{
+	HAsh = hash;
+}
+
+void INF::SetV(string vote)
+{
+	Vote = vote;
+}
+
+string INF::GetN()
+{
+	return FullName;
+}
+
+long INF::GetID()
+{
+	return Id;
+}
+
+string INF::GetH()
+{
+	return HAsh;
+}
+
+string INF::GetV()
+{
+	return Vote;
+}
 
 
-class Set {
 
-private:
-	int size;
+Node::Node()
+{
+	pNext = nullptr;
+	pPrev = nullptr;
 
-public:
-	Dyn* Head;
-	Set()
-	{
-		Head = nullptr;
-		size = 0;
+}
+
+Node::~Node()
+{
+	delete[] pNext;
+	delete[] pPrev;
+}
+
+Node::Node(INF V, Node* prev, Node* next)
+{
+	SetN(V.GetN());
+	SetID(V.GetID());
+	SetH(V.GetH());
+	SetV(V.GetV());
+	pPrev = prev;
+	pNext = next;
+}
+
+void Node::SetNext(Node* N)
+{
+	pNext = N;
+}
+
+void Node::SetPrev(Node* P)
+{
+	pPrev = P;
+
+}
+
+Node* Node::GetNext()
+{
+	return pNext;
+}
+
+Node* Node::GetPrev()
+{
+	return pPrev;
+}
+
+void Node::SetAC(string name, long Id, string vote)
+{
+	SetN(name);
+	SetID(Id);
+	SetV(vote);
+	string str = vote;
+	str = str + to_string(Id);
+	Hash h;
+	h.getHash(str, 16);
+	SetH(h.GetH());
+}
+
+Chain::~Chain()
+{
+	Node* Tdelete;
+	do {
+		Tdelete = Head;
+		Head = Tdelete->GetNext();
+		delete Tdelete;
+	} while (Head != nullptr);
+}
+
+Chain::Chain()
+{
+	Head = nullptr;
+	Tail = nullptr;
+	size = 0;
+}
+
+Chain::Chain(const Chain& Rop)
+{
+	Head = Rop.Head;
+	Tail = Rop.Tail;
+	size = Rop.size;
+
+}
+
+bool Chain::add(Node V)
+{
+	if (Head == nullptr) {
+		Head = new Node(V, nullptr);
+		Tail = Head;
+		++size;
+		return true;
 	}
+	else if (CompId(V.GetID()) != 0) {
+		Node* current = Head;
 
-	Set(const Set& Rop)
-	{
-		Head = Rop.Head;
-		size = Rop.size;
-	}
+		while (current->GetNext() != nullptr) {
+			current = current->GetNext();
+		}
+		current->SetNext(new Node(V, current));
+		Tail = current->GetNext();
+		++size;
 
-	~Set()
-	{
-		Dyn* Tdelete;
-		do {
-			Tdelete = Head;
-			Head = Tdelete->pNext;
-			delete Tdelete;
-		} while (Head != nullptr);
+		return true;
 	}
+	return false;
 
-	bool include(DataD V) //добавление нового элемента
-	{
-		if (Head == nullptr) {
-			Head = new Dyn(V, nullptr);
-			++size;
-			return true;
-		}
-		else if (CompId(Head, V.ID) != -1) {
-			Dyn* current = Head;
-			while (current->pNext != nullptr) {
-				current = current->pNext;
-			}
-			current->pNext = new Dyn(V, current);
-			++size;
-			return true;
-		}
-		else
-			return false;
+}
+
+void Chain::del(string H)//не забіть добавить Name+to_string(Id)
+{
+	if (size == 1 && Head->GetH() == H) { //удаление если 1 голова
+		delete Head;
 	}
-	void exclude(string H)//удаление по хешу
-	{
-		if (size == 1 && Head->Inf.HAsh == H) {
-			delete[] Head;
-			Head = nullptr;
-		}
-		else if (Head->Inf.HAsh == H) {
-			Dyn* current = Head;
-			Head = current->pNext;
-			Head->pPrev = nullptr;
-			delete[] current;
-		}
-		else if (CompHash(Head, H) != -1)
-		{
-			Dyn* current = Head, * prev = nullptr, * tmp;
-			while (current->Inf.HAsh != H) {
-				prev = current;
-				current = current->pNext;
-			}
-			prev->pNext = current->pNext;
-			tmp = current->pNext;
-			tmp->pPrev = prev;
-			delete current;
-		}
-		else cout << "no hash";
+	else if (Head->GetH() == H) { //удаление если ошибка в глове
+		Node* current = Head;
+		Head = current->GetNext();
+		Head->SetPrev(nullptr);
+		delete[] current;
 	}
-	int CompHash(Dyn* Head, string H)//сравнение по хешу
-	{
-		Hash h1;
-		string str;
-		str = h1.Hash::getHash(H, 16);
-		Dyn* tmp, * current = nullptr;
-		tmp = Head;
-		int c = 0;
+	else if (Tail->GetH() == H) {
+		Node* prev=Tail->GetPrev(),*todel;
+		todel = Tail;
+		Tail = prev;
+		delete[] todel;
+	}
+	else if (CompH(Head, H) != 1) {//удаление
+		Node* current = Head, * prev = nullptr, * next = nullptr;
+		while (current->GetH() != H) {
+			prev = current;
+			current = current->GetNext();
+		}
+		prev->SetNext(current->GetNext());
+		next = current->GetNext();
+		next->SetPrev(prev);
+		delete[] current;
+
+	}
+	
+}
+
+int Chain::CompH(Node* head, string H)
+{
+	Hash h;
+	string str;
+	str = h.getHash(H, 16);
+	Node* tmp, * current = nullptr;
+	tmp = Head;
+	int c = 0;
+	while (tmp != nullptr) {
+		if (tmp->GetH() != str) {
+			c++;
+		}
+		else {
+			c++;
+			return c;
+		}
+		current = tmp;
+
+		tmp = tmp->GetNext();
+	}
+	if (current->GetH() != str) {
+		c = -1;
+	}
+	return c;
+
+}
+
+
+int Chain::CompId(long id)
+{
+	Node* tmp, * current = nullptr;
+	tmp = Head;
+	int c = 0;
+	if (tmp != nullptr) {
 		while (tmp != nullptr) {
-			if (tmp->Inf.HAsh != str) {
+			if (tmp->GetID() != id) {
 				c++;
 			}
 			else {
-				c = -1;
-				break;
-			}
-			current = tmp;
-
-			tmp = tmp->pNext;
-		}
-		if (current->Inf.HAsh != str) { c = -1; }
-		return c;
-	}
-	int CompId(Dyn* Head, long Id)//сравнение по id
-	{
-		Dyn* tmp, * current = nullptr;
-		tmp = Head;
-		int c = 0;
-		while (tmp != nullptr) {
-			if (tmp->Inf.ID != Id) {
 				c++;
-			}
-			else {
-				c = -1;
-				break;
+				return c;
 			}
 			current = tmp;
 
-			tmp = tmp->pNext;
+			tmp = tmp->GetNext();
+		}
+		if (current->GetID() != id) {
+			c = -1;
 		}
 		return c;
-
 	}
-	votting* Win(votting* VOTE, int amount)
-	{
-		Dyn* tmp;
-		tmp = Head;
+	else { return c = 0; }
+
+}
+
+Candidates* Chain::Voice(Candidates* Vote, int amount)
+{
+	Node* tmp;
+	tmp = Head;
+	int counter = 0;
+	for (int i = 0; i < amount; i++) {
 		int counter = 0;
-		for (int i = 0; i < amount; i++) {
-			int counter = 0;
-			while (tmp != nullptr) {
-				if (tmp->Inf.Vote == VOTE[i].FullName) {
-					counter++;
-				}
-				tmp = tmp->pNext;
+		while (tmp != nullptr) {
+			if (tmp->GetV() == Vote[i].GetC()) {
+				counter++;
 			}
-			VOTE[i].amount = counter;
+			tmp = tmp->GetNext();
 		}
-		return VOTE;
+		Vote[i].Seta(counter);
 	}
-};
+	return Vote;
+}
+
+Candidates* Chain::Win(Candidates* Vote, int amount)
+{
+	Candidates* Sort = new Candidates[amount];
 
 
 
-/*int main() {
-	Set Vote;
-	DataD D;
-	votting* peop = new votting[3];
-	peop[0].FullName = "banan";
-	peop[0].FullName = "apple";
-	peop[0].FullName = "cherry";
-	for (int i = 0; i < 6; i++) {
-		cin >> D;
-		Vote.include(D);
+	return Vote;
+}
+
+string Chain::ShowV(long a)
+{
+	string vote;
+	Node* tmp;
+	tmp = Head;
+	int z = CompId(a);
+	if ( z == 0) {
+		vote = "No one has votted yet";
 	}
-
-	cout << Vote.Head->Inf;
-	Vote.Win(peop, 3);
-	for (int i = 0; i < 3; i++) {
-		cout << peop[i].FullName << ":" << peop[i].amount;
+	else if (z == 1) {
+		vote = "This ID " + to_string(a) + " voted for "+ tmp->GetV();
 	}
-}*/
+	else if (z != -1) {
+		vote = "This ID " + to_string(a)+" voted for ";
+		for (int i = 0; i < z - 1; i++) {
+			tmp = tmp->GetNext();
+		}
+		vote = vote+ tmp->GetV();
+	}
+	else { vote = "This ID " + to_string(a) + " hasn`t votted yet"; }
+	return vote;
+}
+
+
+
+
+void Candidates::SetC(string C)
+{
+	Cand = C;
+}
+
+void Candidates::Seta(int a)
+{
+	amount = a;
+}
+
+string Candidates::GetC()
+{
+	return Cand;
+}
+
+long Candidates::Geta()
+{
+	return amount;
+}
+
+void Candidates::SetAll(string C, int a)
+{
+	SetC(C);
+	Seta(a);
+
+}
