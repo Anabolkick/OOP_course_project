@@ -123,18 +123,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DataD.cpp" />
-    <ClCompile Include="Dyn.cpp" />
     <ClCompile Include="Hash.cpp" />
     <ClCompile Include="Json_manipulator.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="Csv_manipulator.cpp" />
     <ClCompile Include="Set.cpp" />
     <ClCompile Include="String_manipulator.cpp" />
-    <ClCompile Include="votting.cpp" />
   </ItemGroup>
   <ItemGroup>
-   
     <ClInclude Include="Exeption_data.h" />
     <ClInclude Include="Hash.h" />
     <ClInclude Include="json\allocator.h" />
