@@ -27,10 +27,10 @@ void Json_manipulator::create_json(Candidates winner, vector<Candidates> partici
 
 		root["winner"];
 
-		root["winner"][0]["votes"] = Json::stringValue;
-		root["winner"][0]["name"] = winner.GetC();
-		root["winner"][0]["votes"] = Json::intValue;
-		root["winner"][0]["votes"] = winner.Geta();
+		root["winner"]["name"] = Json::stringValue;
+		root["winner"]["name"] = winner.GetC();
+		root["winner"]["votes"] = Json::intValue;
+		root["winner"]["votes"] = winner.Geta();
 		int votes_win = winner.Geta();
 
 		writer->write(root, &fout);

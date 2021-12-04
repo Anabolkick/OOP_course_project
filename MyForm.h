@@ -447,10 +447,12 @@ namespace Project1 {
 		{
 			Rez[i].Seta(0);
 		}
+
 		block.Voice(Rez, amount);
 		block.Win(Rez, amount);
 
 		long max_votes = 0;
+		bool haveWinner = false;
 		Candidates winner;
 		vector<Candidates> participants;
 
@@ -461,9 +463,19 @@ namespace Project1 {
 			{
 				winner = Rez[i];
 				max_votes = Rez[i].Geta();
+				haveWinner = true;
 			}
 		}
-		Json_manipulator::create_json(winner, participants);
+		if (haveWinner)
+		{
+			Json_manipulator::create_json(winner, participants);
+			MessageBox::Show(this, "JSON file has been saved!", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		}
+		else
+		{
+			Exeption_data ex("All candidates have 0 votes!", 4);
+			Show_exeption(ex);
+		}
 
 	}
 	};

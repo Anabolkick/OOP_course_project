@@ -2,7 +2,7 @@
 #include <string>
 #include <windows.h>
 #include "String_manipulator.cpp"
-#using <System.Windows.Forms.dll>
+
 using namespace System::Windows::Forms;
 
 using namespace std;
