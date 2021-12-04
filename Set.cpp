@@ -106,18 +106,33 @@ Node* Node::GetPrev()
 	return pPrev;
 }
 
-//void Node::del(int h)
-//{
-//	if (pPrev == nullptr && pNext == nullptr&& GetID() == h) {
-//		delete this;
-//	}
-//	else if (pPrev == nullptr && GetID() == h) {
-//		Node* current = this;
-//		*this = *current->GetNext();
-//		this->SetPrev(nullptr);
-//		delete current;
-//		
-//}
+void Node::del(int h)
+{
+	if (pPrev == nullptr && pNext == nullptr && GetID() == h) {
+		delete this;
+	}
+	else if (pPrev == nullptr && GetID() == h) {
+		Node* current = this;
+		*this = *current->GetNext();
+		this->SetPrev(nullptr);
+		delete current;
+	}
+	else if (pNext == nullptr && GetID() == h) {
+		Node* prev = this->GetPrev(), * todel;
+		todel = this;
+		*this = *prev;
+		delete todel;
+	}
+	else if (this->GetID() == h) {
+		Node* current = this, * prev = nullptr, * next = nullptr;
+				
+				prev->SetNext(current->GetNext());
+				next = current->GetNext();
+				next->SetPrev(prev);
+				delete[] current;
+	}
+	
+}
 
 //void Chain::del(int h)//не забіть добавить Name+to_string(Id)
 //{
@@ -330,11 +345,6 @@ string Chain::ShowV(long a)
 }
 
 
-
-
-
-
-
 void Candidates::SetC(string C)
 {
 	Cand = C;
@@ -381,49 +391,33 @@ void Candidates::SetAll(string C, int a)
 //	return stream;
 //}
 
-//ostream& operator<<(ostream& stream, Node& c)
-//{
-//	Node* tmp, * current = nullptr;
-//	tmp = Head;
-//	int c = 0;
-//	if (tmp != nullptr) {
-//		while (tmp != nullptr) {
-//			if (tmp->GetID() != id) {
-//				c++;
-//			}
-//			else {
-//				c++;
-//				return c;
-//			}
-//			current = tmp;
-//
-//			tmp = tmp->GetNext();
-//		}
-//}
 
-//ostream& operator<<(ostream& stream, Chain& c)
-//{
-//	Node* tmp, * current = nullptr;
-//
-//		tmp =c.GetHead();
-//		int a = 0;
-//		Hash h;
-//		if (tmp != nullptr) {
-//			stream << c.GetSiz();
-//			while (tmp != nullptr) {
-//				string check = tmp->GetN()+to_string(tmp->GetID());
-//				if (tmp->GetH() == h.getHash(check,16)) {
-//					stream << tmp->GetID() << tmp->GetN() << tmp->GetV() << endl;
-//				}
-//				else {
-//					c.del(tmp->GetID())
-//				}
-//				current = tmp;
-//	
-//				tmp = tmp->GetNext();
-//			}
-//}
-//	}
+
+ostream& operator<<(ostream& stream, Chain& c)
+{
+	Node* tmp, * current = nullptr;
+
+		tmp =c.GetHead();
+		int a = 0;
+		Hash h;
+		if (tmp != nullptr) {
+			stream << c.GetSiz();
+			while (tmp != nullptr) {
+				string check = tmp->GetN()+to_string(tmp->GetID());
+				if (tmp->GetH() == h.getHash(check,16)) {
+					stream << tmp->GetID() << tmp->GetN() << tmp->GetV() << endl;
+				}
+				else {
+					tmp->del(tmp->GetID());
+				}
+				current = tmp;
+	
+				tmp = tmp->GetNext();
+		}
+	}
+		return stream;
+}
+
 //
 //	istream& operator>>(istream& stream, Node& c)
 //{
