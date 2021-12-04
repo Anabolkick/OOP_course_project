@@ -71,7 +71,7 @@ Node::Node()
 Node::~Node()
 {
 	delete[] pNext;
-	delete[] pPrev;
+	//delete[] pPrev;
 }
 
 Node::Node(INF V, Node* prev, Node* next)
@@ -370,55 +370,33 @@ void Candidates::SetAll(string C, int a)
 	Seta(a);
 
 }
-//istream& operator>>(istream& stream, DataD& c)
+
+
+//перегрузка оператора <<
+
+//ostream& operator<<(ostream& stream, Chain& c)
 //{
+//	Node* tmp, * current = nullptr;
+//
+//	tmp = c.GetHead();
+//	int a = 0;
 //	Hash h;
-//	string h1;
-//	stream >> c.FullName >> c.ID >> c.Vote;
-//	h1 = to_string(c.ID);
-//	h1 = h1 + c.Vote;
-//	c.HAsh = h.getHash(h1, 16);
+//	if (tmp != nullptr) {
+//		stream << c.GetSiz();
+//		while (tmp != nullptr) {
+//			string check = tmp->GetN() + to_string(tmp->GetID());
+//			if (tmp->GetH() == h.getHash(check, 16)) {
+//				stream << tmp->GetID() << tmp->GetN() << tmp->GetV() << endl;
+//			}
+//			else {
+//				tmp->del(tmp->GetID());
+//			}
+//			current = tmp;
+//
+//			tmp = tmp->GetNext();
+//		}
+//	}
 //	return stream;
 //}
-//ostream& operator<<(ostream& stream, DataD& c)
-//{
-//	stream << "Id:" << c.ID << endl;
-//	stream << "Full name:" << c.FullName << endl;
-//	stream << "Hash:" << c.HAsh << endl;
-//	stream << "Vote:" << c.Vote << endl;
-//
-//	return stream;
-//}
 
 
-
-ostream& operator<<(ostream& stream, Chain& c)
-{
-	Node* tmp, * current = nullptr;
-
-	tmp = c.GetHead();
-	int a = 0;
-	Hash h;
-	if (tmp != nullptr) {
-		stream << c.GetSiz();
-		while (tmp != nullptr) {
-			string check = tmp->GetN() + to_string(tmp->GetID());
-			if (tmp->GetH() == h.getHash(check, 16)) {
-				stream << tmp->GetID() << tmp->GetN() << tmp->GetV() << endl;
-			}
-			else {
-				tmp->del(tmp->GetID());
-			}
-			current = tmp;
-
-			tmp = tmp->GetNext();
-		}
-	}
-	return stream;
-}
-
-//
-//	istream& operator>>(istream& stream, Node& c)
-//{
-//	// TODO: insert return statement here
-//}

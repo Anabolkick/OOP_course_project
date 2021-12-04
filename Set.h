@@ -77,9 +77,8 @@ public:
 	Candidates* Voice(Candidates* Vote, int amount);
 	Candidates* Win(Candidates* Vote, int amount);
 	string ShowV(long a);
-	void del(Node* h);
-	friend ostream& operator<<(ostream& stream, Chain& c);
-	friend istream& operator>>(istream& stream, Chain& c);
+
+	//friend ostream& operator<<(ostream& stream, Chain& c);
 
 };
 
