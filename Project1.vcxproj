@@ -123,6 +123,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Exeption_data.cpp" />
     <ClCompile Include="Hash.cpp" />
     <ClCompile Include="Json_manipulator.cpp" />
     <ClCompile Include="MyForm.cpp" />
