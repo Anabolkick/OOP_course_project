@@ -48,6 +48,18 @@ string INF::GetV()
 	return Vote;
 }
 
+void INF::SetAll(string name, long Id, string vote)
+{
+	SetN(name);
+	SetID(Id);
+	SetV(vote);
+	string str = vote;
+	str = str + to_string(Id);
+	Hash h;
+	h.getHash(str, 16);
+	SetH(h.GetH());
+}
+
 
 
 Node::Node()
@@ -94,17 +106,6 @@ Node* Node::GetPrev()
 	return pPrev;
 }
 
-void Node::SetAC(string name, long Id, string vote)
-{
-	SetN(name);
-	SetID(Id);
-	SetV(vote);
-	string str = vote;
-	str = str + to_string(Id);
-	Hash h;
-	h.getHash(str, 16);
-	SetH(h.GetH());
-}
 
 Chain::~Chain()
 {
@@ -262,10 +263,16 @@ Candidates* Chain::Voice(Candidates* Vote, int amount)
 
 Candidates* Chain::Win(Candidates* Vote, int amount)
 {
-	Candidates* Sort = new Candidates[amount];
-
-
-
+	int tmp;
+	for (int i = 0; i < amount - 1; i++) {
+		for (int j = 0; j < amount - i - 1; j++) {
+			if (Vote[j].Geta() < Vote[j + 1].Geta() ){
+				tmp = Vote[j].Geta();
+				Vote[j].Seta(Vote[j + 1].Geta());
+				Vote[j + 1].Seta(tmp);
+			}
+		}
+	}
 	return Vote;
 }
 

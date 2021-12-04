@@ -5,6 +5,8 @@
 #include "Set.h"
 
 Chain block;
+int amount = 3;//166 строка
+Candidates* Rez = new Candidates[amount];
 
 namespace Project1 {
 
@@ -161,8 +163,8 @@ namespace Project1 {
 			// 
 			this->voteOptions->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->voteOptions->FormattingEnabled = true;
-			this->voteOptions->Items->AddRange(gcnew cli::array< System::Object^  >(3) {
-				L"Somov Ivan Nikolaevich", L"Sokolenko Maria Dmitrievna",
+			this->voteOptions->Items->AddRange(gcnew cli::array< System::Object^  >(amount) {// в 7 строке находится количесво вариантов
+				L"Somov Ivan Nikolaevich", L"Sokolenko Maria Dmitrievna",		//если добавили когото или что-то поменяли в 437 строку добавить имя кандидата а в 7 изменить количество
 					L"Dushnarev Nikita Aleksandrovich"
 			});
 
@@ -389,7 +391,7 @@ namespace Project1 {
 
 
 				if (block.CompId(id) == -1 || block.CompId(id) == 0) {
-					Pears.SetAC(name, id, vote);
+					Pears.SetAll(name, id, vote);
 					block.add(Pears);
 					MessageBox::Show(this, "Vote submited!", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				}
@@ -435,6 +437,11 @@ namespace Project1 {
 	}
 	private: System::Void saveResultsBtn_Click(System::Object^ sender, System::EventArgs^ e)
 	{
+		Rez[0].SetC("Somov Ivan Nikolaevich");//166 строка хранит даные о кандидатах
+		Rez[1].SetC("Sokolenko Maria Dmitrievna");
+		Rez[2].SetC("Dushnarev Nikita Aleksandrovich");
+		block.Voice(Rez, amount);
+		block.Win(Rez, amount);
 
 	}
 	};

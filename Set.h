@@ -23,7 +23,7 @@ public:
 	void SetAll(string C,int a=0);
 };
 
-class INF {
+class INF  {
 	string FullName;
 	long int Id;
 	string HAsh;
@@ -38,7 +38,7 @@ public:
 	long GetID();
 	string GetH();
 	string GetV();
-	
+	void SetAll(string name, long Id, string vote);
 	
 };
 
@@ -55,7 +55,7 @@ public:
 	void SetPrev(Node* P);
 	Node* GetNext();
 	Node* GetPrev();
-	void SetAC(string name, long Id, string vote);
+	
 };
 
 class Chain {
