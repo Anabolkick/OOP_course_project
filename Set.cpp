@@ -70,8 +70,7 @@ Node::Node()
 
 Node::~Node()
 {
-	delete[] pNext;
-	delete[] pPrev;
+
 }
 
 Node::Node(INF V, Node* prev, Node* next)
