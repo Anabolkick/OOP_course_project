@@ -1,51 +1,62 @@
 ﻿#include <fstream>
 #include <json/json.h>
 #include <iostream>
+#include "Json_manipulator.h"
+#include "Set.h"
 
 using namespace Json;
 using namespace std;
 
-static class Json_manipulator
+
+void Json_manipulator::create_json(Candidates winner, vector<Candidates> participants)
 {
-	static void read_json()
-	{
-		ifstream fin("Winner.json");
-		Value root;
-		JSONCPP_STRING errs;
-		CharReaderBuilder builder;
-		builder["collectComments"] = true;
-		bool success = parseFromStream(builder, fin, &root, &errs);
-		if (!success)
-		{
-			cout << errs << std::endl;
-			//TODO catch exeption
-		}
-		cout << "Winner: " << root["winner"] << '\n';
-
-		Value partic = root["participants"];
-
-		for (int index = 0; index < partic.size(); ++index)
-		{
-			cout << partic[index]["name"] << endl;
-		}
-	}
-
-	static void create_json()
-	{
-		ofstream fout;
+  ofstream fout;
 		fout.open("Winner.json");
 		Value root;
 		StreamWriterBuilder builder;
 		const std::unique_ptr<StreamWriter> writer(builder.newStreamWriter());
 
 		root["participants"] = Json::arrayValue;
-		root["participants"][0]["age"] = "18";
-		root["participants"][0]["name"] = "Ivan";
-		root["participants"][1]["name"] = "Lera";
-		root["participants"][1]["age"] = "22";
+		for (int i = 0; i < participants.capacity(); i++)
+		{
+			root["participants"][i]["name"] = Json::stringValue;
+			root["participants"][i]["name"] = participants[i].GetC();
+			root["participants"][i]["votes"] = Json::intValue;
+			root["participants"][i]["votes"] = participants[i].Geta();
+		}
+
+		root["winner"];
+
+		root["winner"][0]["votes"] = Json::stringValue;
+		root["winner"][0]["name"] = winner.GetC();
+		root["winner"][0]["votes"] = Json::intValue;
+		root["winner"][0]["votes"] = winner.Geta();
+		int votes_win = winner.Geta();
 
 		writer->write(root, &fout);
-	}
+}
 
-};
+void Json_manipulator::read_json()
+{
+	ifstream fin("Winner.json");
+	Value root;
+	JSONCPP_STRING errs;
+	CharReaderBuilder builder;
+	builder["collectComments"] = true;
+	bool success = parseFromStream(builder, fin, &root, &errs);
+	if (!success)
+	{
+		cout << errs << std::endl;
+		//TODO catch exeption
+	}
+	cout << "Winner: " << root["winner"] << '\n';
+
+	Value partic = root["participants"];
+
+	for (int index = 0; index < partic.size(); ++index)
+	{
+		cout << partic[index]["name"] << endl;
+	}
+}
+
 
