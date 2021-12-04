@@ -39,6 +39,9 @@
     <ClCompile Include="String_manipulator.cpp">
       <Filter>Файлы ресурсов\file_manipulators</Filter>
     </ClCompile>
+    <ClCompile Include="Exeption_data.cpp">
+      <Filter>Файлы ресурсов</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyForm.h">

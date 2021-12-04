@@ -395,16 +395,20 @@ namespace Project1 {
 				}
 				else
 				{
-					MessageBox::Show(this, "You have already voted!", "Error 4!", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+					Exeption_data ex("You have already voted!", 1);
+					Show_exeption(ex);
 				}
 			}
 			catch (bool)
 			{
-				MessageBox::Show(this, "Enter a full info!", "Error 3!", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				Exeption_data ex("Enter a full info!", 2);
+				Show_exeption(ex);
 			}
 		}
-		else {
-			MessageBox::Show(this, "Accept the agreement!", "Error 5!", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+		else 
+		{
+			Exeption_data ex("Accept the agreement!", 3);
+			Show_exeption(ex);
 		}
 	}
 	private: System::Void checkBox1_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
