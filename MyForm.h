@@ -443,6 +443,10 @@ namespace Project1 {
 		Rez[0].SetC("Somov Ivan Nikolaevich");//166 строка хранит даные о кандидатах
 		Rez[1].SetC("Sokolenko Maria Dmitrievna");
 		Rez[2].SetC("Dushnarev Nikita Aleksandrovich");
+		for (int i = 0; i < amount; i++)
+		{
+			Rez[i].Seta(0);
+		}
 		block.Voice(Rez, amount);
 		block.Win(Rez, amount);
 

@@ -132,6 +132,7 @@
     <ClCompile Include="String_manipulator.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Csv_manipulator.h" />
     <ClInclude Include="Exeption_data.h" />
     <ClInclude Include="Hash.h" />
     <ClInclude Include="json\allocator.h" />
@@ -144,6 +145,7 @@
     <ClInclude Include="json\value.h" />
     <ClInclude Include="json\version.h" />
     <ClInclude Include="json\writer.h" />
+    <ClInclude Include="Json_manipulator.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>

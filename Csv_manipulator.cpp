@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <sstream>
+#include "Csv_manipulator.h"
 
 using namespace std;
 
