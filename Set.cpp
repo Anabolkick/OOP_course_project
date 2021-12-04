@@ -106,6 +106,51 @@ Node* Node::GetPrev()
 	return pPrev;
 }
 
+//void Node::del(int h)
+//{
+//	if (pPrev == nullptr && pNext == nullptr&& GetID() == h) {
+//		delete this;
+//	}
+//	else if (pPrev == nullptr && GetID() == h) {
+//		Node* current = this;
+//		*this = *current->GetNext();
+//		this->SetPrev(nullptr);
+//		delete current;
+//		
+//}
+
+//void Chain::del(int h)//не забіть добавить Name+to_string(Id)
+//{
+//
+//	if (size == 1 && Head->GetH() == H.GetH()) { //удаление если 1 голова
+//		delete Head;
+//	}
+//	else if (Head->GetH() == H.GetH()) { //удаление если ошибка в глове
+//		Node* current = Head;
+//		Head = current->GetNext();
+//		Head->SetPrev(nullptr);
+//		delete current;
+//	}
+//	else if (Tail->GetH() == H.GetH()) {
+//		Node* prev = Tail->GetPrev(), * todel;
+//		todel = Tail;
+//		Tail = prev;
+//		delete todel;
+//	}
+//	else if (CompH(Head, H.GetH()) != 1) {//удаление
+//		Node* current = Head, * prev = nullptr, * next = nullptr;
+//		while (current->GetH() != H.GetH()) {
+//			prev = current;
+//			current = current->GetNext();
+//		}
+//		prev->SetNext(current->GetNext());
+//		next = current->GetNext();
+//		next->SetPrev(prev);
+//		delete[] current;
+//
+//	}
+//
+//}
 
 Chain::~Chain()
 {
@@ -132,6 +177,16 @@ Chain::Chain(const Chain& Rop)
 
 }
 
+Node* Chain::GetHead()
+{
+	return Head;
+}
+
+int Chain::GetSiz()
+{
+	return size;
+}
+
 bool Chain::add(Node V)
 {
 	if (Head == nullptr) {
@@ -156,37 +211,7 @@ bool Chain::add(Node V)
 
 }
 
-void Chain::del(string H)//не забіть добавить Name+to_string(Id)
-{
-	if (size == 1 && Head->GetH() == H) { //удаление если 1 голова
-		delete Head;
-	}
-	else if (Head->GetH() == H) { //удаление если ошибка в глове
-		Node* current = Head;
-		Head = current->GetNext();
-		Head->SetPrev(nullptr);
-		delete[] current;
-	}
-	else if (Tail->GetH() == H) {
-		Node* prev=Tail->GetPrev(),*todel;
-		todel = Tail;
-		Tail = prev;
-		delete[] todel;
-	}
-	else if (CompH(Head, H) != 1) {//удаление
-		Node* current = Head, * prev = nullptr, * next = nullptr;
-		while (current->GetH() != H) {
-			prev = current;
-			current = current->GetNext();
-		}
-		prev->SetNext(current->GetNext());
-		next = current->GetNext();
-		next->SetPrev(prev);
-		delete[] current;
 
-	}
-	
-}
 
 int Chain::CompH(Node* head, string H)
 {
@@ -246,10 +271,11 @@ int Chain::CompId(long id)
 Candidates* Chain::Voice(Candidates* Vote, int amount)
 {
 	Node* tmp;
-	tmp = Head;
+	
 	int counter = 0;
 	for (int i = 0; i < amount; i++) {
 		int counter = 0;
+		tmp = Head;
 		while (tmp != nullptr) {
 			if (tmp->GetV() == Vote[i].GetC()) {
 				counter++;
@@ -264,12 +290,16 @@ Candidates* Chain::Voice(Candidates* Vote, int amount)
 Candidates* Chain::Win(Candidates* Vote, int amount)
 {
 	int tmp;
+	string current;
 	for (int i = 0; i < amount - 1; i++) {
 		for (int j = 0; j < amount - i - 1; j++) {
 			if (Vote[j].Geta() < Vote[j + 1].Geta() ){
 				tmp = Vote[j].Geta();
+				current= Vote[j].GetC();
 				Vote[j].Seta(Vote[j + 1].Geta());
+				Vote[j].SetC(Vote[j + 1].GetC());
 				Vote[j + 1].Seta(tmp);
+				Vote[j + 1].SetC(current);
 			}
 		}
 	}
@@ -302,6 +332,9 @@ string Chain::ShowV(long a)
 
 
 
+
+
+
 void Candidates::SetC(string C)
 {
 	Cand = C;
@@ -328,3 +361,71 @@ void Candidates::SetAll(string C, int a)
 	Seta(a);
 
 }
+//istream& operator>>(istream& stream, DataD& c)
+//{
+//	Hash h;
+//	string h1;
+//	stream >> c.FullName >> c.ID >> c.Vote;
+//	h1 = to_string(c.ID);
+//	h1 = h1 + c.Vote;
+//	c.HAsh = h.getHash(h1, 16);
+//	return stream;
+//}
+//ostream& operator<<(ostream& stream, DataD& c)
+//{
+//	stream << "Id:" << c.ID << endl;
+//	stream << "Full name:" << c.FullName << endl;
+//	stream << "Hash:" << c.HAsh << endl;
+//	stream << "Vote:" << c.Vote << endl;
+//
+//	return stream;
+//}
+
+//ostream& operator<<(ostream& stream, Node& c)
+//{
+//	Node* tmp, * current = nullptr;
+//	tmp = Head;
+//	int c = 0;
+//	if (tmp != nullptr) {
+//		while (tmp != nullptr) {
+//			if (tmp->GetID() != id) {
+//				c++;
+//			}
+//			else {
+//				c++;
+//				return c;
+//			}
+//			current = tmp;
+//
+//			tmp = tmp->GetNext();
+//		}
+//}
+
+//ostream& operator<<(ostream& stream, Chain& c)
+//{
+//	Node* tmp, * current = nullptr;
+//
+//		tmp =c.GetHead();
+//		int a = 0;
+//		Hash h;
+//		if (tmp != nullptr) {
+//			stream << c.GetSiz();
+//			while (tmp != nullptr) {
+//				string check = tmp->GetN()+to_string(tmp->GetID());
+//				if (tmp->GetH() == h.getHash(check,16)) {
+//					stream << tmp->GetID() << tmp->GetN() << tmp->GetV() << endl;
+//				}
+//				else {
+//					c.del(tmp->GetID())
+//				}
+//				current = tmp;
+//	
+//				tmp = tmp->GetNext();
+//			}
+//}
+//	}
+//
+//	istream& operator>>(istream& stream, Node& c)
+//{
+//	// TODO: insert return statement here
+//}

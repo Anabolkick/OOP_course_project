@@ -3,9 +3,12 @@
 #include "String_manipulator.h"
 #include "Exeption_data.cpp"
 #include "Set.h"
+#include "Json_manipulator.h"
+
+//using namespace std;
 
 Chain block;
-int amount = 3;//166 строка
+const int amount = 3;//166 строка
 Candidates* Rez = new Candidates[amount];
 
 namespace Project1 {
@@ -397,16 +400,20 @@ namespace Project1 {
 				}
 				else
 				{
-					MessageBox::Show(this, "You have already voted!", "Error 4!", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+					Exeption_data ex("You have already voted!", 1);
+					Show_exeption(ex);
 				}
 			}
 			catch (bool)
 			{
-				MessageBox::Show(this, "Enter a full info!", "Error 3!", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				Exeption_data ex("Enter a full info!", 2);
+				Show_exeption(ex);
 			}
 		}
-		else {
-			MessageBox::Show(this, "Accept the agreement!", "Error 5!", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+		else
+		{
+			Exeption_data ex("Accept the agreement!", 3);
+			Show_exeption(ex);
 		}
 	}
 	private: System::Void checkBox1_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
@@ -438,6 +445,21 @@ namespace Project1 {
 		Rez[2].SetC("Dushnarev Nikita Aleksandrovich");
 		block.Voice(Rez, amount);
 		block.Win(Rez, amount);
+
+		long max_votes = 0;
+		Candidates winner;
+		vector<Candidates> participants;
+
+		for (int i = 0; i < amount; i++)
+		{
+			participants.push_back(Rez[i]);
+			if (Rez[i].Geta() > max_votes)
+			{
+				winner = Rez[i];
+				max_votes = Rez[i].Geta();
+			}
+		}
+		Json_manipulator::create_json(winner, participants);
 
 	}
 	};

@@ -55,6 +55,7 @@ public:
 	void SetPrev(Node* P);
 	Node* GetNext();
 	Node* GetPrev();
+	void del(int h);
 	
 };
 
@@ -66,13 +67,18 @@ public:
 	~Chain();
 	Chain();
 	Chain(const Chain& Rop);
+	Node* GetHead();
+	int GetSiz();
 	bool add(Node V);// добавленние данних
-	void del(string H);
+	
 	int CompH(Node* head, string H);
 	int CompId( long id);
 	Candidates* Voice(Candidates* Vote, int amount);
 	Candidates* Win(Candidates* Vote, int amount);
 	string ShowV(long a);
+	friend ostream& operator<<(ostream& stream, Chain& c);
+	friend istream& operator>>(istream& stream, Chain& c);
+
 };
 
 
