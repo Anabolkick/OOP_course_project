@@ -10,49 +10,65 @@ using namespace std;
 public class Csv_manipulator
 {
 public:
-	static bool add_csv(string file_name, int id, string name, string vote)
+	//static bool add_to_csv(string file_name, int id, string name, string vote)
+	//{
+	//	ofstream fout;
+	//	ifstream fin;
+	//	vector<int> all_id;
+	//	string line, id_str;
+	//	int id_int;
+
+	//	fin.open(file_name);
+
+	//	if (fin.is_open() == true)
+	//	{
+	//		while (!fin.eof()) //todo check eof  work
+	//		{
+	//			getline(fin, line);
+	//			id_str = line.substr(0, line.find(','));
+
+	//			//todo try catch atoi
+	//			id_int = atoi(id_str.c_str());
+	//			all_id.push_back(id_int);
+	//		}
+	//	}
+
+	//	bool IsIdNew = true;
+	//	for (int i = 0; i < all_id.capacity(); i++)
+	//	{
+	//		if (id == all_id[i])
+	//		{
+	//			IsIdNew = false;
+	//		}
+	//	}
+
+	//	fout.open(file_name, fstream::app);
+	//	if (fout.is_open() && IsIdNew == true)
+	//	{
+	//		fout << id << ','
+	//			<< name << ','
+	//			<< vote << '\n';
+	//	}
+
+	//	fin.close();    //todo exeptions on not open
+	//	fout.close();
+	//	return IsIdNew;
+	//}
+
+	static void add_to_csv(string file_name, string name, string vote, string hash, long id)
 	{
 		ofstream fout;
-		ifstream fin;
-		vector<int> all_id;
-		string line, id_str;
-		int id_int;
-
-		fin.open(file_name);
-
-		if (fin.is_open() == true)
-		{
-			while (!fin.eof()) //todo check eof  work
-			{
-				getline(fin, line);
-				id_str = line.substr(0, line.find(','));
-
-				//todo try catch atoi
-				id_int = atoi(id_str.c_str());
-				all_id.push_back(id_int);
-			}
-		}
-
-		bool IsIdNew = true;
-		for (int i = 0; i < all_id.capacity(); i++)
-		{
-			if (id == all_id[i])
-			{
-				IsIdNew = false;
-			}
-		}
 
 		fout.open(file_name, fstream::app);
-		if (fout.is_open() && IsIdNew == true)
+		if (fout.is_open())
 		{
-			fout << id << ','
-				<< name << ','
-				<< vote << '\n';
+			fout << name << ','
+				<< vote << ','
+				<< hash << ','
+				<< id << '\n';
 		}
 
-		fin.close();    //todo exeptions on not open
 		fout.close();
-		return IsIdNew;
 	}
 
 	static void copy_csv(string from, string to)

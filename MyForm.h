@@ -433,9 +433,20 @@ namespace Project1 {
 		saveFileDialog->Filter = "Files csv (*.csv)|*.csv";
 
 		if (saveFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK)
-		{
-			string file_name = String_manipulator::std_string(saveFileDialog->FileName);
-			Csv_manipulator::copy_csv("vote_chain.csv", file_name);
+		{	
+			Node node;
+			Node* currNode = block.GetHead();
+			string path = String_manipulator::std_string(saveFileDialog->FileName);
+
+			while (currNode != NULL)
+			{
+				node = *currNode;
+				Csv_manipulator::add_to_csv(path, node.GetN(), node.GetV(), node.GetH(), node.GetID());
+				currNode = node.GetNext();
+			}
+
+			//string file_name = String_manipulator::std_string(saveFileDialog->FileName);
+			//Csv_manipulator::copy_csv("vote_chain.csv", file_name);
 		}
 	}
 	private: System::Void saveResultsBtn_Click(System::Object^ sender, System::EventArgs^ e)

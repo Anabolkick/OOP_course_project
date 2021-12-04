@@ -66,7 +66,6 @@ Node::Node()
 {
 	pNext = nullptr;
 	pPrev = nullptr;
-
 }
 
 Node::~Node()
@@ -125,13 +124,13 @@ void Node::del(int h)
 	}
 	else if (this->GetID() == h) {
 		Node* current = this, * prev = nullptr, * next = nullptr;
-				
-				prev->SetNext(current->GetNext());
-				next = current->GetNext();
-				next->SetPrev(prev);
-				delete[] current;
+
+		prev->SetNext(current->GetNext());
+		next = current->GetNext();
+		next->SetPrev(prev);
+		delete[] current;
 	}
-	
+
 }
 
 //void Chain::del(int h)//не забіть добавить Name+to_string(Id)
@@ -286,7 +285,7 @@ int Chain::CompId(long id)
 Candidates* Chain::Voice(Candidates* Vote, int amount)
 {
 	Node* tmp;
-	
+
 	int counter = 0;
 	for (int i = 0; i < amount; i++) {
 		int counter = 0;
@@ -308,9 +307,9 @@ Candidates* Chain::Win(Candidates* Vote, int amount)
 	string current;
 	for (int i = 0; i < amount - 1; i++) {
 		for (int j = 0; j < amount - i - 1; j++) {
-			if (Vote[j].Geta() < Vote[j + 1].Geta() ){
+			if (Vote[j].Geta() < Vote[j + 1].Geta()) {
 				tmp = Vote[j].Geta();
-				current= Vote[j].GetC();
+				current = Vote[j].GetC();
 				Vote[j].Seta(Vote[j + 1].Geta());
 				Vote[j].SetC(Vote[j + 1].GetC());
 				Vote[j + 1].Seta(tmp);
@@ -327,18 +326,18 @@ string Chain::ShowV(long a)
 	Node* tmp;
 	tmp = Head;
 	int z = CompId(a);
-	if ( z == 0) {
+	if (z == 0) {
 		vote = "No one has votted yet";
 	}
 	else if (z == 1) {
-		vote = "This ID " + to_string(a) + " voted for "+ tmp->GetV();
+		vote = "This ID " + to_string(a) + " voted for " + tmp->GetV();
 	}
 	else if (z != -1) {
-		vote = "This ID " + to_string(a)+" voted for ";
+		vote = "This ID " + to_string(a) + " voted for ";
 		for (int i = 0; i < z - 1; i++) {
 			tmp = tmp->GetNext();
 		}
-		vote = vote+ tmp->GetV();
+		vote = vote + tmp->GetV();
 	}
 	else { vote = "This ID " + to_string(a) + " hasn`t votted yet"; }
 	return vote;
@@ -397,25 +396,25 @@ ostream& operator<<(ostream& stream, Chain& c)
 {
 	Node* tmp, * current = nullptr;
 
-		tmp =c.GetHead();
-		int a = 0;
-		Hash h;
-		if (tmp != nullptr) {
-			stream << c.GetSiz();
-			while (tmp != nullptr) {
-				string check = tmp->GetN()+to_string(tmp->GetID());
-				if (tmp->GetH() == h.getHash(check,16)) {
-					stream << tmp->GetID() << tmp->GetN() << tmp->GetV() << endl;
-				}
-				else {
-					tmp->del(tmp->GetID());
-				}
-				current = tmp;
-	
-				tmp = tmp->GetNext();
+	tmp = c.GetHead();
+	int a = 0;
+	Hash h;
+	if (tmp != nullptr) {
+		stream << c.GetSiz();
+		while (tmp != nullptr) {
+			string check = tmp->GetN() + to_string(tmp->GetID());
+			if (tmp->GetH() == h.getHash(check, 16)) {
+				stream << tmp->GetID() << tmp->GetN() << tmp->GetV() << endl;
+			}
+			else {
+				tmp->del(tmp->GetID());
+			}
+			current = tmp;
+
+			tmp = tmp->GetNext();
 		}
 	}
-		return stream;
+	return stream;
 }
 
 //
