@@ -428,7 +428,7 @@ namespace Project1 {
 			vector<Node> nodes;
 
 			int nodesCount;
-			nodes = Csv_manipulator::nodes_from_csv(path, nodesCount);
+			nodes = Csv_manipulator::GetNodes(path, nodesCount);
 
 	
 
@@ -463,7 +463,7 @@ namespace Project1 {
 			while (currNode != NULL)
 			{
 				node = *currNode;
-				Csv_manipulator::add_to_csv(path, node.GetN(), node.GetV(), node.GetH(), node.GetID());
+				Csv_manipulator::SaveAll(path, node.GetN(), node.GetV(), node.GetH(), node.GetID());
 				currNode = node.GetNext();
 			}
 
