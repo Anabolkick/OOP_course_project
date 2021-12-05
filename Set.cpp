@@ -48,13 +48,13 @@ string INF::GetV()
 	return Vote;
 }
 
-void INF::SetAll(string name, long Id, string vote)
+void INF::SetAll(string name, long Id, string vote, int IdP=0)
 {
 	SetN(name);
 	SetID(Id);
 	SetV(vote);
 	string str = vote;
-	str = str + to_string(Id);
+	str = str + to_string(Id)+to_string(IdP);
 	Hash h;
 	h.getHash(str, 16);
 	SetH(h.GetH());
@@ -290,7 +290,7 @@ Candidates* Chain::Voice(Candidates* Vote, int amount)
 	for (int i = 0; i < amount; i++) {
 		int counter = 0;
 		tmp = Head;
-		while (tmp != nullptr) {
+		while (tmp != nullptr) {			//добавить проверку по хешу
 			if (tmp->GetV() == Vote[i].GetC()) {
 				counter++;
 			}
@@ -341,6 +341,14 @@ string Chain::ShowV(long a)
 	}
 	else { vote = "This ID " + to_string(a) + " hasn`t votted yet"; }
 	return vote;
+}
+
+long int Chain::GetTailId()
+{
+	if (Head != nullptr && Tail != nullptr) {
+		return Tail->GetID();
+	}
+	else return 0;
 }
 
 

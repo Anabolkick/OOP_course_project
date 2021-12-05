@@ -394,7 +394,7 @@ namespace Project1 {
 
 
 				if (block.CompId(id) == -1 || block.CompId(id) == 0) {
-					Pears.SetAll(name, id, vote);
+					Pears.SetAll(name, id, vote,block.GetTailId());
 					block.add(Pears);
 					MessageBox::Show(this, "Vote submited!", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				}
@@ -430,12 +430,17 @@ namespace Project1 {
 			int nodesCount;
 			nodes = Csv_manipulator::nodes_from_csv(path, nodesCount);
 
-	
+			string checkHash;
 
 			for (int i = 0; i < nodesCount; i++)
 			{
 				Hash hash;
-				string checkHash = nodes[i].GetV() + to_string(nodes[i].GetID());
+				if (i == 0){
+					 checkHash = nodes[i].GetV() + to_string(nodes[i].GetID());
+			}
+				else {
+					checkHash = nodes[i].GetV() + to_string(nodes[i].GetID())+ to_string(nodes[i-1].GetID());
+				}
 				if (nodes[i].GetH() == hash.getHash(checkHash, 16))
 				{
 					block.add(nodes[i]);
