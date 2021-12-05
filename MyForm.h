@@ -394,7 +394,7 @@ namespace Project1 {
 
 
 				if (block.CompId(id) == -1 || block.CompId(id) == 0) {
-				//	Pears.SetAll(name, id, vote, block.ge GetTailId());
+					Pears.SetAll(name, id, vote, block.GetTailId());
 					block.add(Pears);
 					MessageBox::Show(this, "Vote submited!", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				}

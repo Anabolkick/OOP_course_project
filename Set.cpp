@@ -48,7 +48,7 @@ string INF::GetV()
 	return Vote;
 }
 
-void INF::SetAll(string name, long Id, string vote, int IdP=0)
+void INF::SetAll(string name, long Id, string vote, int IdP)
 {
 	SetN(name);
 	SetID(Id);

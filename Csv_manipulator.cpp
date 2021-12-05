@@ -57,9 +57,17 @@ vector<Node> Csv_manipulator::GetNodes(string file_name, int& count)
 				long id = stoi(row[3]);
 
 				Node node;
-				node.SetAll(name, id, vote, nodes[nodes.capacity() - 1].GetID());
-				nodes.push_back(node);
-				count++;
+				if (nodes.capacity() == 0) {
+					node.SetAll(name, id, vote, 0);
+					nodes.push_back(node);
+					count++;
+				}
+				else {
+					int t = nodes[nodes.capacity()].GetID();//problem
+					node.SetAll(name, id, vote, t);
+					nodes.push_back(node);
+					count++;
+				}
 			}
 		}
 	}
