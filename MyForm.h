@@ -452,6 +452,7 @@ namespace Project1 {
 				{
 					string msg = "Vote from " + nodes[i].GetN() + " was changed!";
 					Exeption_data ex(msg, 5);
+					Show_exeption(ex);
 				}
 			}
 		
