@@ -38,7 +38,7 @@ public:
 	long GetID();
 	string GetH();
 	string GetV();
-	void SetAll(string name, long Id, string vote,int IdP);
+	void SetAll(string name, long Id, string vote,long IdP);
 	
 };
 

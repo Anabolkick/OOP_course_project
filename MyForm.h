@@ -435,12 +435,15 @@ namespace Project1 {
 			for (int i = 0; i < nodesCount; i++)
 			{
 				Hash hash;
-				if (i == 0){
+				if (i == 0)
+				{
 					 checkHash = nodes[i].GetV() + to_string(nodes[i].GetID());
-			}
-				else {
+				}
+				else 
+				{
 					checkHash = nodes[i].GetV() + to_string(nodes[i].GetID())+ to_string(nodes[i-1].GetID());
 				}
+
 				if (nodes[i].GetH() == hash.getHash(checkHash, 16))
 				{
 					block.add(nodes[i]);
