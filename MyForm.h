@@ -427,17 +427,17 @@ namespace Project1 {
 			string path = String_manipulator::std_string(openFileDialog->FileName);
 			vector<Node> nodes;
 
-			int nodesCount;
+			int nodesCount=0;
 			nodes = Csv_manipulator::GetNodes(path, nodesCount);
 
 			string checkHash;
 
-			for (int i = 0; i < nodesCount; i++)
+			for (int i = 0; i < nodesCount-1; i++)
 			{
 				Hash hash;
 				if (i == 0)
 				{
-					 checkHash = nodes[i].GetV() + to_string(nodes[i].GetID());
+					 checkHash = nodes[i].GetV() + to_string(nodes[i].GetID())+to_string(0);
 				}
 				else 
 				{

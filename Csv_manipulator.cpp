@@ -61,14 +61,14 @@ vector<Node> Csv_manipulator::GetNodes(string file_name, int& count)
 				{
 					node.SetAll(name, id, vote, 0);
 					nodes.push_back(node);
-					count++;
+					count = count + 1;
 				}
 				else 
 				{
 					long prevId = nodes[nodes.size()-1].GetID();
 					node.SetAll(name, id, vote, prevId);
 					nodes.push_back(node);
-					count++;
+					count=count+1;
 				}
 			}
 		}
