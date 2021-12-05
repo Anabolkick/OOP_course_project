@@ -68,8 +68,10 @@ namespace Project1 {
 
 
 	private: System::Windows::Forms::OpenFileDialog^ openFileDialog;
-	private: System::Windows::Forms::Button^ openFileButton;
-	private: System::Windows::Forms::Button^ saveFileButton;
+	private: System::Windows::Forms::Button^ importFileButton;
+
+	private: System::Windows::Forms::Button^ exportFileButton;
+
 	private: System::Windows::Forms::SaveFileDialog^ saveFileDialog;
 	private: System::Windows::Forms::Button^ saveResultsBtn;
 
@@ -103,11 +105,11 @@ namespace Project1 {
 			this->searchButton = (gcnew System::Windows::Forms::Button());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
-			this->saveFileButton = (gcnew System::Windows::Forms::Button());
-			this->openFileButton = (gcnew System::Windows::Forms::Button());
+			this->saveResultsBtn = (gcnew System::Windows::Forms::Button());
+			this->exportFileButton = (gcnew System::Windows::Forms::Button());
+			this->importFileButton = (gcnew System::Windows::Forms::Button());
 			this->openFileDialog = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->saveFileDialog = (gcnew System::Windows::Forms::SaveFileDialog());
-			this->saveResultsBtn = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->groupBox3->SuspendLayout();
@@ -166,12 +168,10 @@ namespace Project1 {
 			// 
 			this->voteOptions->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->voteOptions->FormattingEnabled = true;
-			this->voteOptions->Items->AddRange(gcnew cli::array< System::Object^  >(amount) {// в 7 строке находится количесво вариантов
-				L"Somov Ivan Nikolaevich", L"Sokolenko Maria Dmitrievna",		//если добавили когото или что-то поменяли в 437 строку добавить имя кандидата а в 7 изменить количество
+			this->voteOptions->Items->AddRange(gcnew cli::array< System::Object^  >(3) {
+				L"Somov Ivan Nikolaevich", L"Sokolenko Maria Dmitrievna",
 					L"Dushnarev Nikita Aleksandrovich"
 			});
-
-
 			this->voteOptions->Location = System::Drawing::Point(24, 120);
 			this->voteOptions->Name = L"voteOptions";
 			this->voteOptions->Size = System::Drawing::Size(400, 24);
@@ -273,8 +273,8 @@ namespace Project1 {
 			// 
 			this->groupBox3->BackColor = System::Drawing::SystemColors::Control;
 			this->groupBox3->Controls->Add(this->saveResultsBtn);
-			this->groupBox3->Controls->Add(this->saveFileButton);
-			this->groupBox3->Controls->Add(this->openFileButton);
+			this->groupBox3->Controls->Add(this->exportFileButton);
+			this->groupBox3->Controls->Add(this->importFileButton);
 			this->groupBox3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->groupBox3->ForeColor = System::Drawing::SystemColors::ControlText;
@@ -285,26 +285,6 @@ namespace Project1 {
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"Files";
 			// 
-			// saveFileButton
-			// 
-			this->saveFileButton->Location = System::Drawing::Point(248, 40);
-			this->saveFileButton->Name = L"saveFileButton";
-			this->saveFileButton->Size = System::Drawing::Size(184, 48);
-			this->saveFileButton->TabIndex = 1;
-			this->saveFileButton->Text = L"Import file";
-			this->saveFileButton->UseVisualStyleBackColor = true;
-			this->saveFileButton->Click += gcnew System::EventHandler(this, &MyForm::saveFileButton_Click);
-			// 
-			// openFileButton
-			// 
-			this->openFileButton->Location = System::Drawing::Point(24, 40);
-			this->openFileButton->Name = L"openFileButton";
-			this->openFileButton->Size = System::Drawing::Size(184, 48);
-			this->openFileButton->TabIndex = 0;
-			this->openFileButton->Text = L"Open file";
-			this->openFileButton->UseVisualStyleBackColor = true;
-			this->openFileButton->Click += gcnew System::EventHandler(this, &MyForm::openFileButton_Click);
-			// 
 			// saveResultsBtn
 			// 
 			this->saveResultsBtn->Location = System::Drawing::Point(132, 111);
@@ -314,6 +294,26 @@ namespace Project1 {
 			this->saveResultsBtn->Text = L"Save results";
 			this->saveResultsBtn->UseVisualStyleBackColor = true;
 			this->saveResultsBtn->Click += gcnew System::EventHandler(this, &MyForm::saveResultsBtn_Click);
+			// 
+			// exportFileButton
+			// 
+			this->exportFileButton->Location = System::Drawing::Point(248, 40);
+			this->exportFileButton->Name = L"exportFileButton";
+			this->exportFileButton->Size = System::Drawing::Size(184, 48);
+			this->exportFileButton->TabIndex = 1;
+			this->exportFileButton->Text = L"Export file";
+			this->exportFileButton->UseVisualStyleBackColor = true;
+			this->exportFileButton->Click += gcnew System::EventHandler(this, &MyForm::exportFileButton_Click);
+			// 
+			// importFileButton
+			// 
+			this->importFileButton->Location = System::Drawing::Point(24, 40);
+			this->importFileButton->Name = L"importFileButton";
+			this->importFileButton->Size = System::Drawing::Size(184, 48);
+			this->importFileButton->TabIndex = 0;
+			this->importFileButton->Text = L"Import file";
+			this->importFileButton->UseVisualStyleBackColor = true;
+			this->importFileButton->Click += gcnew System::EventHandler(this, &MyForm::importFileButton_Click);
 			// 
 			// MyForm
 			// 
@@ -418,17 +418,39 @@ namespace Project1 {
 	}
 	private: System::Void checkBox1_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
-	private: System::Void openFileButton_Click(System::Object^ sender, System::EventArgs^ e)
+	private: System::Void importFileButton_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		openFileDialog->Filter = "Files csv (*.csv)|*.csv";
 
 		if (openFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK)
 		{
-			string file_name = String_manipulator::std_string(openFileDialog->FileName);
-			Csv_manipulator::copy_csv(file_name, "vote_chain.csv");
+			string path = String_manipulator::std_string(openFileDialog->FileName);
+			vector<Node> nodes;
+
+			int nodesCount;
+			nodes = Csv_manipulator::nodes_from_csv(path, nodesCount);
+
+	
+
+			for (int i = 0; i < nodesCount; i++)
+			{
+				Hash hash;
+				string checkHash = nodes[i].GetV() + to_string(nodes[i].GetID());
+				if (nodes[i].GetH() == hash.getHash(checkHash, 16))
+				{
+					block.add(nodes[i]);
+				}
+				else 
+				{
+					string msg = "Vote from " + nodes[i].GetN() + " was changed!";
+					Exeption_data ex(msg, 5);
+				}
+			}
+		
+		/*	Csv_manipulator::copy_csv(file_name, "vote_chain.csv");*/
 		}
 	}
-	private: System::Void saveFileButton_Click(System::Object^ sender, System::EventArgs^ e)   // TODO try catch  файла не существует
+	private: System::Void exportFileButton_Click(System::Object^ sender, System::EventArgs^ e)   // TODO try catch  файла не существует
 	{
 		saveFileDialog->Filter = "Files csv (*.csv)|*.csv";
 
@@ -445,7 +467,6 @@ namespace Project1 {
 				currNode = node.GetNext();
 			}
 
-			//string file_name = String_manipulator::std_string(saveFileDialog->FileName);
 			//Csv_manipulator::copy_csv("vote_chain.csv", file_name);
 		}
 	}
