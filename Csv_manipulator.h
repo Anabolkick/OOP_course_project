@@ -1,7 +1,12 @@
 #pragma once
-#define CSV_MAN_H
-#ifndef CSV_MAN_H
-ref class Csv_manipulator
+#include <vector>
+#include "Set.h"
+
+using namespace std;
+
+class Csv_manipulator
 {
+public:
+	static void SaveAll(string file_name, string name, string vote, string hash, long id);
+	static vector<Node> GetNodes(string file_name, int& count);
 };
-#endif
