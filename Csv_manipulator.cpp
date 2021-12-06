@@ -12,7 +12,8 @@ void Csv_manipulator::SaveAll(string file_name, string name, string vote, string
 {
 	ofstream fout;
 
-	fout.open(file_name, fstream::app);
+	//fout.open(file_name, fstream::app);
+	fout.open(file_name);
 	if (fout.is_open())
 	{
 		fout << name << ','

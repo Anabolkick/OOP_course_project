@@ -352,14 +352,18 @@ namespace Project1 {
 	{
 		try
 		{
-			Csv_manipulator::ImportCsv("SavedData", block);
+			if (Csv_manipulator::ImportCsv("SavedData.csv", block) == false)
+			{
+				string msg = "Some votes was changed!";
+				Exeption_data ex(msg, 5);
+				Show_exeption(ex);
+			}
+		
 			throw false;
 		}
 		catch(bool)
 		{
-			string msg = "Some votes was changed!";
-			Exeption_data ex(msg, 5);
-			Show_exeption(ex);
+
 		}
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -507,7 +511,7 @@ namespace Project1 {
 	}
 	private: System::Void MyForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) 
 	{
-		Csv_manipulator::SaveCsv("SavedData", block.GetHead());
+		Csv_manipulator::SaveCsv("SavedData.csv", block.GetHead());
 	}
 };
 
