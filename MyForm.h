@@ -455,8 +455,13 @@ namespace Project1 {
 					Show_exeption(ex);
 				}
 			}
-		
+			MessageBox::Show(this, "Data was exported", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		/*	Csv_manipulator::copy_csv(file_name, "vote_chain.csv");*/
+
+		}
+		else {
+			Exeption_data ex("Couldn`t open file", 6);
+			Show_exeption(ex);
 		}
 	}
 	private: System::Void exportFileButton_Click(System::Object^ sender, System::EventArgs^ e)   // TODO try catch  файла не существует
@@ -475,8 +480,12 @@ namespace Project1 {
 				Csv_manipulator::SaveAll(path, node.GetN(), node.GetV(), node.GetH(), node.GetID());
 				currNode = node.GetNext();
 			}
-
+			MessageBox::Show(this, "Data was exported", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 			//Csv_manipulator::copy_csv("vote_chain.csv", file_name);
+		}
+		else {
+			Exeption_data ex("Couldn`t save file", 7);
+			Show_exeption(ex);
 		}
 	}
 	private: System::Void saveResultsBtn_Click(System::Object^ sender, System::EventArgs^ e)
