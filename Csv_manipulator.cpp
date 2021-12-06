@@ -8,21 +8,12 @@
 
 using namespace std;
 
-void Csv_manipulator::SaveAll(string file_name, string name, string vote, string hash, long id)
+void Csv_manipulator::SaveRow(string file_name, ofstream& fout, string name, string vote, string hash, long id)
 {
-	ofstream fout;
-
-	//fout.open(file_name, fstream::app);
-	fout.open(file_name);
-	if (fout.is_open())
-	{
-		fout << name << ','
-			<< vote << ','
-			<< hash << ','
-			<< id << '\n';
-	}
-
-	fout.close();
+	fout << name << ','
+		<< vote << ','
+		<< hash << ','
+		<< id << '\n';
 }
 
 vector<Node> Csv_manipulator::GetNodes(string file_name, int& count)
@@ -58,9 +49,9 @@ vector<Node> Csv_manipulator::GetNodes(string file_name, int& count)
 				long id = stoi(row[3]);
 
 				Node node;
-					node.SetAll(name, hash, id, vote);
-					nodes.push_back(node);
-					count = count + 1;
+				node.SetAll(name, hash, id, vote);
+				nodes.push_back(node);
+				count = count + 1;
 			}
 		}
 	}
@@ -70,17 +61,23 @@ vector<Node> Csv_manipulator::GetNodes(string file_name, int& count)
 void Csv_manipulator::SaveCsv(string path, Node* currNode)
 {
 	Node node;
+	ofstream fout;
+	fout.open(path);
 
-	while (currNode != NULL)
+	if (fout.is_open())
 	{
-		node = *currNode;
-		Csv_manipulator::SaveAll(path, node.GetN(), node.GetV(), node.GetH(), node.GetID());
-		currNode = node.GetNext();
+		while (currNode != NULL)
+		{
+			node = *currNode;
+			Csv_manipulator::SaveRow(path, fout, node.GetN(), node.GetV(), node.GetH(), node.GetID());
+			currNode = node.GetNext();
+		}
 	}
 }
 
-bool Csv_manipulator::ImportCsv(string path, Chain &block)
+Csv_manipulator::FileStatus Csv_manipulator::ImportCsv(string path, Chain& block)
 {
+	FileStatus status = FileStatus::opened;
 	vector<Node> nodes;
 	int nodesCount = 0;
 	nodes = Csv_manipulator::GetNodes(path, nodesCount);
@@ -105,9 +102,10 @@ bool Csv_manipulator::ImportCsv(string path, Chain &block)
 		}
 		else
 		{
-			return false;
+			status = FileStatus::changed;
+			return status;
 		}
 	}
-	return true;
+	return status;
 }
 

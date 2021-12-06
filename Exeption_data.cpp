@@ -19,6 +19,12 @@ public:
         message_text = message;
         error_code = code;
     }
+
+    Exeption_data()
+    {
+        message_text = "";
+        error_code = 0;
+    }
   
     String^ getName()
     {
@@ -30,5 +36,15 @@ public:
     {
         String^ message = String_manipulator::system_string(message_text);
         return  message;
+    }
+
+    void SetMessage(string message)
+    {
+        message_text = message;
+    }
+
+    void SetCode(int code)
+    {
+        error_code = code;
     }
 };
