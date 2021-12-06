@@ -4,6 +4,10 @@
 #include "Exeption_data.cpp"
 #include "Set.h"
 #include "Json_manipulator.h"
+#include "MyForm1.h"
+#include "MyForm2.h"
+#include "MyForm3.h"
+#include "MyForm4.h"
 
 //using namespace std;
 
@@ -74,6 +78,12 @@ namespace Project1 {
 
 	private: System::Windows::Forms::SaveFileDialog^ saveFileDialog;
 	private: System::Windows::Forms::Button^ saveResultsBtn;
+	private: System::Windows::Forms::MenuStrip^ menuStrip1;
+	private: System::Windows::Forms::ToolStripMenuItem^ aboutToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ helpToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ developersToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ statiToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ chartToolStripMenuItem;
 
 	protected:
 
@@ -110,9 +120,16 @@ namespace Project1 {
 			this->importFileButton = (gcnew System::Windows::Forms::Button());
 			this->openFileDialog = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->saveFileDialog = (gcnew System::Windows::Forms::SaveFileDialog());
+			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
+			this->aboutToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->helpToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->developersToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->statiToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->chartToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->groupBox3->SuspendLayout();
+			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// label1
@@ -230,7 +247,7 @@ namespace Project1 {
 			this->groupBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->groupBox1->ForeColor = System::Drawing::SystemColors::ControlText;
-			this->groupBox1->Location = System::Drawing::Point(8, 288);
+			this->groupBox1->Location = System::Drawing::Point(8, 296);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Size = System::Drawing::Size(460, 105);
 			this->groupBox1->TabIndex = 10;
@@ -262,7 +279,7 @@ namespace Project1 {
 			this->groupBox2->Controls->Add(this->label3);
 			this->groupBox2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->groupBox2->Location = System::Drawing::Point(8, 16);
+			this->groupBox2->Location = System::Drawing::Point(8, 24);
 			this->groupBox2->Name = L"groupBox2";
 			this->groupBox2->Size = System::Drawing::Size(460, 255);
 			this->groupBox2->TabIndex = 11;
@@ -315,18 +332,75 @@ namespace Project1 {
 			this->importFileButton->UseVisualStyleBackColor = true;
 			this->importFileButton->Click += gcnew System::EventHandler(this, &MyForm::importFileButton_Click);
 			// 
+			// menuStrip1
+			// 
+			this->menuStrip1->BackColor = System::Drawing::SystemColors::Control;
+			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				this->aboutToolStripMenuItem,
+					this->statiToolStripMenuItem
+			});
+			this->menuStrip1->Location = System::Drawing::Point(0, 0);
+			this->menuStrip1->Name = L"menuStrip1";
+			this->menuStrip1->Size = System::Drawing::Size(475, 24);
+			this->menuStrip1->TabIndex = 12;
+			this->menuStrip1->Text = L"menuStrip1";
+			// 
+			// aboutToolStripMenuItem
+			// 
+			this->aboutToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				this->helpToolStripMenuItem,
+					this->developersToolStripMenuItem
+			});
+			this->aboutToolStripMenuItem->Name = L"aboutToolStripMenuItem";
+			this->aboutToolStripMenuItem->Size = System::Drawing::Size(52, 20);
+			this->aboutToolStripMenuItem->Text = L"&About";
+			this->aboutToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::aboutToolStripMenuItem_Click);
+			// 
+			// helpToolStripMenuItem
+			// 
+			this->helpToolStripMenuItem->Name = L"helpToolStripMenuItem";
+			this->helpToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->helpToolStripMenuItem->Text = L"Help";
+			this->helpToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::helpToolStripMenuItem_Click);
+			// 
+			// developersToolStripMenuItem
+			// 
+			this->developersToolStripMenuItem->Name = L"developersToolStripMenuItem";
+			this->developersToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->developersToolStripMenuItem->Text = L"Developers";
+			this->developersToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::developersToolStripMenuItem_Click);
+			// 
+			// statiToolStripMenuItem
+			// 
+			this->statiToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->chartToolStripMenuItem });
+			this->statiToolStripMenuItem->Name = L"statiToolStripMenuItem";
+			this->statiToolStripMenuItem->Size = System::Drawing::Size(65, 20);
+			this->statiToolStripMenuItem->Text = L"&Statistics";
+			// 
+			// chartToolStripMenuItem
+			// 
+			this->chartToolStripMenuItem->Name = L"chartToolStripMenuItem";
+			this->chartToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->chartToolStripMenuItem->Text = L"Chart";
+			this->chartToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::chartToolStripMenuItem_Click);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::Control;
-			this->ClientSize = System::Drawing::Size(484, 593);
+			this->ClientSize = System::Drawing::Size(475, 593);
 			this->Controls->Add(this->groupBox3);
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->groupBox1);
+			this->Controls->Add(this->menuStrip1);
 			this->Cursor = System::Windows::Forms::Cursors::Arrow;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->MainMenuStrip = this->menuStrip1;
+			this->MaximumSize = System::Drawing::Size(491, 632);
+			this->MinimumSize = System::Drawing::Size(491, 632);
 			this->Name = L"MyForm";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"ChainVote";
 			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &MyForm::MyForm_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
@@ -335,7 +409,10 @@ namespace Project1 {
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox2->PerformLayout();
 			this->groupBox3->ResumeLayout(false);
+			this->menuStrip1->ResumeLayout(false);
+			this->menuStrip1->PerformLayout();
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
@@ -369,11 +446,13 @@ namespace Project1 {
 				Show_exeption(ex);
 			}
 			else {
-				string msg = "Data was downloaded sucsesfully";
+				string msg = "Data was downloaded successfully";
 				Exeption_data ex(msg, 8);
 				Show_exeption(ex);
 			}
 		}
+		MyForm1^ loadData = gcnew MyForm1();
+		loadData->ShowDialog();
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
@@ -522,6 +601,20 @@ namespace Project1 {
 	{
 		Csv_manipulator::SaveCsv("SavedData.csv", block.GetHead());
 	}
+private: System::Void aboutToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void helpToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	MyForm2^ helpInfo = gcnew MyForm2();
+	helpInfo->Show();
+}
+private: System::Void developersToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	MyForm3^ developersInfo = gcnew MyForm3();
+	developersInfo->Show();
+}
+private: System::Void chartToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	MyForm4^ chartForm = gcnew MyForm4();
+	chartForm->Show();
+}
 };
 
 }
