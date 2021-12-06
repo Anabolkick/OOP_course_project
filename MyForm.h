@@ -352,18 +352,27 @@ namespace Project1 {
 	{
 		try
 		{
-			if (Csv_manipulator::ImportCsv("SavedData.csv", block) == false)
+			/*if (Csv_manipulator::ImportCsv("SavedData.csv", block) == false)
 			{
 				string msg = "Some votes was changed!";
 				Exeption_data ex(msg, 5);
 				Show_exeption(ex);
-			}
+			}*/
 		
-			throw false;
+			throw Csv_manipulator::ImportCsv("SavedData.csv", block);
 		}
-		catch(bool)
+		catch(bool Yo)
 		{
-
+			if (!Yo) {
+				string msg = "Some votes was changed!";
+				Exeption_data ex(msg, 5);
+				Show_exeption(ex);
+			}
+			else {
+				string msg = "Data was downloaded sucsesfully";
+				Exeption_data ex(msg, 8);
+				Show_exeption(ex);
+			}
 		}
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
