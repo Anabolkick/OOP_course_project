@@ -348,32 +348,48 @@ namespace Project1 {
 			MessageBox::Show(this, message, name, MessageBoxButtons::OK, MessageBoxIcon::Warning);
 		}
 
-	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) 
+	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e)
 	{
 		try
 		{
-			/*if (Csv_manipulator::ImportCsv("SavedData.csv", block) == false)
-			{
-				string msg = "Some votes was changed!";
-				Exeption_data ex(msg, 5);
-				Show_exeption(ex);
-			}*/
-		
 			throw Csv_manipulator::ImportCsv("SavedData.csv", block);
 		}
-		catch(bool Yo)
+		catch (Csv_manipulator::FileStatus status)
 		{
-			if (!Yo) {
-				string msg = "Some votes was changed!";
-				Exeption_data ex(msg, 5);
+			string message;
+			Exeption_data ex;
+
+			switch (status)
+			{
+			case Csv_manipulator::opened:
+				message = "File was successfully opened!";
+				MessageBox::Show(this, "File was successfully opened!", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				break;
+
+			case Csv_manipulator::changed:
+				message = "Some votes was changed!";
+				ex.SetCode(5);
+				ex.SetMessage(message);
 				Show_exeption(ex);
-			}
-			else {
-				string msg = "Data was downloaded sucsesfully";
-				Exeption_data ex(msg, 8);
+				break;
+
+			case Csv_manipulator::absent:
+				message = "Can`t find file!";
+				ex.SetCode(8);
+				ex.SetMessage(message);
 				Show_exeption(ex);
+				break;
+
+			default:
+				message = "Something went wrong!";
+				ex.SetCode(9);
+				ex.SetMessage(message);
+				Show_exeption(ex);
+				break;
 			}
 		}
+
+
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
@@ -518,10 +534,10 @@ namespace Project1 {
 		}
 
 	}
-	private: System::Void MyForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) 
+	private: System::Void MyForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e)
 	{
 		Csv_manipulator::SaveCsv("SavedData.csv", block.GetHead());
 	}
-};
+	};
 
 }
