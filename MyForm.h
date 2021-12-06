@@ -442,6 +442,10 @@ namespace Project1 {
 				Show_exeption(ex);
 			}
 		}
+		else {
+			Exeption_data ex("Couldn`t open file", 6);
+			Show_exeption(ex);
+		}
 	}
 
 
