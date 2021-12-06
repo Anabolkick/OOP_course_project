@@ -454,6 +454,10 @@ namespace Project1 {
 			string path = String_manipulator::std_string(saveFileDialog->FileName);
 			Csv_manipulator::SaveCsv(path, block.GetHead());
 		}
+		else {
+			Exeption_data ex("Couldn`t save file", 7);
+			Show_exeption(ex);
+		}
 	}
 	private: System::Void saveResultsBtn_Click(System::Object^ sender, System::EventArgs^ e)
 	{
