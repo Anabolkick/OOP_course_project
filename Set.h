@@ -38,7 +38,8 @@ public:
 	long GetID();
 	string GetH();
 	string GetV();
-	void SetAll(string name, long Id, string vote,long IdP);
+	void SetAll(string name, long Id, string vote,string HaSh);
+	void SetAll(string name, string HaSh, long Id, string vote);
 	
 };
 
@@ -77,7 +78,7 @@ public:
 	Candidates* Voice(Candidates* Vote, int amount);
 	Candidates* Win(Candidates* Vote, int amount);
 	string ShowV(long a);
-	long int GetTailId();
+	string GetTailH();
 
 	//friend ostream& operator<<(ostream& stream, Chain& c);
 

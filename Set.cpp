@@ -48,16 +48,24 @@ string INF::GetV()
 	return Vote;
 }
 
-void INF::SetAll(string name, long Id, string vote, long IdP)
+void INF::SetAll(string name, long Id, string vote, string HaSh)
 {
 	SetN(name);
 	SetID(Id);
 	SetV(vote);
 	string str = vote;
-	str = str + to_string(Id)+to_string(IdP);
+	str = str + to_string(Id)+HaSh;
 	Hash h;
 	h.getHash(str, 16);
 	SetH(h.GetH());
+}
+
+void INF::SetAll(string name, string HaSh, long Id, string vote)
+{
+	SetN(name);
+	SetH(HaSh);
+	SetID(Id);
+	SetV(vote);
 }
 
 
@@ -343,12 +351,12 @@ string Chain::ShowV(long a)
 	return vote;
 }
 
-long int Chain::GetTailId()
+string Chain::GetTailH()
 {
 	if (Head != nullptr && Tail != nullptr) {
-		return Tail->GetID();
+		return Tail->GetH();
 	}
-	else return 0;
+	else return to_string(0);
 }
 
 

@@ -357,7 +357,9 @@ namespace Project1 {
 		}
 		catch(bool)
 		{
-			  // Спрацьовує при 1 запуску
+			string msg = "Some votes was changed!";
+			Exeption_data ex(msg, 5);
+			Show_exeption(ex);
 		}
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -404,7 +406,7 @@ namespace Project1 {
 
 
 				if (block.CompId(id) == -1 || block.CompId(id) == 0) {
-					Pears.SetAll(name, id, vote, block.GetTailId());
+					Pears.SetAll(name, id, vote, block.GetTailH());
 					block.add(Pears);
 					MessageBox::Show(this, "Vote submited!", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				}

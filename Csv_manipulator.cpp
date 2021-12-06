@@ -57,19 +57,9 @@ vector<Node> Csv_manipulator::GetNodes(string file_name, int& count)
 				long id = stoi(row[3]);
 
 				Node node;
-				if (nodes.capacity() == 0) 
-				{
-					node.SetAll(name, id, vote, 0);
+					node.SetAll(name, hash, id, vote);
 					nodes.push_back(node);
 					count = count + 1;
-				}
-				else 
-				{
-					long prevId = nodes[nodes.size()-1].GetID();
-					node.SetAll(name, id, vote, prevId);
-					nodes.push_back(node);
-					count=count+1;
-				}
 			}
 		}
 	}
@@ -105,7 +95,7 @@ bool Csv_manipulator::ImportCsv(string path, Chain &block)
 		}
 		else
 		{
-			checkHash = nodes[i].GetV() + to_string(nodes[i].GetID()) + to_string(nodes[i - 1].GetID());
+			checkHash = nodes[i].GetV() + to_string(nodes[i].GetID()) + nodes[i - 1].GetH();
 		}
 
 		if (nodes[i].GetH() == hash.getHash(checkHash, 16))
