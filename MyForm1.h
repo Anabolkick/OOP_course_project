@@ -8,6 +8,7 @@ namespace Project1 {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::IO;
 
 	/// <summary>
 	/// Summary for MyForm1
@@ -39,6 +40,15 @@ namespace Project1 {
 	private:
 
 	private: System::Windows::Forms::Button^ noButton;
+	public: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
+	private:
+
+
+
+	private:
+
+
+
 	protected:
 
 
@@ -47,7 +57,7 @@ namespace Project1 {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -60,6 +70,7 @@ namespace Project1 {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->yesButton = (gcnew System::Windows::Forms::Button());
 			this->noButton = (gcnew System::Windows::Forms::Button());
+			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -99,6 +110,10 @@ namespace Project1 {
 			this->noButton->UseVisualStyleBackColor = true;
 			this->noButton->Click += gcnew System::EventHandler(this, &MyForm1::noButton_Click);
 			// 
+			// openFileDialog1
+			// 
+			this->openFileDialog1->FileName = L"openFileDialog1";
+			// 
 			// MyForm1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -119,14 +134,21 @@ namespace Project1 {
 
 		}
 #pragma endregion
-	
+
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void noButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		MyForm1::Close();
 	}
-private: System::Void yesButton_Click(System::Object^ sender, System::EventArgs^ e) {
-	MyForm1::Close();
-}
-};
+	private: System::Void yesButton_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		String^ path = "";
+
+		if (openFileDialog1->ShowDialog() == Windows::Forms::DialogResult::OK) {
+			path = openFileDialog1->FileName;
+		}
+
+		MyForm1::Close();
+	}
+	};
 }

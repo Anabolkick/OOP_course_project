@@ -72,7 +72,7 @@ namespace Project1 {
 
 
 	private: System::Windows::Forms::OpenFileDialog^ openFileDialog;
-	private: System::Windows::Forms::Button^ importFileButton;
+
 
 	private: System::Windows::Forms::Button^ exportFileButton;
 
@@ -117,7 +117,6 @@ namespace Project1 {
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
 			this->saveResultsBtn = (gcnew System::Windows::Forms::Button());
 			this->exportFileButton = (gcnew System::Windows::Forms::Button());
-			this->importFileButton = (gcnew System::Windows::Forms::Button());
 			this->openFileDialog = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->saveFileDialog = (gcnew System::Windows::Forms::SaveFileDialog());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
@@ -291,7 +290,6 @@ namespace Project1 {
 			this->groupBox3->BackColor = System::Drawing::SystemColors::Control;
 			this->groupBox3->Controls->Add(this->saveResultsBtn);
 			this->groupBox3->Controls->Add(this->exportFileButton);
-			this->groupBox3->Controls->Add(this->importFileButton);
 			this->groupBox3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->groupBox3->ForeColor = System::Drawing::SystemColors::ControlText;
@@ -304,7 +302,7 @@ namespace Project1 {
 			// 
 			// saveResultsBtn
 			// 
-			this->saveResultsBtn->Location = System::Drawing::Point(132, 111);
+			this->saveResultsBtn->Location = System::Drawing::Point(248, 64);
 			this->saveResultsBtn->Name = L"saveResultsBtn";
 			this->saveResultsBtn->Size = System::Drawing::Size(184, 48);
 			this->saveResultsBtn->TabIndex = 2;
@@ -314,23 +312,13 @@ namespace Project1 {
 			// 
 			// exportFileButton
 			// 
-			this->exportFileButton->Location = System::Drawing::Point(248, 40);
+			this->exportFileButton->Location = System::Drawing::Point(24, 64);
 			this->exportFileButton->Name = L"exportFileButton";
 			this->exportFileButton->Size = System::Drawing::Size(184, 48);
 			this->exportFileButton->TabIndex = 1;
 			this->exportFileButton->Text = L"Export file";
 			this->exportFileButton->UseVisualStyleBackColor = true;
 			this->exportFileButton->Click += gcnew System::EventHandler(this, &MyForm::exportFileButton_Click);
-			// 
-			// importFileButton
-			// 
-			this->importFileButton->Location = System::Drawing::Point(24, 40);
-			this->importFileButton->Name = L"importFileButton";
-			this->importFileButton->Size = System::Drawing::Size(184, 48);
-			this->importFileButton->TabIndex = 0;
-			this->importFileButton->Text = L"Import file";
-			this->importFileButton->UseVisualStyleBackColor = true;
-			this->importFileButton->Click += gcnew System::EventHandler(this, &MyForm::importFileButton_Click);
 			// 
 			// menuStrip1
 			// 
@@ -359,14 +347,14 @@ namespace Project1 {
 			// helpToolStripMenuItem
 			// 
 			this->helpToolStripMenuItem->Name = L"helpToolStripMenuItem";
-			this->helpToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->helpToolStripMenuItem->Size = System::Drawing::Size(132, 22);
 			this->helpToolStripMenuItem->Text = L"Help";
 			this->helpToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::helpToolStripMenuItem_Click);
 			// 
 			// developersToolStripMenuItem
 			// 
 			this->developersToolStripMenuItem->Name = L"developersToolStripMenuItem";
-			this->developersToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->developersToolStripMenuItem->Size = System::Drawing::Size(132, 22);
 			this->developersToolStripMenuItem->Text = L"Developers";
 			this->developersToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::developersToolStripMenuItem_Click);
 			// 
@@ -380,7 +368,7 @@ namespace Project1 {
 			// chartToolStripMenuItem
 			// 
 			this->chartToolStripMenuItem->Name = L"chartToolStripMenuItem";
-			this->chartToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->chartToolStripMenuItem->Size = System::Drawing::Size(103, 22);
 			this->chartToolStripMenuItem->Text = L"Chart";
 			this->chartToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::chartToolStripMenuItem_Click);
 			// 
@@ -616,8 +604,8 @@ namespace Project1 {
 	private: System::Void MyForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e)
 	{
 		Csv_manipulator::SaveCsv("SavedData.csv", block.GetHead());
-	}
 	};
+	
 private: System::Void aboutToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void helpToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
