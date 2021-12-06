@@ -76,4 +76,47 @@ vector<Node> Csv_manipulator::GetNodes(string file_name, int& count)
 	return nodes;
 }
 
+void Csv_manipulator::SaveCsv(string path, Node* currNode)
+{
+	Node node;
+
+	while (currNode != NULL)
+	{
+		node = *currNode;
+		Csv_manipulator::SaveAll(path, node.GetN(), node.GetV(), node.GetH(), node.GetID());
+		currNode = node.GetNext();
+	}
+}
+
+bool Csv_manipulator::ImportCsv(string path, Chain &block)
+{
+	vector<Node> nodes;
+	int nodesCount = 0;
+	nodes = Csv_manipulator::GetNodes(path, nodesCount);
+
+	string checkHash;
+
+	for (int i = 0; i < nodesCount; i++)
+	{
+		Hash hash;
+		if (i == 0)
+		{
+			checkHash = nodes[i].GetV() + to_string(nodes[i].GetID()) + to_string(0);
+		}
+		else
+		{
+			checkHash = nodes[i].GetV() + to_string(nodes[i].GetID()) + to_string(nodes[i - 1].GetID());
+		}
+
+		if (nodes[i].GetH() == hash.getHash(checkHash, 16))
+		{
+			block.add(nodes[i]);
+		}
+		else
+		{
+			return false;
+		}
+	}
+	return true;
+}
 

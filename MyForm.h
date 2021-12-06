@@ -328,6 +328,7 @@ namespace Project1 {
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"MyForm";
 			this->Text = L"ChainVote";
+			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &MyForm::MyForm_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
@@ -347,7 +348,17 @@ namespace Project1 {
 			MessageBox::Show(this, message, name, MessageBoxButtons::OK, MessageBoxIcon::Warning);
 		}
 
-	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) 
+	{
+		try
+		{
+			Csv_manipulator::ImportCsv("SavedData", block);
+			throw false;
+		}
+		catch(bool)
+		{
+			  // Спрацьовує при 1 запуску
+		}
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
@@ -363,7 +374,6 @@ namespace Project1 {
 		search = gcnew System::String(c.c_str());
 
 		MessageBox::Show(this, search, "Failure!", MessageBoxButtons::OK, MessageBoxIcon::Information);
-
 
 	}
 	private: System::Void voteConfirm_Click(System::Object^ sender, System::EventArgs^ e)
@@ -425,58 +435,24 @@ namespace Project1 {
 		if (openFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK)
 		{
 			string path = String_manipulator::std_string(openFileDialog->FileName);
-			vector<Node> nodes;
-
-			int nodesCount=0;
-			nodes = Csv_manipulator::GetNodes(path, nodesCount);
-
-			string checkHash;
-
-			for (int i = 0; i < nodesCount-1; i++)
+			if (Csv_manipulator::ImportCsv(path, block) == false)
 			{
-				Hash hash;
-				if (i == 0)
-				{
-					 checkHash = nodes[i].GetV() + to_string(nodes[i].GetID())+to_string(0);
-				}
-				else 
-				{
-					checkHash = nodes[i].GetV() + to_string(nodes[i].GetID())+ to_string(nodes[i-1].GetID());
-				}
-
-				if (nodes[i].GetH() == hash.getHash(checkHash, 16))
-				{
-					block.add(nodes[i]);
-				}
-				else 
-				{
-					string msg = "Vote from " + nodes[i].GetN() + " was changed!";
-					Exeption_data ex(msg, 5);
-					Show_exeption(ex);
-				}
+				string msg = "Some votes was changed!";
+				Exeption_data ex(msg, 5);
+				Show_exeption(ex);
 			}
-		
-		/*	Csv_manipulator::copy_csv(file_name, "vote_chain.csv");*/
 		}
 	}
+
+
 	private: System::Void exportFileButton_Click(System::Object^ sender, System::EventArgs^ e)   // TODO try catch  файла не существует
 	{
 		saveFileDialog->Filter = "Files csv (*.csv)|*.csv";
 
 		if (saveFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK)
-		{	
-			Node node;
-			Node* currNode = block.GetHead();
+		{
 			string path = String_manipulator::std_string(saveFileDialog->FileName);
-
-			while (currNode != NULL)
-			{
-				node = *currNode;
-				Csv_manipulator::SaveAll(path, node.GetN(), node.GetV(), node.GetH(), node.GetID());
-				currNode = node.GetNext();
-			}
-
-			//Csv_manipulator::copy_csv("vote_chain.csv", file_name);
+			Csv_manipulator::SaveCsv(path, block.GetHead());
 		}
 	}
 	private: System::Void saveResultsBtn_Click(System::Object^ sender, System::EventArgs^ e)
@@ -519,6 +495,10 @@ namespace Project1 {
 		}
 
 	}
-	};
+	private: System::Void MyForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) 
+	{
+		Csv_manipulator::SaveCsv("SavedData", block.GetHead());
+	}
+};
 
 }
