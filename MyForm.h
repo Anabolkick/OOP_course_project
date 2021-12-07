@@ -460,6 +460,7 @@ namespace Project1 {
 
 			if (openFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK) {
 				path = openFileDialog->FileName;
+				//сюда код
 			}
 		}
 			
