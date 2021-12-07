@@ -284,6 +284,7 @@ namespace Project1 {
 			this->groupBox2->TabIndex = 11;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Voting";
+			this->groupBox2->Enter += gcnew System::EventHandler(this, &MyForm::groupBox2_Enter);
 			// 
 			// groupBox3
 			// 
@@ -452,11 +453,19 @@ namespace Project1 {
 				Show_exeption(ex);
 				break;
 			}
+		};
+
+		if (MessageBox::Show(this, "Load data from file?", "ChainVote", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) {
+			String^ path = "";
+
+			if (openFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK) {
+				path = openFileDialog->FileName;
+			}
 		}
+			
 
-
-		MyForm1^ loadData = gcnew MyForm1();
-		loadData->ShowDialog();
+		/*MyForm1^ loadData = gcnew MyForm1();
+		loadData->ShowDialog();*/
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
@@ -619,6 +628,8 @@ private: System::Void developersToolStripMenuItem_Click(System::Object^ sender, 
 private: System::Void chartToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	MyForm4^ chartForm = gcnew MyForm4();
 	chartForm->Show();
+}
+private: System::Void groupBox2_Enter(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 

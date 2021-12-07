@@ -142,11 +142,11 @@ namespace Project1 {
 	}
 	private: System::Void yesButton_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		String^ path = "";
+		/*String^ path = "";
 
 		if (openFileDialog1->ShowDialog() == Windows::Forms::DialogResult::OK) {
 			path = openFileDialog1->FileName;
-		}
+		}*/
 
 		MyForm1::Close();
 	}
