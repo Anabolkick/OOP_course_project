@@ -460,14 +460,14 @@ namespace Project1 {
 			}
 		};
 
-		if (MessageBox::Show(this, "Load data from file?", "ChainVote", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) {
-			String^ path = "";
+		//if (MessageBox::Show(this, "Load data from file?", "ChainVote", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) {
+		//	String^ path = "";
 
-			if (openFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK) {
-				path = openFileDialog->FileName;
-				//сюда код
-			}
-		}
+		//	if (openFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK) {
+		//		path = openFileDialog->FileName;
+		//		//сюда код
+		//	}
+		//}
 
 
 		/*MyForm1^ loadData = gcnew MyForm1();
@@ -486,7 +486,11 @@ namespace Project1 {
 		String^ search;
 		search = gcnew System::String(c.c_str());
 
-		MessageBox::Show(this, search, "Failure!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		/*if (searchByID->Text->Length < 8) {
+			string msg = "Enter 8 ID numbers!";
+			Exeption_data ex(msg, 10);
+			Show_exeption(ex);
+		};*/
 
 	}
 	private: System::Void voteConfirm_Click(System::Object^ sender, System::EventArgs^ e)
