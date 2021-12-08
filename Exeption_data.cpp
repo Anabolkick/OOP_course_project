@@ -1,48 +1,40 @@
 #include "Exeption_data.h"
-#include <string>
-#include <windows.h>
 #include "String_manipulator.h"
+#include <string>
 
-using namespace System::Windows::Forms;
+using namespace System;
+using namespace std;
 
-class Exeption_data
+Exeption_data::Exeption_data(string message, int code)
 {
-private:
-    string message_text;
-    int error_code;
+	message_text = message;
+	error_code = code;
+}
 
-public:
-    Exeption_data(string message, int code)
-    {
-        message_text = message;
-        error_code = code;
-    }
+Exeption_data::Exeption_data()
+{
+	message_text = "";
+	error_code = 0;
+}
 
-    Exeption_data()
-    {
-        message_text = "";
-        error_code = 0;
-    }
-  
-    String^ getName()
-    {
-        string str = "Error " + to_string(error_code);
-        String^ name = String_manipulator::system_string(str);
-        return name;
-    }
-    String^ getMessage()
-    {
-        String^ message = String_manipulator::system_string(message_text);
-        return  message;
-    }
+String^ Exeption_data::getName()
+{
+	string str = "Error " + to_string(error_code);
+	String^ name = String_manipulator::system_string(str);
+	return name;
+}
+String^ Exeption_data::getMessage()
+{
+	String^ message = String_manipulator::system_string(message_text);
+	return  message;
+}
 
-    void SetMessage(string message)
-    {
-        message_text = message;
-    }
+void Exeption_data::SetMessage(string message)
+{
+	message_text = message;
+}
 
-    void SetCode(int code)
-    {
-        error_code = code;
-    }
-};
+void Exeption_data::SetCode(int code)
+{
+	error_code = code;
+}

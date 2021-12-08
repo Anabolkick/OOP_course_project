@@ -1,7 +1,7 @@
 #pragma once
 #include "Csv_manipulator.h"
-#include "String_manipulator.h"
-#include "Exeption_data.cpp"
+//#include "String_manipulator.h"
+#include "Exeption_data.h"
 #include "Set.h"
 #include "Json_manipulator.h"
 #include "MyForm1.h"
