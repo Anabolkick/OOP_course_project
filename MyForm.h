@@ -1,6 +1,5 @@
 #pragma once
 #include "Csv_manipulator.h"
-//#include "String_manipulator.h"
 #include "Exeption_data.h"
 #include "Set.h"
 #include "Json_manipulator.h"
@@ -413,6 +412,8 @@ namespace Project1 {
 		String^ message = ex.getMessage();
 		MessageBox::Show(message, name, MessageBoxButtons::OK, MessageBoxIcon::Warning);
 	}
+		  
+
 
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e)
 	{

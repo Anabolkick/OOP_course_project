@@ -1,4 +1,6 @@
 #pragma once
+#include "Exeption_data.h"
+//#include "MyForm.h"
 
 namespace Project1 {
 
@@ -16,7 +18,16 @@ namespace Project1 {
 	public ref class MyForm1 : public System::Windows::Forms::Form
 	{
 	public:
-		MyForm1(void)
+
+		//MyForm^ MainForm;
+		
+		//MyForm1(MyForm^ form)
+		//{
+		//	InitializeComponent();
+		//	MainForm = form;
+		//}
+
+		MyForm1()
 		{
 			InitializeComponent();
 			//
@@ -142,8 +153,11 @@ namespace Project1 {
 	}
 	private: System::Void yesButton_Click(System::Object^ sender, System::EventArgs^ e) {
 
+		Exeption_data ex("Something", 9);
+		//MainForm->Show_exeption(ex);
 
-		//Exeption_data ex("Something", 9);
+	//	MyForm^ MainForm = gcnew MyForm();
+	//	MainForm->Show_exeption(ex);
 		/*String^ path = "";
 
 		if (openFileDialog1->ShowDialog() == Windows::Forms::DialogResult::OK) {
