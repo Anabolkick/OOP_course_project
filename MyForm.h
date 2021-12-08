@@ -83,6 +83,8 @@ namespace Project1 {
 	private: System::Windows::Forms::ToolStripMenuItem^ developersToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ statiToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ chartToolStripMenuItem;
+	private: System::Windows::Forms::Label^ label5;
+	private: System::Windows::Forms::Label^ label6;
 
 	protected:
 
@@ -111,8 +113,10 @@ namespace Project1 {
 			this->checkBox1 = (gcnew System::Windows::Forms::CheckBox());
 			this->voteConfirm = (gcnew System::Windows::Forms::Button());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->searchButton = (gcnew System::Windows::Forms::Button());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
+			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
 			this->saveResultsBtn = (gcnew System::Windows::Forms::Button());
 			this->exportFileButton = (gcnew System::Windows::Forms::Button());
@@ -195,6 +199,7 @@ namespace Project1 {
 			// searchByID
 			// 
 			this->searchByID->Location = System::Drawing::Point(64, 48);
+			this->searchByID->MaxLength = 8;
 			this->searchByID->Name = L"searchByID";
 			this->searchByID->Size = System::Drawing::Size(200, 22);
 			this->searchByID->TabIndex = 6;
@@ -239,6 +244,7 @@ namespace Project1 {
 			// groupBox1
 			// 
 			this->groupBox1->BackColor = System::Drawing::SystemColors::Control;
+			this->groupBox1->Controls->Add(this->label6);
 			this->groupBox1->Controls->Add(this->searchButton);
 			this->groupBox1->Controls->Add(this->searchByID);
 			this->groupBox1->Controls->Add(this->label4);
@@ -251,6 +257,17 @@ namespace Project1 {
 			this->groupBox1->TabIndex = 10;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Search";
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label6->Location = System::Drawing::Point(136, 72);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(56, 13);
+			this->label6->TabIndex = 11;
+			this->label6->Text = L"8 numbers";
 			// 
 			// searchButton
 			// 
@@ -267,6 +284,7 @@ namespace Project1 {
 			// 
 			// groupBox2
 			// 
+			this->groupBox2->Controls->Add(this->label5);
 			this->groupBox2->Controls->Add(this->voteOptions);
 			this->groupBox2->Controls->Add(this->label1);
 			this->groupBox2->Controls->Add(this->voteConfirm);
@@ -284,6 +302,17 @@ namespace Project1 {
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Voting";
 			this->groupBox2->Enter += gcnew System::EventHandler(this, &MyForm::groupBox2_Enter);
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label5->Location = System::Drawing::Point(312, 80);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(56, 13);
+			this->label5->TabIndex = 10;
+			this->label5->Text = L"8 numbers";
 			// 
 			// groupBox3
 			// 
@@ -459,7 +488,7 @@ namespace Project1 {
 				break;
 			}
 		};
-
+		
 		//if (MessageBox::Show(this, "Load data from file?", "ChainVote", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) {
 		//	String^ path = "";
 
@@ -486,57 +515,84 @@ namespace Project1 {
 		String^ search;
 		search = gcnew System::String(c.c_str());
 
-		/*if (searchByID->Text->Length < 8) {
-			string msg = "Enter 8 ID numbers!";
-			Exeption_data ex(msg, 10);
-			Show_exeption(ex);
-		};*/
+		MessageBox::Show(this, search, "Result", MessageBoxButtons::OK, MessageBoxIcon::Information);
 
 	}
 	private: System::Void voteConfirm_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		if (checkBox1->Checked)
 		{
+			Node Pears;
 			try
 			{
-				Node Pears;
+				//Node Pears;
+				string j = String_manipulator::std_string(voteOptions->SelectedItem->ToString());
+				
 
-				if (PIB->Text == "" || passportID->Text == "" || voteOptions->SelectedItem->ToString() == "")
+				if (PIB->Text == "" || passportID->Text->Length < 8 || voteOptions->SelectedItem->ToString() == "" || voteOptions->SelectedIndex < 0)
 				{
 					throw false;
 				}
+				else {
+					throw true;
+				};
 
 
 				//ID
-				string id_str = String_manipulator::std_string(passportID->Text);
-				long id = atoi(id_str.c_str());
+				//string id_str = String_manipulator::std_string(passportID->Text);
+				//long id = atoi(id_str.c_str());
 
-				//Name
-				string name = String_manipulator::std_string(PIB->Text);
+				////Name
+				//string name = String_manipulator::std_string(PIB->Text);
 
-				//Vote
-				string vote = String_manipulator::std_string(voteOptions->SelectedItem->ToString());
+				////Vote
+				//string vote = String_manipulator::std_string(voteOptions->SelectedItem->ToString());
 
-				//if (Csv_manipulator::add_csv("vote_chain.csv", id, name, vote))	 // TODO try catch
+				////if (Csv_manipulator::add_csv("vote_chain.csv", id, name, vote))	 // TODO try catch
 
-
-				if (block.CompId(id) == -1 || block.CompId(id) == 0) {
-					Pears.SetAll(name, id, vote, block.GetTailH());
-					block.add(Pears);
-					MessageBox::Show(this, "Vote submited!", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
-				}
-				else
-				{
-					Exeption_data ex("You have already voted!", 1);
+				//	if (block.CompId(id) == -1 || block.CompId(id) == 0) {
+				//		Pears.SetAll(name, id, vote, block.GetTailH());
+				//		block.add(Pears);
+				//		MessageBox::Show(this, "Vote submited!", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				//	}
+				//	else
+				//	{
+				//		Exeption_data ex("You have already voted!", 1);
+				//		Show_exeption(ex);
+				//	}
+			}
+			catch (bool temp)
+			{
+				if (temp == false) {
+					Exeption_data ex("Enter a full info!", 2);
 					Show_exeption(ex);
 				}
-			}
-			catch (bool)
-			{
-				Exeption_data ex("Enter a full info!", 2);
-				Show_exeption(ex);
+				else {
+					string id_str = String_manipulator::std_string(passportID->Text);
+					long id = atoi(id_str.c_str());
+
+					//Name
+					string name = String_manipulator::std_string(PIB->Text);
+
+					//Vote
+					string vote = String_manipulator::std_string(voteOptions->SelectedItem->ToString());
+
+					//if (Csv_manipulator::add_csv("vote_chain.csv", id, name, vote))	 // TODO try catch
+
+					if (block.CompId(id) == -1 || block.CompId(id) == 0) {
+						Pears.SetAll(name, id, vote, block.GetTailH());
+						block.add(Pears);
+						MessageBox::Show(this, "Vote submited!", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+					}
+					else
+					{
+						Exeption_data ex("You have already voted!", 1);
+						Show_exeption(ex);
+					}
+				}
 			}
 		}
+		
 		else
 		{
 			Exeption_data ex("Accept the agreement!", 3);
