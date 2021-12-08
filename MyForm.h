@@ -407,15 +407,19 @@ namespace Project1 {
 #pragma endregion
 
 
-		void Show_exeption(Exeption_data ex)
-		{
-			String^ name = ex.getName();
-			String^ message = ex.getMessage();
-			MessageBox::Show(this, message, name, MessageBoxButtons::OK, MessageBoxIcon::Warning);
-		}
+	public: static void Show_exeption(Exeption_data ex)
+	{
+		String^ name = ex.getName();
+		String^ message = ex.getMessage();
+		MessageBox::Show(message, name, MessageBoxButtons::OK, MessageBoxIcon::Warning);
+	}
 
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e)
 	{
+
+		MyForm1^ loadData = gcnew MyForm1();
+		loadData->ShowDialog();
+
 		try
 		{
 			throw Csv_manipulator::ImportCsv("SavedData.csv", block);
@@ -463,7 +467,7 @@ namespace Project1 {
 				//сюда код
 			}
 		}
-			
+
 
 		/*MyForm1^ loadData = gcnew MyForm1();
 		loadData->ShowDialog();*/
@@ -615,23 +619,23 @@ namespace Project1 {
 	{
 		Csv_manipulator::SaveCsv("SavedData.csv", block.GetHead());
 	};
-	
-private: System::Void aboutToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void helpToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	MyForm2^ helpInfo = gcnew MyForm2();
-	helpInfo->Show();
-}
-private: System::Void developersToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	MyForm3^ developersInfo = gcnew MyForm3();
-	developersInfo->Show();
-}
-private: System::Void chartToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	MyForm4^ chartForm = gcnew MyForm4();
-	chartForm->Show();
-}
-private: System::Void groupBox2_Enter(System::Object^ sender, System::EventArgs^ e) {
-}
-};
+
+	private: System::Void aboutToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void helpToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		MyForm2^ helpInfo = gcnew MyForm2();
+		helpInfo->Show();
+	}
+	private: System::Void developersToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		MyForm3^ developersInfo = gcnew MyForm3();
+		developersInfo->Show();
+	}
+	private: System::Void chartToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		MyForm4^ chartForm = gcnew MyForm4();
+		chartForm->Show();
+	}
+	private: System::Void groupBox2_Enter(System::Object^ sender, System::EventArgs^ e) {
+	}
+	};
 
 }

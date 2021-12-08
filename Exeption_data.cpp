@@ -1,11 +1,9 @@
 #include "Exeption_data.h"
 #include <string>
 #include <windows.h>
-#include "String_manipulator.cpp"
+#include "String_manipulator.h"
 
 using namespace System::Windows::Forms;
-
-using namespace std;
 
 class Exeption_data
 {

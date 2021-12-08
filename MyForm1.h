@@ -142,6 +142,8 @@ namespace Project1 {
 	}
 	private: System::Void yesButton_Click(System::Object^ sender, System::EventArgs^ e) {
 
+
+		//Exeption_data ex("Something", 9);
 		/*String^ path = "";
 
 		if (openFileDialog1->ShowDialog() == Windows::Forms::DialogResult::OK) {
