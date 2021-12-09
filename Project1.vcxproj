@@ -123,7 +123,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Exeption_data.cpp" />
+    <ClCompile Include="Exeption.cpp" />
     <ClCompile Include="Hash.cpp" />
     <ClCompile Include="Json_manipulator.cpp" />
     <ClCompile Include="MyForm.cpp" />
@@ -137,7 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Csv_manipulator.h" />
-    <ClInclude Include="Exeption_data.h" />
+    <ClInclude Include="Exeption.h" />
     <ClInclude Include="Hash.h" />
     <ClInclude Include="json\allocator.h" />
     <ClInclude Include="json\assertions.h" />

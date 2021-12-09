@@ -1,5 +1,5 @@
 #pragma once
-#include "Exeption_data.h"
+#include "Exeption.h"
 //#include "MyForm.h"
 
 namespace Project1 {
@@ -168,7 +168,7 @@ namespace Project1 {
 	}
 	private: System::Void yesButton_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		//Exeption_data ex("Something", 9);
+	//	Exeption_data ex("Something", 9);
 		//MainForm->Show_exeption(ex);
 
 	//	MyForm^ MainForm = gcnew MyForm();

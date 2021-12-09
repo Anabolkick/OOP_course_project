@@ -1,6 +1,6 @@
 #pragma once
 #include "Csv_manipulator.h"
-#include "Exeption_data.h"
+#include "Exeption.h"
 #include "Set.h"
 #include "Json_manipulator.h"
 #include "MyForm1.h"
@@ -434,16 +434,6 @@ namespace Project1 {
 		}
 #pragma endregion
 
-
-	public: static void Show_exeption(Exeption_data ex)
-	{
-		String^ name = ex.getName();
-		String^ message = ex.getMessage();
-		MessageBox::Show(message, name, MessageBoxButtons::OK, MessageBoxIcon::Warning);
-	}
-		  
-
-
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e)
 	{
 
@@ -457,7 +447,7 @@ namespace Project1 {
 		catch (Csv_manipulator::FileStatus status)
 		{
 			string message;
-			Exeption_data ex;
+			Exeption ex;
 
 			switch (status)
 			{
@@ -470,21 +460,21 @@ namespace Project1 {
 				message = "Some votes was changed!";
 				ex.SetCode(5);
 				ex.SetMessage(message);
-				Show_exeption(ex);
+				Exeption::Show_exeption(ex);
 				break;
 
 			case Csv_manipulator::absent:
 				message = "Can`t find file!";
 				ex.SetCode(8);
 				ex.SetMessage(message);
-				Show_exeption(ex);
+				Exeption::Show_exeption(ex);
 				break;
 
 			default:
 				message = "Something went wrong!";
 				ex.SetCode(9);
 				ex.SetMessage(message);
-				Show_exeption(ex);
+				Exeption::Show_exeption(ex);
 				break;
 			}
 		};
@@ -564,8 +554,8 @@ namespace Project1 {
 			catch (bool temp)
 			{
 				if (temp == false) {
-					Exeption_data ex("Enter a full info!", 2);
-					Show_exeption(ex);
+					Exeption ex("Enter a full info!", 2);
+					Exeption::Show_exeption(ex);
 				}
 				else {
 					string id_str = String_manipulator::std_string(passportID->Text);
@@ -586,8 +576,8 @@ namespace Project1 {
 					}
 					else
 					{
-						Exeption_data ex("You have already voted!", 1);
-						Show_exeption(ex);
+						Exeption ex("You have already voted!", 1);
+						Exeption::Show_exeption(ex);
 					}
 				}
 			}
@@ -595,8 +585,8 @@ namespace Project1 {
 		
 		else
 		{
-			Exeption_data ex("Accept the agreement!", 3);
-			Show_exeption(ex);
+			Exeption ex("Accept the agreement!", 3);
+			Exeption::Show_exeption(ex);
 		}
 	}
 	private: System::Void checkBox1_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
@@ -611,13 +601,13 @@ namespace Project1 {
 			if (Csv_manipulator::ImportCsv(path, block) == false)
 			{
 				string msg = "Some votes was changed!";
-				Exeption_data ex(msg, 5);
-				Show_exeption(ex);
+				Exeption ex(msg, 5);
+				Exeption::Show_exeption(ex);
 			}
 		}
 		else {
-			Exeption_data ex("Couldn`t open file", 6);
-			Show_exeption(ex);
+			Exeption ex("Couldn`t open file", 6);
+			Exeption::Show_exeption(ex);
 		}
 	}
 
@@ -632,8 +622,8 @@ namespace Project1 {
 			Csv_manipulator::SaveCsv(path, block.GetHead());
 		}
 		else {
-			Exeption_data ex("Couldn`t save file", 7);
-			Show_exeption(ex);
+			Exeption ex("Couldn`t save file", 7);
+			Exeption::Show_exeption(ex);
 		}
 	}
 	private: System::Void saveResultsBtn_Click(System::Object^ sender, System::EventArgs^ e)
@@ -671,8 +661,8 @@ namespace Project1 {
 		}
 		else
 		{
-			Exeption_data ex("All candidates have 0 votes!", 4);
-			Show_exeption(ex);
+			Exeption ex("All candidates have 0 votes!", 4);
+			Exeption::Show_exeption(ex);
 		}
 
 	}
