@@ -1,6 +1,8 @@
 #pragma once
 #include "Exeption.h"
-//#include "MyForm.h"
+#include "Csv_manipulator.h"
+#include "String_manipulator.h"
+//#include "MyForm.h"		 /////////////////
 
 namespace Project1 {
 
@@ -18,21 +20,15 @@ namespace Project1 {
 	public ref class MyForm1 : public System::Windows::Forms::Form
 	{
 	public:
-
-		//MyForm^ MainForm;
-		
-		//MyForm1(MyForm^ form)
-		//{
-		//	InitializeComponent();
-		//	MainForm = form;
-		//}
-
+	//	MyForm^ loadData;	 ////////////////////
+		/*MyForm1(MyForm^ main)		////////////////
+		{
+			InitializeComponent();
+			loadData = main;
+		}*/					   /////////////////////
 		MyForm1()
 		{
 			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
 		}
 
 	protected:
@@ -166,22 +162,52 @@ namespace Project1 {
 	private: System::Void noButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		MyForm1::Close();
 	}
-	private: System::Void yesButton_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void yesButton_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+		/*try
+		{
+			throw Csv_manipulator::ImportCsv("SavedData.csv", *loadData->GetBlock());
+		}
+		catch (Csv_manipulator::FileStatus status)
+		{
+			string message;
+			Exeption ex;
 
-	//	Exeption_data ex("Something", 9);
-		//MainForm->Show_exeption(ex);
+			switch (status)
+			{
+			case Csv_manipulator::opened:
+				message = "File was successfully opened!";
+				MessageBox::Show(this, "File was successfully opened!", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				break;
 
-	//	MyForm^ MainForm = gcnew MyForm();
-	//	MainForm->Show_exeption(ex);
-		/*String^ path = "";
+			case Csv_manipulator::changed:
+				message = "Some votes was changed!";
+				ex.SetCode(5);
+				ex.SetMessage(message);
+				Exeption::Show_exeption(ex);
+				break;
 
-		if (openFileDialog1->ShowDialog() == Windows::Forms::DialogResult::OK) {
-			path = openFileDialog1->FileName;
+			case Csv_manipulator::absent:
+				message = "Can`t find file!";
+				ex.SetCode(8);
+				ex.SetMessage(message);
+				Exeption::Show_exeption(ex);
+				break;
+
+			default:
+				message = "Something went wrong!";
+				ex.SetCode(9);
+				ex.SetMessage(message);
+				Exeption::Show_exeption(ex);
+				break;
+			}
 		}*/
-
 		MyForm1::Close();
 	};
-	private: System::Void manualLoad_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	private: System::Void manualLoad_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+
 		MyForm1::Close();
 	};
 };

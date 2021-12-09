@@ -9,7 +9,6 @@
 #include "MyForm4.h"
 
 //using namespace std;
-
 Chain block;
 const int amount = 3;//166 строка
 Candidates* Rez = new Candidates[amount];
@@ -50,6 +49,8 @@ namespace Project1 {
 				delete components;
 			}
 		}
+
+
 	private: System::Windows::Forms::Label^ label1;
 	protected:
 	private: System::Windows::Forms::Label^ label2;
@@ -433,14 +434,14 @@ namespace Project1 {
 
 		}
 #pragma endregion
-
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e)
 	{
-
+													   
+		//MyForm1^ loadData = gcnew MyForm1(this);	  ////////////
 		MyForm1^ loadData = gcnew MyForm1();
 		loadData->ShowDialog();
 
-		try
+		/*try
 		{
 			throw Csv_manipulator::ImportCsv("SavedData.csv", block);
 		}
@@ -476,8 +477,8 @@ namespace Project1 {
 				ex.SetMessage(message);
 				Exeption::Show_exeption(ex);
 				break;
-			}
-		};
+			}*/
+		//};
 		
 		//if (MessageBox::Show(this, "Load data from file?", "ChainVote", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) {
 		//	String^ path = "";
@@ -492,6 +493,11 @@ namespace Project1 {
 		/*MyForm1^ loadData = gcnew MyForm1();
 		loadData->ShowDialog();*/
 	}
+		   public: Chain* GetBlock()
+		   {
+			   return &block;
+		   }
+
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
