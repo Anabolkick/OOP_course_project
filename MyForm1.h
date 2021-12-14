@@ -121,6 +121,7 @@ namespace Project1 {
 			// openFileDialog1
 			// 
 			this->openFileDialog1->FileName = L"openFileDialog1";
+			this->openFileDialog1->Filter = L"Files csv (*.csv)|*.csv";
 			// 
 			// manualLoad
 			// 
@@ -134,7 +135,6 @@ namespace Project1 {
 			this->manualLoad->TabStop = false;
 			this->manualLoad->Text = L"Manually";
 			this->manualLoad->UseVisualStyleBackColor = true;
-			this->manualLoad->Click += gcnew System::EventHandler(this, &MyForm1::manualLoad_Click);
 			// 
 			// MyForm1
 			// 
@@ -162,10 +162,6 @@ namespace Project1 {
 		MyForm1::Close();
 	}
 
-	private: System::Void manualLoad_Click(System::Object^ sender, System::EventArgs^ e) 
-	{
 
-		MyForm1::Close();
-	};
 };
 }

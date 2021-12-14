@@ -434,62 +434,80 @@ namespace Project1 {
 			this->PerformLayout();
 
 			this->loadData->yesButton->Click += gcnew System::EventHandler(this, &MyForm::yesButton_Click);
-
+			this->loadData->manualLoad->Click += gcnew System::EventHandler(this, &MyForm::manualLoad_Click);
 		}
 #pragma endregion
-			private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e)
-			{
-				loadData->ShowDialog();
-			}
-
-		private: System::Void yesButton_Click(System::Object^ sender, System::EventArgs^ e)
-		{
-			try
-			{
-				throw Csv_manipulator::ImportCsv("SavedData.csv", block);
-			}
-			catch (Csv_manipulator::FileStatus status)
-			{
-				string message;
-				Exeption ex;
-
-				switch (status)
-				{
-				case Csv_manipulator::opened:
-					message = "File was successfully opened!";
-					MessageBox::Show(this, "File was successfully opened!", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
-					break;
-
-				case Csv_manipulator::changed:
-					message = "Some votes was changed!";
-					ex.SetCode(5);
-					ex.SetMessage(message);
-					Exeption::Show_exeption(ex);
-					break;
-
-				case Csv_manipulator::absent:
-					message = "Can`t find file!";
-					ex.SetCode(8);
-					ex.SetMessage(message);
-					Exeption::Show_exeption(ex);
-					break;
-
-				default:
-					message = "Something went wrong!";
-					ex.SetCode(9);
-					ex.SetMessage(message);
-					Exeption::Show_exeption(ex);
-					break;
-				}
-			}
-			loadData->Close();
-		};
-
-	public: Chain* GetBlock()
+														  
+	private: void TryImportCSV(string path)
 	{
-		return &block;
+		try
+		{
+			throw Csv_manipulator::ImportCsv(path, block);
+		}
+		catch (Csv_manipulator::FileStatus status)
+		{
+			string message;
+			Exeption ex;
+
+			switch (status)
+			{
+			case Csv_manipulator::opened:
+				message = "File was successfully opened!";
+				MessageBox::Show(this, "File was successfully opened!", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				break;
+
+			case Csv_manipulator::changed:
+				message = "Some votes was changed!";
+				ex.SetCode(5);
+				ex.SetMessage(message);
+				Exeption::Show_exeption(ex);
+				break;
+
+			case Csv_manipulator::absent:
+				message = "Can`t find file!";
+				ex.SetCode(8);
+				ex.SetMessage(message);
+				Exeption::Show_exeption(ex);
+				break;
+
+			default:
+				message = "Something went wrong!";
+				ex.SetCode(9);
+				ex.SetMessage(message);
+				Exeption::Show_exeption(ex);
+				break;
+			}
+		}
 	}
 
+	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e)
+	{
+		TryImportCSV("SavedData.csv");
+		loadData->ShowDialog();
+	}
+
+	private: System::Void manualLoad_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		//openFileDialog->Filter = "Files csv (*.csv)|*.csv";
+
+		if (openFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK)
+		{
+			string path = String_manipulator::std_string(openFileDialog->FileName);
+			TryImportCSV(path);
+			loadData->Close();
+		}
+		else
+		{
+			Exeption ex("Couldn`t open file selector", 6);
+			Exeption::Show_exeption(ex);
+		}
+	};
+
+	private: System::Void yesButton_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+
+		loadData->Close();
+	};
 
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
@@ -592,20 +610,15 @@ namespace Project1 {
 	}
 	private: System::Void importFileButton_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		openFileDialog->Filter = "Files csv (*.csv)|*.csv";
-
 		if (openFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK)
 		{
 			string path = String_manipulator::std_string(openFileDialog->FileName);
-			if (Csv_manipulator::ImportCsv(path, block) == false)
-			{
-				string msg = "Some votes was changed!";
-				Exeption ex(msg, 5);
-				Exeption::Show_exeption(ex);
-			}
+			TryImportCSV(path);
+			loadData->Close();
 		}
-		else {
-			Exeption ex("Couldn`t open file", 6);
+		else 
+		{
+			Exeption ex("Couldn`t open file selector", 6);
 			Exeption::Show_exeption(ex);
 		}
 	}
@@ -620,8 +633,9 @@ namespace Project1 {
 			string path = String_manipulator::std_string(saveFileDialog->FileName);
 			Csv_manipulator::SaveCsv(path, block.GetHead());
 		}
-		else {
-			Exeption ex("Couldn`t save file", 7);
+		else 
+		{
+			Exeption ex("Couldn`t open file saver", 7);
 			Exeption::Show_exeption(ex);
 		}
 	}
