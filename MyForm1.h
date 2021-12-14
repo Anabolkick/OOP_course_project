@@ -105,7 +105,6 @@ namespace Project1 {
 			this->yesButton->TabStop = false;
 			this->yesButton->Text = L"Autoload";
 			this->yesButton->UseVisualStyleBackColor = true;
-			this->yesButton->Click += gcnew System::EventHandler(this, &MyForm1::yesButton_Click);
 			// 
 			// noButton
 			// 
@@ -162,48 +161,6 @@ namespace Project1 {
 	private: System::Void noButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		MyForm1::Close();
 	}
-	private: System::Void yesButton_Click(System::Object^ sender, System::EventArgs^ e) 
-	{
-		/*try
-		{
-			throw Csv_manipulator::ImportCsv("SavedData.csv", *loadData->GetBlock());
-		}
-		catch (Csv_manipulator::FileStatus status)
-		{
-			string message;
-			Exeption ex;
-
-			switch (status)
-			{
-			case Csv_manipulator::opened:
-				message = "File was successfully opened!";
-				MessageBox::Show(this, "File was successfully opened!", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
-				break;
-
-			case Csv_manipulator::changed:
-				message = "Some votes was changed!";
-				ex.SetCode(5);
-				ex.SetMessage(message);
-				Exeption::Show_exeption(ex);
-				break;
-
-			case Csv_manipulator::absent:
-				message = "Can`t find file!";
-				ex.SetCode(8);
-				ex.SetMessage(message);
-				Exeption::Show_exeption(ex);
-				break;
-
-			default:
-				message = "Something went wrong!";
-				ex.SetCode(9);
-				ex.SetMessage(message);
-				Exeption::Show_exeption(ex);
-				break;
-			}
-		}*/
-		MyForm1::Close();
-	};
 
 	private: System::Void manualLoad_Click(System::Object^ sender, System::EventArgs^ e) 
 	{

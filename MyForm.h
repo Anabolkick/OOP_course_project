@@ -69,6 +69,7 @@ namespace Project1 {
 	private: System::Windows::Forms::Button^ searchButton;
 	private: System::Windows::Forms::GroupBox^ groupBox2;
 	private: System::Windows::Forms::GroupBox^ groupBox3;
+	private: MyForm1^ loadData = gcnew MyForm1();
 
 
 	private: System::Windows::Forms::OpenFileDialog^ openFileDialog;
@@ -432,71 +433,63 @@ namespace Project1 {
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
+			this->loadData->yesButton->Click += gcnew System::EventHandler(this, &MyForm::yesButton_Click);
+
 		}
 #pragma endregion
-	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e)
-	{
-													   
-		//MyForm1^ loadData = gcnew MyForm1(this);	  ////////////
-		MyForm1^ loadData = gcnew MyForm1();
-		loadData->ShowDialog();
-
-		/*try
-		{
-			throw Csv_manipulator::ImportCsv("SavedData.csv", block);
-		}
-		catch (Csv_manipulator::FileStatus status)
-		{
-			string message;
-			Exeption ex;
-
-			switch (status)
+			private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e)
 			{
-			case Csv_manipulator::opened:
-				message = "File was successfully opened!";
-				MessageBox::Show(this, "File was successfully opened!", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
-				break;
+				loadData->ShowDialog();
+			}
 
-			case Csv_manipulator::changed:
-				message = "Some votes was changed!";
-				ex.SetCode(5);
-				ex.SetMessage(message);
-				Exeption::Show_exeption(ex);
-				break;
+		private: System::Void yesButton_Click(System::Object^ sender, System::EventArgs^ e)
+		{
+			try
+			{
+				throw Csv_manipulator::ImportCsv("SavedData.csv", block);
+			}
+			catch (Csv_manipulator::FileStatus status)
+			{
+				string message;
+				Exeption ex;
 
-			case Csv_manipulator::absent:
-				message = "Can`t find file!";
-				ex.SetCode(8);
-				ex.SetMessage(message);
-				Exeption::Show_exeption(ex);
-				break;
+				switch (status)
+				{
+				case Csv_manipulator::opened:
+					message = "File was successfully opened!";
+					MessageBox::Show(this, "File was successfully opened!", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+					break;
 
-			default:
-				message = "Something went wrong!";
-				ex.SetCode(9);
-				ex.SetMessage(message);
-				Exeption::Show_exeption(ex);
-				break;
-			}*/
-		//};
-		
-		//if (MessageBox::Show(this, "Load data from file?", "ChainVote", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes) {
-		//	String^ path = "";
+				case Csv_manipulator::changed:
+					message = "Some votes was changed!";
+					ex.SetCode(5);
+					ex.SetMessage(message);
+					Exeption::Show_exeption(ex);
+					break;
 
-		//	if (openFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK) {
-		//		path = openFileDialog->FileName;
-		//		//сюда код
-		//	}
-		//}
+				case Csv_manipulator::absent:
+					message = "Can`t find file!";
+					ex.SetCode(8);
+					ex.SetMessage(message);
+					Exeption::Show_exeption(ex);
+					break;
 
+				default:
+					message = "Something went wrong!";
+					ex.SetCode(9);
+					ex.SetMessage(message);
+					Exeption::Show_exeption(ex);
+					break;
+				}
+			}
+			loadData->Close();
+		};
 
-		/*MyForm1^ loadData = gcnew MyForm1();
-		loadData->ShowDialog();*/
+	public: Chain* GetBlock()
+	{
+		return &block;
 	}
-		   public: Chain* GetBlock()
-		   {
-			   return &block;
-		   }
+
 
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
@@ -523,7 +516,7 @@ namespace Project1 {
 			{
 				//Node Pears;
 				string j = String_manipulator::std_string(voteOptions->SelectedItem->ToString());
-				
+
 
 				if (PIB->Text == "" || passportID->Text->Length < 8 || voteOptions->SelectedItem->ToString() == "" || voteOptions->SelectedIndex < 0)
 				{
@@ -588,7 +581,7 @@ namespace Project1 {
 				}
 			}
 		}
-		
+
 		else
 		{
 			Exeption ex("Accept the agreement!", 3);
