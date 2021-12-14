@@ -84,6 +84,12 @@ Csv_manipulator::FileStatus Csv_manipulator::ImportCsv(string path, Chain& block
 
 	string checkHash;
 
+	if (nodesCount <= 0)
+	{
+		status = FileStatus::absent;
+		return status;
+	}
+
 	for (int i = 0; i < nodesCount; i++)
 	{
 		Hash hash;

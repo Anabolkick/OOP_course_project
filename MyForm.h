@@ -351,6 +351,10 @@ namespace Project1 {
 			this->exportFileButton->UseVisualStyleBackColor = true;
 			this->exportFileButton->Click += gcnew System::EventHandler(this, &MyForm::exportFileButton_Click);
 			// 
+			// openFileDialog
+			// 
+			this->openFileDialog->Filter = L"Files csv (*.csv)|*.csv";
+			// 
 			// menuStrip1
 			// 
 			this->menuStrip1->BackColor = System::Drawing::SystemColors::Control;
@@ -433,11 +437,13 @@ namespace Project1 {
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
+			// MyForm1
 			this->loadData->yesButton->Click += gcnew System::EventHandler(this, &MyForm::yesButton_Click);
 			this->loadData->manualLoad->Click += gcnew System::EventHandler(this, &MyForm::manualLoad_Click);
+
 		}
 #pragma endregion
-														  
+
 	private: void TryImportCSV(string path)
 	{
 		try
@@ -482,7 +488,6 @@ namespace Project1 {
 
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e)
 	{
-		TryImportCSV("SavedData.csv");
 		loadData->ShowDialog();
 	}
 
@@ -505,7 +510,7 @@ namespace Project1 {
 
 	private: System::Void yesButton_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-
+		TryImportCSV("SavedData.csv");
 		loadData->Close();
 	};
 
@@ -616,9 +621,9 @@ namespace Project1 {
 			TryImportCSV(path);
 			loadData->Close();
 		}
-		else 
+		else
 		{
-			Exeption ex("Couldn`t open file selector", 6);
+			Exeption ex("Couldn`t open file", 6);
 			Exeption::Show_exeption(ex);
 		}
 	}
@@ -633,9 +638,9 @@ namespace Project1 {
 			string path = String_manipulator::std_string(saveFileDialog->FileName);
 			Csv_manipulator::SaveCsv(path, block.GetHead());
 		}
-		else 
+		else
 		{
-			Exeption ex("Couldn`t open file saver", 7);
+			Exeption ex("Couldn`t save file", 7);
 			Exeption::Show_exeption(ex);
 		}
 	}
@@ -653,7 +658,7 @@ namespace Project1 {
 		block.Win(Rez, amount);
 
 		long max_votes = 0;
-		bool haveWinner = false;
+		bool isHaveWinner = false;
 		Candidates winner;
 		vector<Candidates> participants;
 
@@ -664,13 +669,20 @@ namespace Project1 {
 			{
 				winner = Rez[i];
 				max_votes = Rez[i].Geta();
-				haveWinner = true;
+				isHaveWinner = true;
 			}
 		}
-		if (haveWinner)
+		if (isHaveWinner)
 		{
-			Json_manipulator::create_json(winner, participants);
-			MessageBox::Show(this, "JSON file has been saved!", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			saveFileDialog->Filter = "Files JSON (*.json)|*.json";
+
+			if (saveFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK)
+			{
+				string path = String_manipulator::std_string(saveFileDialog->FileName);
+				Json_manipulator::Save_Json(path, winner, participants);
+				MessageBox::Show(this, "JSON file has been saved!", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
+			
 		}
 		else
 		{

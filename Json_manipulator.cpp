@@ -8,10 +8,10 @@ using namespace Json;
 using namespace std;
 
 
-void Json_manipulator::create_json(Candidates winner, vector<Candidates> participants)
+void Json_manipulator::Save_Json(string path, Candidates winner, vector<Candidates> participants)
 {
   ofstream fout;
-		fout.open("Winner.json");
+		fout.open(path);
 		Value root;
 		StreamWriterBuilder builder;
 		const std::unique_ptr<StreamWriter> writer(builder.newStreamWriter());
@@ -36,7 +36,7 @@ void Json_manipulator::create_json(Candidates winner, vector<Candidates> partici
 		writer->write(root, &fout);
 }
 
-void Json_manipulator::read_json()
+void Json_manipulator::Read_Json()
 {
 	ifstream fin("Winner.json");
 	Value root;
