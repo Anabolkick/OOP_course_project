@@ -737,10 +737,12 @@ namespace Project1 {
 		block.Win(Rez, amount);
 		if (block.CompId(0) != 0){
 				MyForm4^ chartForm = gcnew MyForm4();
-			chartForm->chartResults->Series["Results"]->IsValueShownAsLabel = true;
+				chartForm->chartResults->Series["Results"]->IsValueShownAsLabel = true;
 			for (int i = 0; i < amount; i++) {
-				String^ tmp = String_manipulator::system_string(Rez[i].GetC());
-				chartForm->chartResults->Series["Results"]->Points->AddXY(tmp, Rez[i].Geta());
+				if (Rez[i].Geta() != 0) {
+					String^ tmp = String_manipulator::system_string(Rez[i].GetC());
+					chartForm->chartResults->Series["Results"]->Points->AddXY(tmp, Rez[i].Geta());
+				}
 			}
 			chartForm->Show();
 		}
