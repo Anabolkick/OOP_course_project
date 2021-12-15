@@ -68,6 +68,14 @@ void INF::SetAll(string name, string HaSh, long Id, string vote)
 	SetV(vote);
 }
 
+void INF::SetAllEmpty()
+{
+	FullName = "";
+	Id = 0;
+	HAsh = "";
+	Vote = "";
+}
+
 
 
 Node::Node()
@@ -141,12 +149,18 @@ void Node::del(int h)
 
 }
 
+void Node::SetAllEmpty()
+{
+	pNext = nullptr;
+	pPrev = nullptr;
+}
+
 void Chain::del(string h)//не забіть добавить Name+to_string(Id)
 {
 	Hash H;
 	H.getHash(h, 16);
 	if (size == 1 && Head->GetH() == H.GetH()) { //удаление если 1 голова
-		delete Head;
+		SetAllEmpty();
 	}
 	else if (Head->GetH() == H.GetH()) { //удаление если ошибка в глове
 		Node* current = Head;
@@ -173,6 +187,13 @@ void Chain::del(string h)//не забіть добавить Name+to_string(Id)
 
 	}
 
+}
+
+void Chain::SetAllEmpty()
+{
+	Head = nullptr;
+	Tail = nullptr;
+	size = 0;
 }
 
 Chain::~Chain()
@@ -386,6 +407,12 @@ void Candidates::SetAll(string C, int a)
 	SetC(C);
 	Seta(a);
 
+}
+
+void Candidates::SetAllEmpty()
+{
+	Cand = "";
+	amount = 0;
 }
 
 
