@@ -679,7 +679,7 @@ namespace Project1 {
 			if (saveFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK)
 			{
 				string path = String_manipulator::std_string(saveFileDialog->FileName);
-				Json_manipulator::Save_Json(path, winner, participants);
+				Json_manipulator::SaveJson(path, winner, participants);
 				MessageBox::Show(this, "JSON file has been saved!", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 			}
 			

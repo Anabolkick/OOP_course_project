@@ -8,7 +8,7 @@ using namespace Json;
 using namespace std;
 
 
-void Json_manipulator::Save_Json(string path, Candidates winner, vector<Candidates> participants)
+void Json_manipulator::SaveJson(string path, Candidates winner, vector<Candidates> participants)
 {
   ofstream fout;
 		fout.open(path);
@@ -36,7 +36,7 @@ void Json_manipulator::Save_Json(string path, Candidates winner, vector<Candidat
 		writer->write(root, &fout);
 }
 
-void Json_manipulator::Read_Json()
+void Json_manipulator::ReadJson()
 {
 	ifstream fin("Winner.json");
 	Value root;
