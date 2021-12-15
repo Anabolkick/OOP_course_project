@@ -10,7 +10,7 @@
 
 //using namespace std;
 Chain block;
-const int amount = 3;//166 строка
+const int amount = 3;//192 строка
 Candidates* Rez = new Candidates[amount];
 
 namespace Project1 {
@@ -189,7 +189,7 @@ namespace Project1 {
 			// 
 			this->voteOptions->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->voteOptions->FormattingEnabled = true;
-			this->voteOptions->Items->AddRange(gcnew cli::array< System::Object^  >(3) {
+			this->voteOptions->Items->AddRange(gcnew cli::array< System::Object^  >(amount) {//Добавить кандидата в 491 строку и изменить amount 9 строка
 				L"Somov Ivan Nikolaevich", L"Sokolenko Maria Dmitrievna",
 					L"Dushnarev Nikita Aleksandrovich"
 			});
@@ -489,6 +489,13 @@ namespace Project1 {
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e)
 	{
 		loadData->ShowDialog();
+		Rez[0].SetC("Somov Ivan Nikolaevich");//166 строка хранит даные о кандидатах
+		Rez[1].SetC("Sokolenko Maria Dmitrievna");
+		Rez[2].SetC("Dushnarev Nikita Aleksandrovich");
+		for (int i = 0; i < amount; i++)
+		{
+			Rez[i].Seta(0);
+		}
 	}
 
 	private: System::Void manualLoad_Click(System::Object^ sender, System::EventArgs^ e)
@@ -646,14 +653,11 @@ namespace Project1 {
 	}
 	private: System::Void saveResultsBtn_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		Rez[0].SetC("Somov Ivan Nikolaevich");//166 строка хранит даные о кандидатах
-		Rez[1].SetC("Sokolenko Maria Dmitrievna");
-		Rez[2].SetC("Dushnarev Nikita Aleksandrovich");
+		
 		for (int i = 0; i < amount; i++)
 		{
 			Rez[i].Seta(0);
 		}
-
 		block.Voice(Rez, amount);
 		block.Win(Rez, amount);
 
@@ -707,7 +711,14 @@ namespace Project1 {
 		developersInfo->Show();
 	}
 	private: System::Void chartToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		block.Voice(Rez, amount);
+		block.Win(Rez, amount);
 		MyForm4^ chartForm = gcnew MyForm4();
+		chartForm->chartResults->Series["Results"]->IsValueShownAsLabel = true;
+		for (int i = 0; i < amount; i++) {
+			String^ tmp = String_manipulator::system_string(Rez[i].GetC());
+			chartForm->chartResults->Series["Results"]->Points->AddXY(tmp, Rez[i].Geta());
+		}
 		chartForm->Show();
 	}
 	private: System::Void groupBox2_Enter(System::Object^ sender, System::EventArgs^ e) {

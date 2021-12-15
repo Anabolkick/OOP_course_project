@@ -78,7 +78,7 @@ Node::Node()
 
 Node::~Node()
 {
-	delete[] pNext;
+	//delete[] pNext;
 	//delete[] pPrev;
 }
 
@@ -141,38 +141,39 @@ void Node::del(int h)
 
 }
 
-//void Chain::del(int h)//не забіть добавить Name+to_string(Id)
-//{
-//
-//	if (size == 1 && Head->GetH() == H.GetH()) { //удаление если 1 голова
-//		delete Head;
-//	}
-//	else if (Head->GetH() == H.GetH()) { //удаление если ошибка в глове
-//		Node* current = Head;
-//		Head = current->GetNext();
-//		Head->SetPrev(nullptr);
-//		delete current;
-//	}
-//	else if (Tail->GetH() == H.GetH()) {
-//		Node* prev = Tail->GetPrev(), * todel;
-//		todel = Tail;
-//		Tail = prev;
-//		delete todel;
-//	}
-//	else if (CompH(Head, H.GetH()) != 1) {//удаление
-//		Node* current = Head, * prev = nullptr, * next = nullptr;
-//		while (current->GetH() != H.GetH()) {
-//			prev = current;
-//			current = current->GetNext();
-//		}
-//		prev->SetNext(current->GetNext());
-//		next = current->GetNext();
-//		next->SetPrev(prev);
-//		delete[] current;
-//
-//	}
-//
-//}
+void Chain::del(string h)//не забіть добавить Name+to_string(Id)
+{
+	Hash H;
+	H.getHash(h, 16);
+	if (size == 1 && Head->GetH() == H.GetH()) { //удаление если 1 голова
+		delete Head;
+	}
+	else if (Head->GetH() == H.GetH()) { //удаление если ошибка в глове
+		Node* current = Head;
+		Head = current->GetNext();
+		Head->SetPrev(nullptr);
+		delete current;
+	}
+	else if (Tail->GetH() == H.GetH()) {
+		Node* prev = Tail->GetPrev(), * todel;
+		todel = Tail;
+		Tail = prev;
+		delete todel;
+	}
+	else if (CompH(Head, H.GetH()) != 1) {//удаление
+		Node* current = Head, * prev = nullptr, * next = nullptr;
+		while (current->GetH() != H.GetH()) {
+			prev = current;
+			current = current->GetNext();
+		}
+		prev->SetNext(current->GetNext());
+		next = current->GetNext();
+		next->SetPrev(prev);
+		delete[] current;
+
+	}
+
+}
 
 Chain::~Chain()
 {
@@ -242,7 +243,7 @@ int Chain::CompH(Node* head, string H)
 	str = h.getHash(H, 16);
 	Node* tmp, * current = nullptr;
 	tmp = Head;
-	int c = 0;
+	signed int c = 0;
 	while (tmp != nullptr) {
 		if (tmp->GetH() != str) {
 			c++;

@@ -79,6 +79,7 @@ public:
 	Candidates* Win(Candidates* Vote, int amount);
 	string ShowV(long a);
 	string GetTailH();
+	void del(string h);
 
 	//friend ostream& operator<<(ostream& stream, Chain& c);
 

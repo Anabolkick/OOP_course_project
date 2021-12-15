@@ -64,7 +64,7 @@ public:
 					this->hash += PasID[i];
 
 			}
-			//добавление солей
+			//добавление кода
 			this->hash += this->getCod(OrgSaul);
 			this->hash += this->getCod(OrgLen);
 			this->hash += this->getCod(maxSaul);
