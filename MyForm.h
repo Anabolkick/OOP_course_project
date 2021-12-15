@@ -12,6 +12,8 @@
 Chain block;
 const int amount = 3;//192 строка
 Candidates* Rez = new Candidates[amount];
+string message;
+Exeption ex;
 
 namespace Project1 {
 
@@ -452,8 +454,7 @@ namespace Project1 {
 		}
 		catch (Csv_manipulator::FileStatus status)
 		{
-			string message;
-			Exeption ex;
+			
 
 			switch (status)
 			{
@@ -510,8 +511,11 @@ namespace Project1 {
 		}
 		else
 		{
-			Exeption ex("Couldn`t open file selector", 6);
+			message = "Couldn`t open file selector";
+			ex.SetCode(6);
+			ex.SetMessage(message);
 			Exeption::Show_exeption(ex);
+			
 		}
 	};
 
@@ -530,9 +534,7 @@ namespace Project1 {
 		//ID
 		string id_str = String_manipulator::std_string(searchByID->Text);
 		long id = atoi(id_str.c_str());
-		string c = block.ShowV(id);
-		String^ search;
-		search = gcnew System::String(c.c_str());
+		String^ search = String_manipulator::system_string(block.ShowV(id));
 
 		MessageBox::Show(this, search, "Result", MessageBoxButtons::OK, MessageBoxIcon::Information);
 
@@ -583,8 +585,11 @@ namespace Project1 {
 			catch (bool temp)
 			{
 				if (temp == false) {
-					Exeption ex("Enter a full info!", 2);
+					message = "Enter a full info!";
+					ex.SetCode(2);
+					ex.SetMessage(message);
 					Exeption::Show_exeption(ex);
+					
 				}
 				else {
 					string id_str = String_manipulator::std_string(passportID->Text);
@@ -605,20 +610,26 @@ namespace Project1 {
 					}
 					else
 					{
-						Exeption ex("You have already voted!", 1);
+						message = "You have already votted";
+						ex.SetCode(1);
+						ex.SetMessage(message);
 						Exeption::Show_exeption(ex);
 					}
 				}
 			}
 			catch (...) {
-				Exeption ex("Enter a full info!", 2);
+				message = "Enter a full info!";
+				ex.SetCode(2);
+				ex.SetMessage(message);
 				Exeption::Show_exeption(ex);
 			}
 		}
 
 		else
 		{
-			Exeption ex("Accept the agreement!", 3);
+			message = "Accept the agreement";
+			ex.SetCode(3);
+			ex.SetMessage(message);
 			Exeption::Show_exeption(ex);
 		}
 	}
@@ -634,7 +645,9 @@ namespace Project1 {
 		}
 		else
 		{
-			Exeption ex("Couldn`t open file", 6);
+			message = "Couldn`t open file";
+			ex.SetCode(6);
+			ex.SetMessage(message);
 			Exeption::Show_exeption(ex);
 		}
 	}
@@ -651,7 +664,9 @@ namespace Project1 {
 		}
 		else
 		{
-			Exeption ex("Couldn`t save file", 7);
+			message = "Couldn`t save file";
+			ex.SetCode(7);
+			ex.SetMessage(message);
 			Exeption::Show_exeption(ex);
 		}
 	}
@@ -694,8 +709,11 @@ namespace Project1 {
 		}
 		else
 		{
-			Exeption ex("All candidates have 0 votes!", 4);
+			message = "All candidates have 0 votes!";
+			ex.SetCode(4);
+			ex.SetMessage(message);
 			Exeption::Show_exeption(ex);
+			
 		}
 
 	}
@@ -717,13 +735,21 @@ namespace Project1 {
 	private: System::Void chartToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		block.Voice(Rez, amount);
 		block.Win(Rez, amount);
-		MyForm4^ chartForm = gcnew MyForm4();
-		chartForm->chartResults->Series["Results"]->IsValueShownAsLabel = true;
-		for (int i = 0; i < amount; i++) {
-			String^ tmp = String_manipulator::system_string(Rez[i].GetC());
-			chartForm->chartResults->Series["Results"]->Points->AddXY(tmp, Rez[i].Geta());
+		if (block.CompId(0) != 0){
+				MyForm4^ chartForm = gcnew MyForm4();
+			chartForm->chartResults->Series["Results"]->IsValueShownAsLabel = true;
+			for (int i = 0; i < amount; i++) {
+				String^ tmp = String_manipulator::system_string(Rez[i].GetC());
+				chartForm->chartResults->Series["Results"]->Points->AddXY(tmp, Rez[i].Geta());
+			}
+			chartForm->Show();
 		}
-		chartForm->Show();
+		else {
+			message = "No one has voted yet!";
+			ex.SetCode(10);
+			ex.SetMessage(message);
+			Exeption::Show_exeption(ex);
+		}
 	}
 	private: System::Void groupBox2_Enter(System::Object^ sender, System::EventArgs^ e) {
 	}
