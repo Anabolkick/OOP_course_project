@@ -98,11 +98,11 @@ namespace Project1 {
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label2->Location = System::Drawing::Point(8, 440);
+			this->label2->Location = System::Drawing::Point(0, 440);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(506, 20);
+			this->label2->Size = System::Drawing::Size(515, 20);
 			this->label2->TabIndex = 3;
-			this->label2->Text = L"Example of completed searching form. In Searc can be only 8 numbers\r\n";
+			this->label2->Text = L"Example of completed searching form. In Search can be only 8 numbers\r\n";
 			// 
 			// MyForm2
 			// 

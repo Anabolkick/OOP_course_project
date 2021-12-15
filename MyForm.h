@@ -610,6 +610,10 @@ namespace Project1 {
 					}
 				}
 			}
+			catch (...) {
+				Exeption ex("Enter a full info!", 2);
+				Exeption::Show_exeption(ex);
+			}
 		}
 
 		else
