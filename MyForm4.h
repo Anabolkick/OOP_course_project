@@ -70,6 +70,8 @@ namespace Project1 {
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->chartResults->BackImageAlignment = System::Windows::Forms::DataVisualization::Charting::ChartImageAlignmentStyle::Center;
+			this->chartResults->BorderlineColor = System::Drawing::Color::Black;
+			this->chartResults->BorderlineWidth = 20;
 			chartArea1->BackImageAlignment = System::Windows::Forms::DataVisualization::Charting::ChartImageAlignmentStyle::Center;
 			chartArea1->Name = L"ChartArea1";
 			chartArea1->Position->Auto = false;
@@ -89,10 +91,14 @@ namespace Project1 {
 			this->chartResults->Location = System::Drawing::Point(0, 0);
 			this->chartResults->MinimumSize = System::Drawing::Size(550, 450);
 			this->chartResults->Name = L"chartResults";
+			series1->BorderColor = System::Drawing::Color::Black;
 			series1->ChartArea = L"ChartArea1";
 			series1->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Pie;
 			series1->Legend = L"Legend1";
+			series1->MarkerSize = 20;
 			series1->Name = L"Results";
+			series1->Palette = System::Windows::Forms::DataVisualization::Charting::ChartColorPalette::BrightPastel;
+			series1->SmartLabelStyle->CalloutLineWidth = 5;
 			this->chartResults->Series->Add(series1);
 			this->chartResults->Size = System::Drawing::Size(622, 474);
 			this->chartResults->TabIndex = 0;
