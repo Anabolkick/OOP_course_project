@@ -36,27 +36,6 @@ void Json_manipulator::SaveJson(string path, Candidates winner, vector<Candidate
 		writer->write(root, &fout);
 }
 
-void Json_manipulator::ReadJson()
-{
-	ifstream fin("Winner.json");
-	Value root;
-	JSONCPP_STRING errs;
-	CharReaderBuilder builder;
-	builder["collectComments"] = true;
-	bool success = parseFromStream(builder, fin, &root, &errs);
-	if (!success)
-	{
-		cout << errs << std::endl;
-		//TODO catch exeption
-	}
-	cout << "Winner: " << root["winner"] << '\n';
 
-	Value partic = root["participants"];
-
-	for (int index = 0; index < partic.size(); ++index)
-	{
-		cout << partic[index]["name"] << endl;
-	}
-}
 
 
