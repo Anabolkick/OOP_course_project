@@ -8,7 +8,8 @@ using namespace std;
 
 class String_manipulator
 {
-public:
+public:;
 	static string std_string(String^ str);
 	static String^ system_string(string str);
+	static wstring std_wstring(String^ str);
 };
