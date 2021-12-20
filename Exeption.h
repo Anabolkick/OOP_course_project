@@ -19,7 +19,6 @@ public:
     String^ getMessage();
     void SetMessage(string message);
     void SetCode(int code);
-    static void Show_exeption(Exeption ex);
-  
+    static void Show_exeption(Exeption ex); 
 };
 
