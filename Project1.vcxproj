@@ -146,10 +146,8 @@
     <ClInclude Include="json\forwards.h" />
     <ClInclude Include="json\json.h" />
     <ClInclude Include="json\json_features.h" />
-    <ClInclude Include="json\reader.h" />
     <ClInclude Include="json\value.h" />
     <ClInclude Include="json\version.h" />
-    <ClInclude Include="json\writer.h" />
     <ClInclude Include="Json_manipulator.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
