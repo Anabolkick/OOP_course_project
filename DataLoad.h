@@ -17,7 +17,7 @@ namespace Project1 {
 	/// <summary>
 	/// Summary for MyForm1
 	/// </summary>
-	public ref class MyForm1 : public System::Windows::Forms::Form
+	public ref class DataLoad : public System::Windows::Forms::Form
 	{
 	public:
 	//	MyForm^ loadData;	 ////////////////////
@@ -26,7 +26,7 @@ namespace Project1 {
 			InitializeComponent();
 			loadData = main;
 		}*/					   /////////////////////
-		MyForm1()
+		DataLoad()
 		{
 			InitializeComponent();
 		}
@@ -35,7 +35,7 @@ namespace Project1 {
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~MyForm1()
+		~DataLoad()
 		{
 			if (components)
 			{
@@ -74,7 +74,7 @@ namespace Project1 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm1::typeid));
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(DataLoad::typeid));
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->yesButton = (gcnew System::Windows::Forms::Button());
 			this->noButton = (gcnew System::Windows::Forms::Button());
@@ -116,7 +116,7 @@ namespace Project1 {
 			this->noButton->TabIndex = 7;
 			this->noButton->Text = L"Do not load";
 			this->noButton->UseVisualStyleBackColor = true;
-			this->noButton->Click += gcnew System::EventHandler(this, &MyForm1::noButton_Click);
+			this->noButton->Click += gcnew System::EventHandler(this, &DataLoad::noButton_Click);
 			// 
 			// openFileDialog1
 			// 
@@ -159,7 +159,7 @@ namespace Project1 {
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void noButton_Click(System::Object^ sender, System::EventArgs^ e) {
-		MyForm1::Close();
+		DataLoad::Close();
 	}
 
 

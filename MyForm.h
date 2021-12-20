@@ -3,7 +3,7 @@
 #include "Exeption.h"
 #include "Set.h"
 #include "Json_manipulator.h"
-#include "MyForm1.h"
+#include "DataLoad.h"
 #include "MyForm2.h"
 #include "MyForm3.h"
 #include "MyForm4.h"
@@ -154,7 +154,7 @@ namespace Project1 {
 	private: System::Windows::Forms::Button^ searchButton;
 	private: System::Windows::Forms::GroupBox^ groupBox2;
 	private: System::Windows::Forms::GroupBox^ groupBox3;
-	private: MyForm1^ loadData = gcnew MyForm1();
+	private: DataLoad^ loadData = gcnew DataLoad();
 
 
 	private: System::Windows::Forms::OpenFileDialog^ openFileDialog;

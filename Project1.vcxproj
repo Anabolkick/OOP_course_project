@@ -130,7 +130,7 @@
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="Csv_manipulator.cpp" />
     <ClCompile Include="MyForm1.cpp" />
-    <ClCompile Include="MyForm2.cpp" />
+    <ClCompile Include="DataLoad.cpp" />
     <ClCompile Include="MyForm3.cpp" />
     <ClCompile Include="MyForm4.cpp" />
     <ClCompile Include="Set.cpp" />
@@ -152,7 +152,7 @@
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="MyForm1.h">
+    <ClInclude Include="DataLoad.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="MyForm2.h">
@@ -171,8 +171,8 @@
     <EmbeddedResource Include="MyForm.resx">
       <DependentUpon>MyForm.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MyForm1.resx">
-      <DependentUpon>MyForm1.h</DependentUpon>
+    <EmbeddedResource Include="DataLoad.resx">
+      <DependentUpon>DataLoad.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MyForm2.resx">
       <DependentUpon>MyForm2.h</DependentUpon>
