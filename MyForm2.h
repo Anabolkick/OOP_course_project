@@ -78,11 +78,11 @@ namespace Project1 {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label1->Location = System::Drawing::Point(32, 280);
+			this->label1->Location = System::Drawing::Point(64, 280);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(454, 20);
+			this->label1->Size = System::Drawing::Size(406, 20);
 			this->label1->TabIndex = 1;
-			this->label1->Text = L"Example of completed voting form. In ID can be only 8 numbers\r\n";
+			this->label1->Text = L"Приклад правильно заповненої форми голосування";
 			// 
 			// pictureBox2
 			// 
@@ -98,11 +98,11 @@ namespace Project1 {
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label2->Location = System::Drawing::Point(0, 440);
+			this->label2->Location = System::Drawing::Point(80, 440);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(515, 20);
+			this->label2->Size = System::Drawing::Size(364, 20);
 			this->label2->TabIndex = 3;
-			this->label2->Text = L"Example of completed searching form. In Search can be only 8 numbers\r\n";
+			this->label2->Text = L"Приклад правильно заповненої форми пошуку";
 			// 
 			// MyForm2
 			// 
@@ -115,6 +115,8 @@ namespace Project1 {
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->pictureBox1);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->MaximumSize = System::Drawing::Size(537, 511);
+			this->MinimumSize = System::Drawing::Size(537, 511);
 			this->Name = L"MyForm2";
 			this->Text = L"ChainVote";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();

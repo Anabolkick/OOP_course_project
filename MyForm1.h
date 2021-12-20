@@ -87,11 +87,11 @@ namespace Project1 {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label1->Location = System::Drawing::Point(40, 32);
+			this->label1->Location = System::Drawing::Point(16, 32);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(198, 20);
+			this->label1->Size = System::Drawing::Size(279, 20);
 			this->label1->TabIndex = 2;
-			this->label1->Text = L"How to load data from file\?";
+			this->label1->Text = L"як бажаЇте загрузити ≥нформац≥ю\?";
 			// 
 			// yesButton
 			// 
@@ -100,10 +100,10 @@ namespace Project1 {
 				static_cast<System::Byte>(204)));
 			this->yesButton->Location = System::Drawing::Point(32, 72);
 			this->yesButton->Name = L"yesButton";
-			this->yesButton->Size = System::Drawing::Size(96, 24);
+			this->yesButton->Size = System::Drawing::Size(104, 24);
 			this->yesButton->TabIndex = 6;
 			this->yesButton->TabStop = false;
-			this->yesButton->Text = L"Autoload";
+			this->yesButton->Text = L"јвтоматично";
 			this->yesButton->UseVisualStyleBackColor = true;
 			// 
 			// noButton
@@ -112,9 +112,9 @@ namespace Project1 {
 				static_cast<System::Byte>(204)));
 			this->noButton->Location = System::Drawing::Point(96, 112);
 			this->noButton->Name = L"noButton";
-			this->noButton->Size = System::Drawing::Size(96, 24);
+			this->noButton->Size = System::Drawing::Size(112, 24);
 			this->noButton->TabIndex = 7;
-			this->noButton->Text = L"Do not load";
+			this->noButton->Text = L"Ќе загружати";
 			this->noButton->UseVisualStyleBackColor = true;
 			this->noButton->Click += gcnew System::EventHandler(this, &MyForm1::noButton_Click);
 			// 
@@ -128,12 +128,12 @@ namespace Project1 {
 			this->manualLoad->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
 			this->manualLoad->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->manualLoad->Location = System::Drawing::Point(160, 72);
+			this->manualLoad->Location = System::Drawing::Point(168, 72);
 			this->manualLoad->Name = L"manualLoad";
-			this->manualLoad->Size = System::Drawing::Size(96, 24);
+			this->manualLoad->Size = System::Drawing::Size(104, 24);
 			this->manualLoad->TabIndex = 8;
 			this->manualLoad->TabStop = false;
-			this->manualLoad->Text = L"Manually";
+			this->manualLoad->Text = L"ќбрати файл";
 			this->manualLoad->UseVisualStyleBackColor = true;
 			// 
 			// MyForm1
@@ -141,12 +141,14 @@ namespace Project1 {
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoValidate = System::Windows::Forms::AutoValidate::EnablePreventFocusChange;
-			this->ClientSize = System::Drawing::Size(289, 154);
+			this->ClientSize = System::Drawing::Size(313, 163);
 			this->Controls->Add(this->manualLoad);
 			this->Controls->Add(this->noButton);
 			this->Controls->Add(this->yesButton);
 			this->Controls->Add(this->label1);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->MaximumSize = System::Drawing::Size(329, 202);
+			this->MinimumSize = System::Drawing::Size(329, 202);
 			this->Name = L"MyForm1";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"ChainVote";
