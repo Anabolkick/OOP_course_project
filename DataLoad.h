@@ -2,7 +2,7 @@
 #include "Exeption.h"
 #include "Csv_manipulator.h"
 #include "String_manipulator.h"
-//#include "MyForm.h"		 /////////////////
+
 
 namespace Project1 {
 
@@ -19,13 +19,7 @@ namespace Project1 {
 	/// </summary>
 	public ref class DataLoad : public System::Windows::Forms::Form
 	{
-	public:
-	//	MyForm^ loadData;	 ////////////////////
-		/*MyForm1(MyForm^ main)		////////////////
-		{
-			InitializeComponent();
-			loadData = main;
-		}*/					   /////////////////////
+	public:				 
 		DataLoad()
 		{
 			InitializeComponent();
