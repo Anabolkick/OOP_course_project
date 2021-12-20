@@ -157,6 +157,7 @@ namespace Project1 {
 	private: System::Windows::Forms::GroupBox^ groupBox2;
 	private: System::Windows::Forms::GroupBox^ groupBox3;
 	private: DataLoad^ loadData = gcnew DataLoad();
+	private: AdminPanel^ panel = gcnew AdminPanel();
 
 
 	private: System::Windows::Forms::OpenFileDialog^ openFileDialog;
@@ -177,6 +178,13 @@ namespace Project1 {
 	private: System::Windows::Forms::ToolStripMenuItem^ adminsToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ controlPanelToolStripMenuItem;
 
+	private: System::Void addCandidates_Click(System::Object^ sender, System::EventArgs^ e) {
+		
+	};
+
+	private: System::Void exportInfoCSV_Click(System::Object^ sender, System::EventArgs^ e) {
+		
+	};
 
 	protected:
 
@@ -222,6 +230,10 @@ namespace Project1 {
 			this->chartToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->adminsToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->controlPanelToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+
+			this->panel->addCandidates->Click += gcnew System::EventHandler(this, &MyForm::addCandidates_Click);
+			this->panel->exportInfoCSV->Click += gcnew System::EventHandler(this, &MyForm::exportInfoCSV_Click);
+
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->groupBox3->SuspendLayout();

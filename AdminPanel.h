@@ -35,9 +35,12 @@ namespace Project1 {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Button^ addCandidates;
+	public: System::Windows::Forms::Button^ addCandidates;
+	public: System::Windows::Forms::Button^ exportInfoCSV;
 	protected:
-	private: System::Windows::Forms::Button^ exportInfoCSV;
+
+	protected:
+
 	private: System::Windows::Forms::SaveFileDialog^ saveFileDialog1;
 	private: System::Windows::Forms::OpenFileDialog^ openFileDialog1;
 
@@ -100,14 +103,14 @@ namespace Project1 {
 		}
 #pragma endregion
 	private: System::Void exportInfoCSV_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (saveFileDialog1->ShowDialog() == Windows::Forms::DialogResult::OK) {
+		/*if (saveFileDialog1->ShowDialog() == Windows::Forms::DialogResult::OK) {
 			
-		}
+		}*/
 	};
 	private: System::Void addCandidates_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (openFileDialog1->ShowDialog() == Windows::Forms::DialogResult::OK) {
+		/*if (openFileDialog1->ShowDialog() == Windows::Forms::DialogResult::OK) {
 
-		}
+		}*/
 	}
 	};
 }
