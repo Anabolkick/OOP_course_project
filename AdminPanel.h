@@ -101,12 +101,12 @@ namespace Project1 {
 #pragma endregion
 	private: System::Void exportInfoCSV_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (saveFileDialog1->ShowDialog() == Windows::Forms::DialogResult::OK) {
-			MessageBox::Show(this, "sdfa", "Sdfa");
+			
 		}
 	};
 	private: System::Void addCandidates_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (openFileDialog1->ShowDialog() == Windows::Forms::DialogResult::OK) {
-			MessageBox::Show(this, "sdfa", "Sdfa");
+
 		}
 	}
 	};
