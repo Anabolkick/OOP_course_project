@@ -80,9 +80,6 @@
     <ClInclude Include="MyForm1.h">
       <Filter>Файлы ресурсов</Filter>
     </ClInclude>
-    <ClInclude Include="MyForm2.h">
-      <Filter>Файлы ресурсов</Filter>
-    </ClInclude>
     <ClInclude Include="MyForm3.h">
       <Filter>Файлы ресурсов</Filter>
     </ClInclude>
@@ -112,6 +109,9 @@
     </ClInclude>
     <ClInclude Include="json\value.h">
       <Filter>Файлы заголовков\jsoncpp</Filter>
+    </ClInclude>
+    <ClInclude Include="MyForm2.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
