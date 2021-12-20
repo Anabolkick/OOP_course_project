@@ -15,6 +15,89 @@ Candidates* Rez = new Candidates[amount];
 string message;
 Exeption ex;
 
+string Translit(string str)
+{
+	string N;
+	for (int i=0; i<str.size() ; i++)
+	{
+		switch (str[i])
+		{
+		case 'а': N+= "a"; break;
+		case 'б': N+= "b"; break;
+		case 'в': N+= "v"; break;
+		case 'г': N+= "g"; break;
+		case 'д': N+= "d"; break;
+		case 'е': N+= "e"; break;
+		case 'ё': N+= "ye"; break;
+		case 'ж': N+= "zh"; break;
+		case 'з': N+= "z"; break;
+		case 'и': N+= "i"; break;
+		case 'й': N+= "y"; break;
+		case 'к': N+= "k"; break;
+		case 'л': N+= "l"; break;
+		case 'м': N+= "m"; break;
+		case 'н': N+= "n"; break;
+		case 'о': N+= "o"; break;
+		case 'п': N+= "p"; break;
+		case 'р': N+= "r"; break;
+		case 'с': N+= "s"; break;
+		case 'т': N+= "t"; break;
+		case 'у': N+= "u"; break;
+		case 'ф': N+= "f"; break;
+		case 'х': N+= "ch"; break;
+		case 'ц': N+= "z"; break;
+		case 'ч': N+= "ch"; break;
+		case 'ш': N+= "sh"; break;
+		case 'щ': N+= "ch"; break;
+		case 'ъ': N+= "''"; break;
+		case 'ы': N+= "y"; break;
+		case 'ь': N+= "''"; break;
+		case 'э': N+= "e"; break;
+		case 'ю': N+= "yu"; break;
+		case 'я': N+= "ya"; break;
+		case 'і': N += "i"; break;
+		case 'ї': N += "yi"; break;
+		case 'А': N+= "A"; break;
+		case 'Б': N+= "B"; break;
+		case 'В': N+= "V"; break;
+		case 'Г': N+= "G"; break;
+		case 'Д': N+= "D"; break;
+		case 'Е': N+= "E"; break;
+		case 'Ё': N+= "Ye"; break;
+		case 'Ж': N+= "Zh"; break;
+		case 'З': N+= "Z"; break;
+		case 'И': N+= "I"; break;
+		case 'Й': N+= "Y"; break;
+		case 'К': N+= "K"; break;
+		case 'Л': N+= "L"; break;
+		case 'М': N+= "M"; break;
+		case 'Н': N+= "N"; break;
+		case 'О': N+= "O"; break;
+		case 'П': N+= "P"; break;
+		case 'Р': N+= "R"; break;
+		case 'С': N+= "S"; break;
+		case 'Т': N+= "T"; break;
+		case 'У': N+= "U"; break;
+		case 'Ф': N+= "F"; break;
+		case 'Х': N+= "Ch"; break;
+		case 'Ц': N+= "Z"; break;
+		case 'Ч': N+= "Ch"; break;
+		case 'Ш': N+= "Sh"; break;
+		case 'Щ': N+= "Ch"; break;
+		case 'Ъ': N+= "''"; break;
+		case 'Ы': N+= "Y"; break;
+		case 'Ь': N+= "''"; break;
+		case 'Э': N+= "E"; break;
+		case 'Ю': N+= "Yu"; break;
+		case 'Я': N+= "Ya"; break;
+		case 'І': N += "I"; break;
+		case 'Ї': N += "Yi"; break;
+		default: {  N += str[i]; }
+		}
+	}
+	return N;
+}
+
 namespace Project1 {
 
 	using namespace System;
@@ -490,7 +573,7 @@ namespace Project1 {
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e)
 	{
 		loadData->ShowDialog();
-		Rez[0].SetC("Somov Ivan Nikolaevich");//166 строка хранит даные о кандидатах
+		Rez[0].SetC("Somov Ivan Nikolaevich");//192 строка хранит даные о кандидатах
 		Rez[1].SetC("Sokolenko Maria Dmitrievna");
 		Rez[2].SetC("Dushnarev Nikita Aleksandrovich");
 		for (int i = 0; i < amount; i++)
@@ -503,19 +586,27 @@ namespace Project1 {
 	{
 		//openFileDialog->Filter = "Files csv (*.csv)|*.csv";
 
-		if (openFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK)
-		{
-			string path = String_manipulator::std_string(openFileDialog->FileName);
-			TryImportCSV(path);
-			loadData->Close();
+		try {
+			if (openFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK)
+			{
+				string path = String_manipulator::std_string(openFileDialog->FileName);
+				TryImportCSV(path);
+				loadData->Close();
+				throw true;
+			}
+			else throw false;
 		}
-		else
+		catch(bool tr)
 		{
-			message = "Couldn`t open file selector";
-			ex.SetCode(6);
-			ex.SetMessage(message);
-			Exeption::Show_exeption(ex);
-			
+			if (!tr) {
+				message = "Couldn`t open file selector";
+				ex.SetCode(6);
+				ex.SetMessage(message);
+				Exeption::Show_exeption(ex);
+			}
+			else {
+				MessageBox::Show(this, "Data was loaded", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
 		}
 	};
 
@@ -546,10 +637,7 @@ namespace Project1 {
 			Node Pears;
 			try
 			{
-				//Node Pears;
 				string j = String_manipulator::std_string(voteOptions->SelectedItem->ToString());
-
-
 				if (PIB->Text == "" || passportID->Text->Length < 8 || voteOptions->SelectedItem->ToString() == "" || voteOptions->SelectedIndex < 0)
 				{
 					throw false;
@@ -558,29 +646,6 @@ namespace Project1 {
 					throw true;
 				};
 
-
-				//ID
-				//string id_str = String_manipulator::std_string(passportID->Text);
-				//long id = atoi(id_str.c_str());
-
-				////Name
-				//string name = String_manipulator::std_string(PIB->Text);
-
-				////Vote
-				//string vote = String_manipulator::std_string(voteOptions->SelectedItem->ToString());
-
-				////if (Csv_manipulator::add_csv("vote_chain.csv", id, name, vote))	 // TODO try catch
-
-				//	if (block.CompId(id) == -1 || block.CompId(id) == 0) {
-				//		Pears.SetAll(name, id, vote, block.GetTailH());
-				//		block.add(Pears);
-				//		MessageBox::Show(this, "Vote submited!", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
-				//	}
-				//	else
-				//	{
-				//		Exeption_data ex("You have already voted!", 1);
-				//		Show_exeption(ex);
-				//	}
 			}
 			catch (bool temp)
 			{
@@ -597,7 +662,7 @@ namespace Project1 {
 
 					//Name
 					string name = String_manipulator::std_string(PIB->Text);
-
+					name = Translit(name);
 					//Vote
 					string vote = String_manipulator::std_string(voteOptions->SelectedItem->ToString());
 
@@ -637,18 +702,27 @@ namespace Project1 {
 	}
 	private: System::Void importFileButton_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		if (openFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK)
-		{
-			string path = String_manipulator::std_string(openFileDialog->FileName);
-			TryImportCSV(path);
-			loadData->Close();
+		try {
+			if (openFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK)
+			{
+				string path = String_manipulator::std_string(openFileDialog->FileName);
+				TryImportCSV(path);
+				loadData->Close();
+				throw true;
+			}
+			else throw false;
 		}
-		else
+		catch(bool tr)
 		{
-			message = "Couldn`t open file";
-			ex.SetCode(6);
-			ex.SetMessage(message);
-			Exeption::Show_exeption(ex);
+			if (!tr) {
+				message = "Couldn`t open file";
+				ex.SetCode(6);
+				ex.SetMessage(message);
+				Exeption::Show_exeption(ex);
+			}
+			else {
+				MessageBox::Show(this, "Data was loaded", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
 		}
 	}
 
@@ -656,18 +730,26 @@ namespace Project1 {
 	private: System::Void exportFileButton_Click(System::Object^ sender, System::EventArgs^ e)   // TODO try catch  файла не существует
 	{
 		saveFileDialog->Filter = "Files csv (*.csv)|*.csv";
-
-		if (saveFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK)
-		{
-			string path = String_manipulator::std_string(saveFileDialog->FileName);
-			Csv_manipulator::SaveCsv(path, block.GetHead());
+		try {
+			if (saveFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK)
+			{
+				string path = String_manipulator::std_string(saveFileDialog->FileName);
+				Csv_manipulator::SaveCsv(path, block.GetHead());
+				throw true;
+			}
+			else throw false;
 		}
-		else
+		catch(bool tr)
 		{
-			message = "Couldn`t save file";
-			ex.SetCode(7);
-			ex.SetMessage(message);
-			Exeption::Show_exeption(ex);
+			if (!tr) {
+				message = "Couldn`t save file";
+				ex.SetCode(7);
+				ex.SetMessage(message);
+				Exeption::Show_exeption(ex);
+			}
+			else  {
+				MessageBox::Show(this, "Data was uploaded", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
 		}
 	}
 	private: System::Void saveResultsBtn_Click(System::Object^ sender, System::EventArgs^ e)
@@ -695,24 +777,29 @@ namespace Project1 {
 				isHaveWinner = true;
 			}
 		}
-		if (isHaveWinner)
-		{
-			saveFileDialog->Filter = "Files JSON (*.json)|*.json";
-
-			if (saveFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK)
+		try {
+			if (isHaveWinner)
 			{
-				string path = String_manipulator::std_string(saveFileDialog->FileName);
-				Json_manipulator::SaveJson(path, winner, participants);
-				MessageBox::Show(this, "JSON file has been saved!", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
-			}
+				saveFileDialog->Filter = "Files JSON (*.json)|*.json";
+
+				if (saveFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK)
+				{
+					string path = String_manipulator::std_string(saveFileDialog->FileName);
+					Json_manipulator::SaveJson(path, winner, participants);
+					MessageBox::Show(this, "JSON file has been saved!", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+					throw true;
+				}
 			
+			}
 		}
-		else
+		catch(bool tr)
 		{
-			message = "All candidates have 0 votes!";
-			ex.SetCode(4);
-			ex.SetMessage(message);
-			Exeption::Show_exeption(ex);
+			if (!tr) {
+				message = "All candidates have 0 votes!";
+				ex.SetCode(4);
+				ex.SetMessage(message);
+				Exeption::Show_exeption(ex);
+			}
 			
 		}
 
@@ -735,22 +822,27 @@ namespace Project1 {
 	private: System::Void chartToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		block.Voice(Rez, amount);
 		block.Win(Rez, amount);
-		if (block.CompId(0) != 0){
+		try {
+			if (block.CompId(0) != 0) {
 				MyForm4^ chartForm = gcnew MyForm4();
 				chartForm->chartResults->Series["Results"]->IsValueShownAsLabel = true;
-			for (int i = 0; i < amount; i++) {
-				if (Rez[i].Geta() != 0) {
-					String^ tmp = String_manipulator::system_string(Rez[i].GetC());
-					chartForm->chartResults->Series["Results"]->Points->AddXY(tmp, Rez[i].Geta());
+				for (int i = 0; i < amount; i++) {
+					if (Rez[i].Geta() != 0) {
+						String^ tmp = String_manipulator::system_string(Rez[i].GetC());
+						chartForm->chartResults->Series["Results"]->Points->AddXY(tmp, Rez[i].Geta());
+					}
 				}
+				chartForm->Show();
+				throw true;
 			}
-			chartForm->Show();
 		}
-		else {
-			message = "No one has voted yet!";
-			ex.SetCode(10);
-			ex.SetMessage(message);
-			Exeption::Show_exeption(ex);
+		catch(bool tr) {
+			if (!tr) {
+				message = "No one has voted yet!";
+				ex.SetCode(10);
+				ex.SetMessage(message);
+				Exeption::Show_exeption(ex);
+			}
 		}
 	}
 	private: System::Void groupBox2_Enter(System::Object^ sender, System::EventArgs^ e) {
