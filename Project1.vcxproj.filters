@@ -42,7 +42,7 @@
     <ClCompile Include="MyForm1.cpp">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
-    <ClCompile Include="MyForm2.cpp">
+    <ClCompile Include="DataLoad.cpp">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
     <ClCompile Include="MyForm3.cpp">
@@ -83,7 +83,7 @@
     <ClInclude Include="Csv_manipulator.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="MyForm1.h">
+    <ClInclude Include="DataLoad.h">
       <Filter>Файлы ресурсов</Filter>
     </ClInclude>
     <ClInclude Include="MyForm3.h">

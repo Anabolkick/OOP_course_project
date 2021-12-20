@@ -2,7 +2,7 @@
 #include "Exeption.h"
 #include "Csv_manipulator.h"
 #include "String_manipulator.h"
-//#include "MyForm.h"		 /////////////////
+
 
 namespace Project1 {
 
@@ -17,16 +17,10 @@ namespace Project1 {
 	/// <summary>
 	/// Summary for MyForm1
 	/// </summary>
-	public ref class MyForm1 : public System::Windows::Forms::Form
+	public ref class DataLoad : public System::Windows::Forms::Form
 	{
-	public:
-	//	MyForm^ loadData;	 ////////////////////
-		/*MyForm1(MyForm^ main)		////////////////
-		{
-			InitializeComponent();
-			loadData = main;
-		}*/					   /////////////////////
-		MyForm1()
+	public:				 
+		DataLoad()
 		{
 			InitializeComponent();
 		}
@@ -35,7 +29,7 @@ namespace Project1 {
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~MyForm1()
+		~DataLoad()
 		{
 			if (components)
 			{
@@ -74,7 +68,7 @@ namespace Project1 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm1::typeid));
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(DataLoad::typeid));
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->yesButton = (gcnew System::Windows::Forms::Button());
 			this->noButton = (gcnew System::Windows::Forms::Button());
@@ -110,13 +104,13 @@ namespace Project1 {
 			// 
 			this->noButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->noButton->Location = System::Drawing::Point(96, 112);
+			this->noButton->Location = System::Drawing::Point(32, 112);
 			this->noButton->Name = L"noButton";
-			this->noButton->Size = System::Drawing::Size(112, 24);
+			this->noButton->Size = System::Drawing::Size(248, 24);
 			this->noButton->TabIndex = 7;
-			this->noButton->Text = L"Не загружати";
+			this->noButton->Text = L"Створити нове голосування";
 			this->noButton->UseVisualStyleBackColor = true;
-			this->noButton->Click += gcnew System::EventHandler(this, &MyForm1::noButton_Click);
+			this->noButton->Click += gcnew System::EventHandler(this, &DataLoad::noButton_Click);
 			// 
 			// openFileDialog1
 			// 
@@ -130,13 +124,13 @@ namespace Project1 {
 				static_cast<System::Byte>(204)));
 			this->manualLoad->Location = System::Drawing::Point(168, 72);
 			this->manualLoad->Name = L"manualLoad";
-			this->manualLoad->Size = System::Drawing::Size(104, 24);
+			this->manualLoad->Size = System::Drawing::Size(112, 24);
 			this->manualLoad->TabIndex = 8;
 			this->manualLoad->TabStop = false;
 			this->manualLoad->Text = L"Обрати файл";
 			this->manualLoad->UseVisualStyleBackColor = true;
 			// 
-			// MyForm1
+			// DataLoad
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
@@ -149,7 +143,7 @@ namespace Project1 {
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->MaximumSize = System::Drawing::Size(329, 202);
 			this->MinimumSize = System::Drawing::Size(329, 202);
-			this->Name = L"MyForm1";
+			this->Name = L"DataLoad";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"ChainVote";
 			this->ResumeLayout(false);
@@ -161,7 +155,7 @@ namespace Project1 {
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void noButton_Click(System::Object^ sender, System::EventArgs^ e) {
-		MyForm1::Close();
+		DataLoad::Close();
 	}
 
 

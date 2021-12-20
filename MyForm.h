@@ -3,10 +3,12 @@
 #include "Exeption.h"
 #include "Set.h"
 #include "Json_manipulator.h"
-#include "MyForm1.h"
+#include "DataLoad.h"
 #include "MyForm2.h"
 #include "MyForm3.h"
 #include "MyForm4.h"
+#include "PasswordForm.h"
+#include "AdminPanel.h"
 
 //using namespace std;
 Chain block;
@@ -154,7 +156,7 @@ namespace Project1 {
 	private: System::Windows::Forms::Button^ searchButton;
 	private: System::Windows::Forms::GroupBox^ groupBox2;
 	private: System::Windows::Forms::GroupBox^ groupBox3;
-	private: MyForm1^ loadData = gcnew MyForm1();
+	private: DataLoad^ loadData = gcnew DataLoad();
 
 
 	private: System::Windows::Forms::OpenFileDialog^ openFileDialog;
@@ -173,7 +175,8 @@ namespace Project1 {
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::ToolStripMenuItem^ adminsToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ ïàíåëüÊåðóâàííÿToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ controlPanelToolStripMenuItem;
+
 
 	protected:
 
@@ -218,7 +221,7 @@ namespace Project1 {
 			this->statiToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->chartToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->adminsToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->ïàíåëüÊåðóâàííÿToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->controlPanelToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->groupBox3->SuspendLayout();
@@ -278,9 +281,9 @@ namespace Project1 {
 			// 
 			this->voteOptions->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->voteOptions->FormattingEnabled = true;
-			this->voteOptions->Items->AddRange(gcnew cli::array< System::Object^  >(4) {
+			this->voteOptions->Items->AddRange(gcnew cli::array< System::Object^  >(3) {
 				L"Somov Ivan Nikolaevich", L"Sokolenko Maria Dmitrievna",
-					L"Dushnarev Nikita Aleksandrovich", L"²âàíîâ ²âàí ²âàíîâè÷"
+					L"Dushnarev Nikita Aleksandrovich"
 			});
 			this->voteOptions->Location = System::Drawing::Point(24, 120);
 			this->voteOptions->Name = L"voteOptions";
@@ -471,14 +474,14 @@ namespace Project1 {
 			// helpToolStripMenuItem
 			// 
 			this->helpToolStripMenuItem->Name = L"helpToolStripMenuItem";
-			this->helpToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->helpToolStripMenuItem->Size = System::Drawing::Size(141, 22);
 			this->helpToolStripMenuItem->Text = L"Äîïîìîãà";
 			this->helpToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::helpToolStripMenuItem_Click);
 			// 
 			// developersToolStripMenuItem
 			// 
 			this->developersToolStripMenuItem->Name = L"developersToolStripMenuItem";
-			this->developersToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->developersToolStripMenuItem->Size = System::Drawing::Size(141, 22);
 			this->developersToolStripMenuItem->Text = L"Ðîçðîáíèêè";
 			this->developersToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::developersToolStripMenuItem_Click);
 			// 
@@ -498,16 +501,17 @@ namespace Project1 {
 			// 
 			// adminsToolStripMenuItem
 			// 
-			this->adminsToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->ïàíåëüÊåðóâàííÿToolStripMenuItem });
+			this->adminsToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->controlPanelToolStripMenuItem });
 			this->adminsToolStripMenuItem->Name = L"adminsToolStripMenuItem";
 			this->adminsToolStripMenuItem->Size = System::Drawing::Size(113, 20);
 			this->adminsToolStripMenuItem->Text = L"&Àäì³í³ñòðàòîðàì";
 			// 
-			// ïàíåëüÊåðóâàííÿToolStripMenuItem
+			// controlPanelToolStripMenuItem
 			// 
-			this->ïàíåëüÊåðóâàííÿToolStripMenuItem->Name = L"ïàíåëüÊåðóâàííÿToolStripMenuItem";
-			this->ïàíåëüÊåðóâàííÿToolStripMenuItem->Size = System::Drawing::Size(180, 22);
-			this->ïàíåëüÊåðóâàííÿToolStripMenuItem->Text = L"Ïàíåëü êåðóâàííÿ";
+			this->controlPanelToolStripMenuItem->Name = L"controlPanelToolStripMenuItem";
+			this->controlPanelToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->controlPanelToolStripMenuItem->Text = L"Ïàíåëü êåðóâàííÿ";
+			this->controlPanelToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::controlPanelToolStripMenuItem_Click);
 			// 
 			// MyForm
 			// 
@@ -860,6 +864,12 @@ namespace Project1 {
 	}
 	private: System::Void groupBox2_Enter(System::Object^ sender, System::EventArgs^ e) {
 	}
-	};
+	private: System::Void ïàíåëüÊåðóâàííÿToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+private: System::Void controlPanelToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	PasswordForm^ adminInfo = gcnew PasswordForm();
+	adminInfo->ShowDialog();
+}
+};
 
 }
