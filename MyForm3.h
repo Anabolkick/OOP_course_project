@@ -116,6 +116,7 @@ namespace Project1 {
 			this->label5->Size = System::Drawing::Size(214, 20);
 			this->label5->TabIndex = 4;
 			this->label5->Text = L"Студенти групи КНТ-120";
+			this->label5->Click += gcnew System::EventHandler(this, &MyForm3::label5_Click);
 			// 
 			// MyForm3
 			// 
@@ -136,5 +137,7 @@ namespace Project1 {
 
 		}
 #pragma endregion
-	};
+	private: System::Void label5_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+};
 }

@@ -231,8 +231,8 @@ namespace Project1 {
 			this->adminsToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->controlPanelToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 
-			this->panel->addCandidates->Click += gcnew System::EventHandler(this, &MyForm::addCandidates_Click);
-			this->panel->exportInfoCSV->Click += gcnew System::EventHandler(this, &MyForm::exportInfoCSV_Click);
+			this->panel->addCandidates->Click += (gcnew System::EventHandler(this, &MyForm::addCandidates_Click));
+			this->panel->exportInfoCSV->Click += (gcnew System::EventHandler(this, &MyForm::exportInfoCSV_Click));
 
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
@@ -479,21 +479,21 @@ namespace Project1 {
 					this->developersToolStripMenuItem
 			});
 			this->aboutToolStripMenuItem->Name = L"aboutToolStripMenuItem";
-			this->aboutToolStripMenuItem->Size = System::Drawing::Size(65, 20);
-			this->aboutToolStripMenuItem->Text = L"&Справка";
+			this->aboutToolStripMenuItem->Size = System::Drawing::Size(61, 20);
+			this->aboutToolStripMenuItem->Text = L"&Довідка";
 			this->aboutToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::aboutToolStripMenuItem_Click);
 			// 
 			// helpToolStripMenuItem
 			// 
 			this->helpToolStripMenuItem->Name = L"helpToolStripMenuItem";
-			this->helpToolStripMenuItem->Size = System::Drawing::Size(141, 22);
+			this->helpToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->helpToolStripMenuItem->Text = L"Допомога";
 			this->helpToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::helpToolStripMenuItem_Click);
 			// 
 			// developersToolStripMenuItem
 			// 
 			this->developersToolStripMenuItem->Name = L"developersToolStripMenuItem";
-			this->developersToolStripMenuItem->Size = System::Drawing::Size(141, 22);
+			this->developersToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->developersToolStripMenuItem->Text = L"Розробники";
 			this->developersToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::developersToolStripMenuItem_Click);
 			// 
@@ -521,7 +521,7 @@ namespace Project1 {
 			// controlPanelToolStripMenuItem
 			// 
 			this->controlPanelToolStripMenuItem->Name = L"controlPanelToolStripMenuItem";
-			this->controlPanelToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->controlPanelToolStripMenuItem->Size = System::Drawing::Size(175, 22);
 			this->controlPanelToolStripMenuItem->Text = L"Панель керування";
 			this->controlPanelToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::controlPanelToolStripMenuItem_Click);
 			// 
@@ -571,26 +571,26 @@ namespace Project1 {
 			switch (status)
 			{
 			case Csv_manipulator::opened:
-				message = "File was successfully opened!";
-				MessageBox::Show(this, "File was successfully opened!", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				message = "Файл загружено!";
+				MessageBox::Show(this, "Файл загружено!", "Успіх!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				break;
 
 			case Csv_manipulator::changed:
-				message = "Some votes was changed!";
+				message = "Деякі голоса були змінені!";
 				ex.SetCode(5);
 				ex.SetMessage(message);
 				Exeption::Show_exeption(ex);
 				break;
 
 			case Csv_manipulator::absent:
-				message = "Can`t find file!";
+				message = "Не можливо знайти файл!";
 				ex.SetCode(8);
 				ex.SetMessage(message);
 				Exeption::Show_exeption(ex);
 				break;
 
 			default:
-				message = "Something went wrong!";
+				message = "Щось пішло не так!";
 				ex.SetCode(9);
 				ex.SetMessage(message);
 				Exeption::Show_exeption(ex);
@@ -628,13 +628,13 @@ namespace Project1 {
 		catch(bool tr)
 		{
 			if (!tr) {
-				message = "Couldn`t open file selector";
+				message = "Неможливо відкрити файловий діалог";
 				ex.SetCode(6);
 				ex.SetMessage(message);
 				Exeption::Show_exeption(ex);
 			}
 			else {
-				MessageBox::Show(this, "Data was loaded", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				MessageBox::Show(this, "Дані були загружені!", "Успіх!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 			}
 		}
 	};
@@ -679,7 +679,7 @@ namespace Project1 {
 			catch (bool temp)
 			{
 				if (temp == false) {
-					message = "Enter a full info!";
+					message = "Введіть повну інформацію!";
 					ex.SetCode(2);
 					ex.SetMessage(message);
 					Exeption::Show_exeption(ex);
@@ -700,11 +700,11 @@ namespace Project1 {
 					if (block.CompId(id) == -1 || block.CompId(id) == 0) {
 						Pears.SetAll(name, id, vote, block.GetTailH());
 						block.add(Pears);
-						MessageBox::Show(this, "Vote submited!", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+						MessageBox::Show(this, "Голос надіслано!", "Успіх!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 					}
 					else
 					{
-						message = "You have already votted";
+						message = "Ви вже голосували!";
 						ex.SetCode(1);
 						ex.SetMessage(message);
 						Exeption::Show_exeption(ex);
@@ -712,7 +712,7 @@ namespace Project1 {
 				}
 			}
 			catch (...) {
-				message = "Enter a full info!";
+				message = "Введіть повну інформацію!";
 				ex.SetCode(2);
 				ex.SetMessage(message);
 				Exeption::Show_exeption(ex);
@@ -721,7 +721,7 @@ namespace Project1 {
 
 		else
 		{
-			message = "Accept the agreement";
+			message = "Прийміть угоду!";
 			ex.SetCode(3);
 			ex.SetMessage(message);
 			Exeption::Show_exeption(ex);
@@ -744,13 +744,13 @@ namespace Project1 {
 		catch(bool tr)
 		{
 			if (!tr) {
-				message = "Couldn`t open file";
+				message = "Неможливо відкрити файл!";
 				ex.SetCode(6);
 				ex.SetMessage(message);
 				Exeption::Show_exeption(ex);
 			}
 			else {
-				MessageBox::Show(this, "Data was loaded", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				MessageBox::Show(this, "Дані були загружені!", "Успіх!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 			}
 		}
 	}
@@ -771,13 +771,13 @@ namespace Project1 {
 		catch(bool tr)
 		{
 			if (!tr) {
-				message = "Couldn`t save file";
+				message = "Неможливо зберегти файл!";
 				ex.SetCode(7);
 				ex.SetMessage(message);
 				Exeption::Show_exeption(ex);
 			}
 			else  {
-				MessageBox::Show(this, "Data was uploaded", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				MessageBox::Show(this, "Дані були оновлені!", "Успіх!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 			}
 		}
 	}
@@ -815,7 +815,7 @@ namespace Project1 {
 				{
 					string path = String_manipulator::std_string(saveFileDialog->FileName);
 					Json_manipulator::SaveJson(path, winner, participants);
-					MessageBox::Show(this, "JSON file has been saved!", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+					MessageBox::Show(this, "Файл JSON було збережено!", "Успіх!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 					throw true;
 				}
 			
@@ -824,7 +824,7 @@ namespace Project1 {
 		catch(bool tr)
 		{
 			if (!tr) {
-				message = "All candidates have 0 votes!";
+				message = "Кандидати мають 0 голосів!";
 				ex.SetCode(4);
 				ex.SetMessage(message);
 				Exeption::Show_exeption(ex);
@@ -867,7 +867,7 @@ namespace Project1 {
 		}
 		catch(bool tr) {
 			if (!tr) {
-				message = "No one has voted yet!";
+				message = "Ніхто не проголосував!";
 				ex.SetCode(10);
 				ex.SetMessage(message);
 				Exeption::Show_exeption(ex);

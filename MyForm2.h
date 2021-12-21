@@ -72,6 +72,7 @@ namespace Project1 {
 			this->pictureBox1->Size = System::Drawing::Size(472, 264);
 			this->pictureBox1->TabIndex = 0;
 			this->pictureBox1->TabStop = false;
+			this->pictureBox1->Click += gcnew System::EventHandler(this, &MyForm2::pictureBox1_Click);
 			// 
 			// label1
 			// 
@@ -126,5 +127,7 @@ namespace Project1 {
 
 		}
 #pragma endregion
-	};
+	private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+};
 }
