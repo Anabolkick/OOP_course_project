@@ -231,8 +231,15 @@ namespace Project1 {
 			this->adminsToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->controlPanelToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 
+			#pragma region OurForms
+			//panel
 			this->panel->addCandidates->Click += (gcnew System::EventHandler(this, &MyForm::addCandidates_Click));
 			this->panel->exportInfoCSV->Click += (gcnew System::EventHandler(this, &MyForm::exportInfoCSV_Click));
+			
+			// LoadData
+			this->loadData->yesButton->Click += gcnew System::EventHandler(this, &MyForm::yesButton_Click);
+			this->loadData->manualLoad->Click += gcnew System::EventHandler(this, &MyForm::manualLoad_Click);
+			#pragma endregion
 
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
