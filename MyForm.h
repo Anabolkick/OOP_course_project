@@ -7,6 +7,8 @@
 #include "MyForm2.h"
 #include "MyForm3.h"
 #include "MyForm4.h"
+#include "PasswordForm.h"
+#include "AdminPanel.h"
 
 //using namespace std;
 Chain block;
@@ -155,6 +157,7 @@ namespace Project1 {
 	private: System::Windows::Forms::GroupBox^ groupBox2;
 	private: System::Windows::Forms::GroupBox^ groupBox3;
 	private: DataLoad^ loadData = gcnew DataLoad();
+	private: AdminPanel^ panel = gcnew AdminPanel();
 
 
 	private: System::Windows::Forms::OpenFileDialog^ openFileDialog;
@@ -172,6 +175,16 @@ namespace Project1 {
 	private: System::Windows::Forms::ToolStripMenuItem^ chartToolStripMenuItem;
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Label^ label6;
+	private: System::Windows::Forms::ToolStripMenuItem^ adminsToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ controlPanelToolStripMenuItem;
+
+	private: System::Void addCandidates_Click(System::Object^ sender, System::EventArgs^ e) {
+		
+	};
+
+	private: System::Void exportInfoCSV_Click(System::Object^ sender, System::EventArgs^ e) {
+		
+	};
 
 	protected:
 
@@ -215,6 +228,12 @@ namespace Project1 {
 			this->developersToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->statiToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->chartToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->adminsToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->controlPanelToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+
+			this->panel->addCandidates->Click += (gcnew System::EventHandler(this, &MyForm::addCandidates_Click));
+			this->panel->exportInfoCSV->Click += (gcnew System::EventHandler(this, &MyForm::exportInfoCSV_Click));
+
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->groupBox3->SuspendLayout();
@@ -228,9 +247,9 @@ namespace Project1 {
 				static_cast<System::Byte>(204)));
 			this->label1->Location = System::Drawing::Point(20, 32);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(150, 20);
+			this->label1->Size = System::Drawing::Size(102, 20);
 			this->label1->TabIndex = 0;
-			this->label1->Text = L"Enter your full name";
+			this->label1->Text = L"Введіть ПІБ";
 			// 
 			// label2
 			// 
@@ -239,9 +258,9 @@ namespace Project1 {
 				static_cast<System::Byte>(204)));
 			this->label2->Location = System::Drawing::Point(265, 32);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(135, 20);
+			this->label2->Size = System::Drawing::Size(167, 20);
 			this->label2->TabIndex = 1;
-			this->label2->Text = L"Enter passport ID";
+			this->label2->Text = L"Введіть № ID-картки";
 			// 
 			// PIB
 			// 
@@ -265,16 +284,16 @@ namespace Project1 {
 				static_cast<System::Byte>(204)));
 			this->label3->Location = System::Drawing::Point(20, 97);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(134, 20);
+			this->label3->Size = System::Drawing::Size(157, 20);
 			this->label3->TabIndex = 4;
-			this->label3->Text = L"Choose an option";
+			this->label3->Text = L"Оберіть кандидата";
 			this->label3->Click += gcnew System::EventHandler(this, &MyForm::label3_Click);
 			// 
 			// voteOptions
 			// 
 			this->voteOptions->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->voteOptions->FormattingEnabled = true;
-			this->voteOptions->Items->AddRange(gcnew cli::array< System::Object^  >(amount) {//Добавить кандидата в 491 строку и изменить amount 9 строка
+			this->voteOptions->Items->AddRange(gcnew cli::array< System::Object^  >(3) {
 				L"Somov Ivan Nikolaevich", L"Sokolenko Maria Dmitrievna",
 					L"Dushnarev Nikita Aleksandrovich"
 			});
@@ -298,9 +317,9 @@ namespace Project1 {
 				static_cast<System::Byte>(204)));
 			this->label4->Location = System::Drawing::Point(60, 25);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(101, 20);
+			this->label4->Size = System::Drawing::Size(100, 20);
 			this->label4->TabIndex = 7;
-			this->label4->Text = L"Search by ID";
+			this->label4->Text = L"Пошук за ID";
 			// 
 			// checkBox1
 			// 
@@ -309,9 +328,9 @@ namespace Project1 {
 				static_cast<System::Byte>(204)));
 			this->checkBox1->Location = System::Drawing::Point(24, 168);
 			this->checkBox1->Name = L"checkBox1";
-			this->checkBox1->Size = System::Drawing::Size(280, 24);
+			this->checkBox1->Size = System::Drawing::Size(303, 24);
 			this->checkBox1->TabIndex = 8;
-			this->checkBox1->Text = L"I agree to the processing of my vote";
+			this->checkBox1->Text = L"Погоджуюсь на обробку мого голосу";
 			this->checkBox1->UseVisualStyleBackColor = true;
 			this->checkBox1->CheckedChanged += gcnew System::EventHandler(this, &MyForm::checkBox1_CheckedChanged);
 			// 
@@ -324,7 +343,7 @@ namespace Project1 {
 			this->voteConfirm->Name = L"voteConfirm";
 			this->voteConfirm->Size = System::Drawing::Size(134, 28);
 			this->voteConfirm->TabIndex = 9;
-			this->voteConfirm->Text = L"Submit vote";
+			this->voteConfirm->Text = L"Проголосувати";
 			this->voteConfirm->UseVisualStyleBackColor = false;
 			this->voteConfirm->Click += gcnew System::EventHandler(this, &MyForm::voteConfirm_Click);
 			// 
@@ -343,7 +362,7 @@ namespace Project1 {
 			this->groupBox1->Size = System::Drawing::Size(460, 105);
 			this->groupBox1->TabIndex = 10;
 			this->groupBox1->TabStop = false;
-			this->groupBox1->Text = L"Search";
+			this->groupBox1->Text = L"Пошук";
 			// 
 			// label6
 			// 
@@ -352,9 +371,9 @@ namespace Project1 {
 				static_cast<System::Byte>(204)));
 			this->label6->Location = System::Drawing::Point(136, 72);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(56, 13);
+			this->label6->Size = System::Drawing::Size(62, 13);
 			this->label6->TabIndex = 11;
-			this->label6->Text = L"8 numbers";
+			this->label6->Text = L"8 символів";
 			// 
 			// searchButton
 			// 
@@ -365,7 +384,7 @@ namespace Project1 {
 			this->searchButton->Name = L"searchButton";
 			this->searchButton->Size = System::Drawing::Size(97, 22);
 			this->searchButton->TabIndex = 8;
-			this->searchButton->Text = L"Search";
+			this->searchButton->Text = L"Шукати";
 			this->searchButton->UseVisualStyleBackColor = false;
 			this->searchButton->Click += gcnew System::EventHandler(this, &MyForm::searchButton_Click);
 			// 
@@ -387,7 +406,7 @@ namespace Project1 {
 			this->groupBox2->Size = System::Drawing::Size(460, 255);
 			this->groupBox2->TabIndex = 11;
 			this->groupBox2->TabStop = false;
-			this->groupBox2->Text = L"Voting";
+			this->groupBox2->Text = L"Голосування";
 			this->groupBox2->Enter += gcnew System::EventHandler(this, &MyForm::groupBox2_Enter);
 			// 
 			// label5
@@ -397,9 +416,9 @@ namespace Project1 {
 				static_cast<System::Byte>(204)));
 			this->label5->Location = System::Drawing::Point(312, 80);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(56, 13);
+			this->label5->Size = System::Drawing::Size(62, 13);
 			this->label5->TabIndex = 10;
-			this->label5->Text = L"8 numbers";
+			this->label5->Text = L"8 символів";
 			// 
 			// groupBox3
 			// 
@@ -414,7 +433,7 @@ namespace Project1 {
 			this->groupBox3->Size = System::Drawing::Size(460, 165);
 			this->groupBox3->TabIndex = 11;
 			this->groupBox3->TabStop = false;
-			this->groupBox3->Text = L"Files";
+			this->groupBox3->Text = L"Файли";
 			// 
 			// saveResultsBtn
 			// 
@@ -422,7 +441,7 @@ namespace Project1 {
 			this->saveResultsBtn->Name = L"saveResultsBtn";
 			this->saveResultsBtn->Size = System::Drawing::Size(184, 48);
 			this->saveResultsBtn->TabIndex = 2;
-			this->saveResultsBtn->Text = L"Save results";
+			this->saveResultsBtn->Text = L"Зберегти результат";
 			this->saveResultsBtn->UseVisualStyleBackColor = true;
 			this->saveResultsBtn->Click += gcnew System::EventHandler(this, &MyForm::saveResultsBtn_Click);
 			// 
@@ -432,7 +451,7 @@ namespace Project1 {
 			this->exportFileButton->Name = L"exportFileButton";
 			this->exportFileButton->Size = System::Drawing::Size(184, 48);
 			this->exportFileButton->TabIndex = 1;
-			this->exportFileButton->Text = L"Export file";
+			this->exportFileButton->Text = L"Експортувати";
 			this->exportFileButton->UseVisualStyleBackColor = true;
 			this->exportFileButton->Click += gcnew System::EventHandler(this, &MyForm::exportFileButton_Click);
 			// 
@@ -443,9 +462,9 @@ namespace Project1 {
 			// menuStrip1
 			// 
 			this->menuStrip1->BackColor = System::Drawing::SystemColors::Control;
-			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
 				this->aboutToolStripMenuItem,
-					this->statiToolStripMenuItem
+					this->statiToolStripMenuItem, this->adminsToolStripMenuItem
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
@@ -460,37 +479,51 @@ namespace Project1 {
 					this->developersToolStripMenuItem
 			});
 			this->aboutToolStripMenuItem->Name = L"aboutToolStripMenuItem";
-			this->aboutToolStripMenuItem->Size = System::Drawing::Size(52, 20);
-			this->aboutToolStripMenuItem->Text = L"&About";
+			this->aboutToolStripMenuItem->Size = System::Drawing::Size(61, 20);
+			this->aboutToolStripMenuItem->Text = L"&Довідка";
 			this->aboutToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::aboutToolStripMenuItem_Click);
 			// 
 			// helpToolStripMenuItem
 			// 
 			this->helpToolStripMenuItem->Name = L"helpToolStripMenuItem";
-			this->helpToolStripMenuItem->Size = System::Drawing::Size(132, 22);
-			this->helpToolStripMenuItem->Text = L"Help";
+			this->helpToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->helpToolStripMenuItem->Text = L"Допомога";
 			this->helpToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::helpToolStripMenuItem_Click);
 			// 
 			// developersToolStripMenuItem
 			// 
 			this->developersToolStripMenuItem->Name = L"developersToolStripMenuItem";
-			this->developersToolStripMenuItem->Size = System::Drawing::Size(132, 22);
-			this->developersToolStripMenuItem->Text = L"Developers";
+			this->developersToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->developersToolStripMenuItem->Text = L"Розробники";
 			this->developersToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::developersToolStripMenuItem_Click);
 			// 
 			// statiToolStripMenuItem
 			// 
 			this->statiToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->chartToolStripMenuItem });
 			this->statiToolStripMenuItem->Name = L"statiToolStripMenuItem";
-			this->statiToolStripMenuItem->Size = System::Drawing::Size(65, 20);
-			this->statiToolStripMenuItem->Text = L"&Statistics";
+			this->statiToolStripMenuItem->Size = System::Drawing::Size(80, 20);
+			this->statiToolStripMenuItem->Text = L"&Статистика";
 			// 
 			// chartToolStripMenuItem
 			// 
 			this->chartToolStripMenuItem->Name = L"chartToolStripMenuItem";
-			this->chartToolStripMenuItem->Size = System::Drawing::Size(103, 22);
-			this->chartToolStripMenuItem->Text = L"Chart";
+			this->chartToolStripMenuItem->Size = System::Drawing::Size(124, 22);
+			this->chartToolStripMenuItem->Text = L"Діаграма";
 			this->chartToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::chartToolStripMenuItem_Click);
+			// 
+			// adminsToolStripMenuItem
+			// 
+			this->adminsToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->controlPanelToolStripMenuItem });
+			this->adminsToolStripMenuItem->Name = L"adminsToolStripMenuItem";
+			this->adminsToolStripMenuItem->Size = System::Drawing::Size(113, 20);
+			this->adminsToolStripMenuItem->Text = L"&Адміністраторам";
+			// 
+			// controlPanelToolStripMenuItem
+			// 
+			this->controlPanelToolStripMenuItem->Name = L"controlPanelToolStripMenuItem";
+			this->controlPanelToolStripMenuItem->Size = System::Drawing::Size(175, 22);
+			this->controlPanelToolStripMenuItem->Text = L"Панель керування";
+			this->controlPanelToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::controlPanelToolStripMenuItem_Click);
 			// 
 			// MyForm
 			// 
@@ -522,10 +555,6 @@ namespace Project1 {
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
-			// MyForm1
-			this->loadData->yesButton->Click += gcnew System::EventHandler(this, &MyForm::yesButton_Click);
-			this->loadData->manualLoad->Click += gcnew System::EventHandler(this, &MyForm::manualLoad_Click);
-
 		}
 #pragma endregion
 
@@ -542,26 +571,26 @@ namespace Project1 {
 			switch (status)
 			{
 			case Csv_manipulator::opened:
-				message = "File was successfully opened!";
-				MessageBox::Show(this, "File was successfully opened!", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				message = "Файл загружено!";
+				MessageBox::Show(this, "Файл загружено!", "Успіх!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				break;
 
 			case Csv_manipulator::changed:
-				message = "Some votes was changed!";
+				message = "Деякі голоса були змінені!";
 				ex.SetCode(5);
 				ex.SetMessage(message);
 				Exeption::Show_exeption(ex);
 				break;
 
 			case Csv_manipulator::absent:
-				message = "Can`t find file!";
+				message = "Не можливо знайти файл!";
 				ex.SetCode(8);
 				ex.SetMessage(message);
 				Exeption::Show_exeption(ex);
 				break;
 
 			default:
-				message = "Something went wrong!";
+				message = "Щось пішло не так!";
 				ex.SetCode(9);
 				ex.SetMessage(message);
 				Exeption::Show_exeption(ex);
@@ -599,13 +628,13 @@ namespace Project1 {
 		catch(bool tr)
 		{
 			if (!tr) {
-				message = "Couldn`t open file selector";
+				message = "Неможливо відкрити файловий діалог";
 				ex.SetCode(6);
 				ex.SetMessage(message);
 				Exeption::Show_exeption(ex);
 			}
 			else {
-				MessageBox::Show(this, "Data was loaded", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				MessageBox::Show(this, "Дані були загружені!", "Успіх!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 			}
 		}
 	};
@@ -650,7 +679,7 @@ namespace Project1 {
 			catch (bool temp)
 			{
 				if (temp == false) {
-					message = "Enter a full info!";
+					message = "Введіть повну інформацію!";
 					ex.SetCode(2);
 					ex.SetMessage(message);
 					Exeption::Show_exeption(ex);
@@ -671,11 +700,11 @@ namespace Project1 {
 					if (block.CompId(id) == -1 || block.CompId(id) == 0) {
 						Pears.SetAll(name, id, vote, block.GetTailH());
 						block.add(Pears);
-						MessageBox::Show(this, "Vote submited!", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+						MessageBox::Show(this, "Голос надіслано!", "Успіх!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 					}
 					else
 					{
-						message = "You have already votted";
+						message = "Ви вже голосували!";
 						ex.SetCode(1);
 						ex.SetMessage(message);
 						Exeption::Show_exeption(ex);
@@ -683,7 +712,7 @@ namespace Project1 {
 				}
 			}
 			catch (...) {
-				message = "Enter a full info!";
+				message = "Введіть повну інформацію!";
 				ex.SetCode(2);
 				ex.SetMessage(message);
 				Exeption::Show_exeption(ex);
@@ -692,7 +721,7 @@ namespace Project1 {
 
 		else
 		{
-			message = "Accept the agreement";
+			message = "Прийміть угоду!";
 			ex.SetCode(3);
 			ex.SetMessage(message);
 			Exeption::Show_exeption(ex);
@@ -715,13 +744,13 @@ namespace Project1 {
 		catch(bool tr)
 		{
 			if (!tr) {
-				message = "Couldn`t open file";
+				message = "Неможливо відкрити файл!";
 				ex.SetCode(6);
 				ex.SetMessage(message);
 				Exeption::Show_exeption(ex);
 			}
 			else {
-				MessageBox::Show(this, "Data was loaded", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				MessageBox::Show(this, "Дані були загружені!", "Успіх!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 			}
 		}
 	}
@@ -742,13 +771,13 @@ namespace Project1 {
 		catch(bool tr)
 		{
 			if (!tr) {
-				message = "Couldn`t save file";
+				message = "Неможливо зберегти файл!";
 				ex.SetCode(7);
 				ex.SetMessage(message);
 				Exeption::Show_exeption(ex);
 			}
 			else  {
-				MessageBox::Show(this, "Data was uploaded", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				MessageBox::Show(this, "Дані були оновлені!", "Успіх!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 			}
 		}
 	}
@@ -786,7 +815,7 @@ namespace Project1 {
 				{
 					string path = String_manipulator::std_string(saveFileDialog->FileName);
 					Json_manipulator::SaveJson(path, winner, participants);
-					MessageBox::Show(this, "JSON file has been saved!", "Success!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+					MessageBox::Show(this, "Файл JSON було збережено!", "Успіх!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 					throw true;
 				}
 			
@@ -795,7 +824,7 @@ namespace Project1 {
 		catch(bool tr)
 		{
 			if (!tr) {
-				message = "All candidates have 0 votes!";
+				message = "Кандидати мають 0 голосів!";
 				ex.SetCode(4);
 				ex.SetMessage(message);
 				Exeption::Show_exeption(ex);
@@ -838,7 +867,7 @@ namespace Project1 {
 		}
 		catch(bool tr) {
 			if (!tr) {
-				message = "No one has voted yet!";
+				message = "Ніхто не проголосував!";
 				ex.SetCode(10);
 				ex.SetMessage(message);
 				Exeption::Show_exeption(ex);
@@ -847,6 +876,12 @@ namespace Project1 {
 	}
 	private: System::Void groupBox2_Enter(System::Object^ sender, System::EventArgs^ e) {
 	}
-	};
+	private: System::Void панельКеруванняToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+private: System::Void controlPanelToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	PasswordForm^ adminInfo = gcnew PasswordForm();
+	adminInfo->ShowDialog();
+}
+};
 
 }

@@ -30,7 +30,7 @@ void Exeption::Show_exeption(Exeption ex)
 
 String^ Exeption::getName()
 {
-	string str = "Error " + to_string(error_code);
+	string str = "Помилка " + to_string(error_code);
 	String^ name = String_manipulator::system_string(str);
 	return name;
 }
