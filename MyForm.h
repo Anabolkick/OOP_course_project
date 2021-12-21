@@ -15,7 +15,7 @@ Candidates* Rez = new Candidates[amount];
 string message;
 Exeption ex;
 
-string Translit(string str)
+string Translit(wstring str)
 {
 	string N;
 	for (int i=0; i<str.size() ; i++)
@@ -661,8 +661,8 @@ namespace Project1 {
 					long id = atoi(id_str.c_str());
 
 					//Name
-					string name = String_manipulator::std_string(PIB->Text);
-					name = Translit(name);
+					wstring wname = String_manipulator::std_wstring(PIB->Text);
+					string name = Translit(wname);
 					//Vote
 					string vote = String_manipulator::std_string(voteOptions->SelectedItem->ToString());
 
