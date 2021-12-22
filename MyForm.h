@@ -18,7 +18,7 @@ Candidates* Rez = new Candidates[amount];
 string message;
 Exeption ex;
 
-string Translit(string str)
+string Translit(wstring str)
 {
 	string N;
 	for (int i=0; i<str.size() ; i++)
@@ -52,9 +52,9 @@ string Translit(string str)
 		case '÷': N+= "ch"; break;
 		case 'ø': N+= "sh"; break;
 		case 'ù': N+= "ch"; break;
-		case 'ú': N+= "''"; break;
+		case 'ú': N+= ""; break;
 		case 'û': N+= "y"; break;
-		case 'ü': N+= "''"; break;
+		case 'ü': N+= ""; break;
 		case 'ý': N+= "e"; break;
 		case 'þ': N+= "yu"; break;
 		case 'ÿ': N+= "ya"; break;
@@ -87,9 +87,9 @@ string Translit(string str)
 		case '×': N+= "Ch"; break;
 		case 'Ø': N+= "Sh"; break;
 		case 'Ù': N+= "Ch"; break;
-		case 'Ú': N+= "''"; break;
+		case 'Ú': N+= ""; break;
 		case 'Û': N+= "Y"; break;
-		case 'Ü': N+= "''"; break;
+		case 'Ü': N+= ""; break;
 		case 'Ý': N+= "E"; break;
 		case 'Þ': N+= "Yu"; break;
 		case 'ß': N+= "Ya"; break;
@@ -223,13 +223,7 @@ namespace Project1 {
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
 			this->saveResultsBtn = (gcnew System::Windows::Forms::Button());
-
-			this->panel->addCandidates->Click += (gcnew System::EventHandler(this, &MyForm::addCandidates_Click));
-			this->panel->exportInfoCSV->Click += (gcnew System::EventHandler(this, &MyForm::exportInfoCSV_Click));
-
-			this->loadData->yesButton->Click += (gcnew System::EventHandler(this, &MyForm::yesButton_Click));
-			this->loadData->manualLoad->Click += (gcnew System::EventHandler(this, &MyForm::manualLoad_Click));
-
+			this->exportFileButton = (gcnew System::Windows::Forms::Button());
 			this->openFileDialog = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->saveFileDialog = (gcnew System::Windows::Forms::SaveFileDialog());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());

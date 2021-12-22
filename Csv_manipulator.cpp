@@ -8,10 +8,9 @@
 
 using namespace std;
 
-void Csv_manipulator::SaveRow(string file_name, ofstream& fout, string name, string vote, string hash, long id)
+void Csv_manipulator::SaveRow(string file_name, ofstream& fout, string vote, string hash, long id)
 {
-	fout << name << ','
-		<< vote << ','
+	fout << vote << ','
 		<< hash << ','
 		<< id << '\n';
 }
@@ -41,15 +40,14 @@ vector<Node> Csv_manipulator::GetNodes(string file_name, int& count)
 					row.push_back(word);
 				}
 
-				string name = row[0];
-				string vote = row[1];
-				string hash = row[2];
+				string vote = row[0];
+				string hash = row[1];
 
 				//Пытаеться преобразовать в int
-				long id = stoi(row[3]);
+				long id = stoi(row[2]);
 
 				Node node;
-				node.SetAll(name, hash, id, vote);
+				node.SetAll("", hash, id, vote);
 				nodes.push_back(node);
 				count = count + 1;
 			}
@@ -69,7 +67,7 @@ void Csv_manipulator::SaveCsv(string path, Node* currNode)
 		while (currNode != NULL)
 		{
 			node = *currNode;
-			Csv_manipulator::SaveRow(path, fout, node.GetN(), node.GetV(), node.GetH(), node.GetID());
+			Csv_manipulator::SaveRow(path, fout, node.GetV(), node.GetH(), node.GetID());
 			currNode = node.GetNext();
 		}
 	}
