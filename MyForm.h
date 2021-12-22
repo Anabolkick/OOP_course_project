@@ -223,7 +223,6 @@ namespace Project1 {
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
 			this->saveResultsBtn = (gcnew System::Windows::Forms::Button());
-			this->exportFileButton = (gcnew System::Windows::Forms::Button());
 			this->openFileDialog = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->saveFileDialog = (gcnew System::Windows::Forms::SaveFileDialog());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
@@ -234,6 +233,11 @@ namespace Project1 {
 			this->chartToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->adminsToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->controlPanelToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->panel->addCandidates->Click += (gcnew System::EventHandler(this, &MyForm::addCandidates_Click));
+			this->panel->exportInfoCSV->Click += (gcnew System::EventHandler(this, &MyForm::exportInfoCSV_Click));
+
+			this->loadData->yesButton->Click += (gcnew System::EventHandler(this, &MyForm::yesButton_Click));
+			this->loadData->manualLoad->Click += (gcnew System::EventHandler(this, &MyForm::manualLoad_Click));
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->groupBox3->SuspendLayout();
@@ -684,7 +688,6 @@ namespace Project1 {
 
 					//Name
 					string name = String_manipulator::std_string(PIB->Text);
-					name = Translit(name);
 					//Vote
 					string vote = String_manipulator::std_string(voteOptions->SelectedItem->ToString());
 
