@@ -18,7 +18,7 @@ Candidates* Rez = new Candidates[amount];
 string message;
 Exeption ex;
 
-string Translit(string str)
+string Translit(wstring str)
 {
 	string N;
 	for (int i=0; i<str.size() ; i++)
@@ -52,9 +52,9 @@ string Translit(string str)
 		case '÷': N+= "ch"; break;
 		case 'ø': N+= "sh"; break;
 		case 'ù': N+= "ch"; break;
-		case 'ú': N+= "''"; break;
+		case 'ú': N+= ""; break;
 		case 'û': N+= "y"; break;
-		case 'ü': N+= "''"; break;
+		case 'ü': N+= ""; break;
 		case 'ý': N+= "e"; break;
 		case 'þ': N+= "yu"; break;
 		case 'ÿ': N+= "ya"; break;
@@ -87,9 +87,9 @@ string Translit(string str)
 		case '×': N+= "Ch"; break;
 		case 'Ø': N+= "Sh"; break;
 		case 'Ù': N+= "Ch"; break;
-		case 'Ú': N+= "''"; break;
+		case 'Ú': N+= ""; break;
 		case 'Û': N+= "Y"; break;
-		case 'Ü': N+= "''"; break;
+		case 'Ü': N+= ""; break;
 		case 'Ý': N+= "E"; break;
 		case 'Þ': N+= "Yu"; break;
 		case 'ß': N+= "Ya"; break;
@@ -690,7 +690,6 @@ namespace Project1 {
 
 					//Name
 					string name = String_manipulator::std_string(PIB->Text);
-					name = Translit(name);
 					//Vote
 					string vote = String_manipulator::std_string(voteOptions->SelectedItem->ToString());
 
