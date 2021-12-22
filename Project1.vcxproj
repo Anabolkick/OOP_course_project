@@ -126,6 +126,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AdminPanel.cpp" />
+    <ClCompile Include="CandidatesEdit.cpp" />
     <ClCompile Include="Exeption.cpp" />
     <ClCompile Include="Hash.cpp" />
     <ClCompile Include="Json_manipulator.cpp" />
@@ -141,6 +142,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AdminPanel.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="CandidatesEdit.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Csv_manipulator.h" />
@@ -179,6 +183,9 @@
   <ItemGroup>
     <EmbeddedResource Include="AdminPanel.resx">
       <DependentUpon>AdminPanel.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CandidatesEdit.resx">
+      <DependentUpon>CandidatesEdit.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MyForm.resx">
       <DependentUpon>MyForm.h</DependentUpon>

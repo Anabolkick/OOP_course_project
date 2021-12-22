@@ -72,7 +72,7 @@ namespace Project1 {
 			this->addCandidates->Name = L"addCandidates";
 			this->addCandidates->Size = System::Drawing::Size(248, 40);
 			this->addCandidates->TabIndex = 0;
-			this->addCandidates->Text = L"Добавити кандидатів";
+			this->addCandidates->Text = L"Додати кандидатів";
 			this->addCandidates->UseVisualStyleBackColor = true;
 			this->addCandidates->Click += gcnew System::EventHandler(this, &AdminPanel::addCandidates_Click);
 			// 

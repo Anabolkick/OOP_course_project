@@ -9,6 +9,7 @@
 #include "MyForm4.h"
 #include "PasswordForm.h"
 #include "AdminPanel.h"
+#include "CandidatesEdit.h"
 
 //using namespace std;
 Chain block;
@@ -146,7 +147,9 @@ namespace Project1 {
 
 
 	private: System::Windows::Forms::Label^ label3;
-	private: System::Windows::Forms::ComboBox^ voteOptions;
+	public: System::Windows::Forms::ComboBox^ voteOptions;
+	private:
+
 	private: System::Windows::Forms::TextBox^ searchByID;
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::CheckBox^ checkBox1;
@@ -158,12 +161,13 @@ namespace Project1 {
 	private: System::Windows::Forms::GroupBox^ groupBox3;
 	private: DataLoad^ loadData = gcnew DataLoad();
 	private: AdminPanel^ panel = gcnew AdminPanel();
+	private: CandidatesEdit^ edit = gcnew CandidatesEdit();
 
 
 	private: System::Windows::Forms::OpenFileDialog^ openFileDialog;
 
 
-	private: System::Windows::Forms::Button^ exportFileButton;
+
 
 	private: System::Windows::Forms::SaveFileDialog^ saveFileDialog;
 	private: System::Windows::Forms::Button^ saveResultsBtn;
@@ -219,7 +223,13 @@ namespace Project1 {
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
 			this->saveResultsBtn = (gcnew System::Windows::Forms::Button());
-			this->exportFileButton = (gcnew System::Windows::Forms::Button());
+
+			this->panel->addCandidates->Click += (gcnew System::EventHandler(this, &MyForm::addCandidates_Click));
+			this->panel->exportInfoCSV->Click += (gcnew System::EventHandler(this, &MyForm::exportInfoCSV_Click));
+
+			this->loadData->yesButton->Click += (gcnew System::EventHandler(this, &MyForm::yesButton_Click));
+			this->loadData->manualLoad->Click += (gcnew System::EventHandler(this, &MyForm::manualLoad_Click));
+
 			this->openFileDialog = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->saveFileDialog = (gcnew System::Windows::Forms::SaveFileDialog());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
@@ -230,10 +240,6 @@ namespace Project1 {
 			this->chartToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->adminsToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->controlPanelToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-
-			this->panel->addCandidates->Click += (gcnew System::EventHandler(this, &MyForm::addCandidates_Click));
-			this->panel->exportInfoCSV->Click += (gcnew System::EventHandler(this, &MyForm::exportInfoCSV_Click));
-
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->groupBox3->SuspendLayout();
@@ -424,7 +430,6 @@ namespace Project1 {
 			// 
 			this->groupBox3->BackColor = System::Drawing::SystemColors::Control;
 			this->groupBox3->Controls->Add(this->saveResultsBtn);
-			this->groupBox3->Controls->Add(this->exportFileButton);
 			this->groupBox3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->groupBox3->ForeColor = System::Drawing::SystemColors::ControlText;
@@ -437,23 +442,13 @@ namespace Project1 {
 			// 
 			// saveResultsBtn
 			// 
-			this->saveResultsBtn->Location = System::Drawing::Point(248, 64);
+			this->saveResultsBtn->Location = System::Drawing::Point(136, 64);
 			this->saveResultsBtn->Name = L"saveResultsBtn";
 			this->saveResultsBtn->Size = System::Drawing::Size(184, 48);
 			this->saveResultsBtn->TabIndex = 2;
 			this->saveResultsBtn->Text = L"Зберегти результат";
 			this->saveResultsBtn->UseVisualStyleBackColor = true;
 			this->saveResultsBtn->Click += gcnew System::EventHandler(this, &MyForm::saveResultsBtn_Click);
-			// 
-			// exportFileButton
-			// 
-			this->exportFileButton->Location = System::Drawing::Point(24, 64);
-			this->exportFileButton->Name = L"exportFileButton";
-			this->exportFileButton->Size = System::Drawing::Size(184, 48);
-			this->exportFileButton->TabIndex = 1;
-			this->exportFileButton->Text = L"Експортувати";
-			this->exportFileButton->UseVisualStyleBackColor = true;
-			this->exportFileButton->Click += gcnew System::EventHandler(this, &MyForm::exportFileButton_Click);
 			// 
 			// openFileDialog
 			// 
@@ -486,14 +481,14 @@ namespace Project1 {
 			// helpToolStripMenuItem
 			// 
 			this->helpToolStripMenuItem->Name = L"helpToolStripMenuItem";
-			this->helpToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->helpToolStripMenuItem->Size = System::Drawing::Size(141, 22);
 			this->helpToolStripMenuItem->Text = L"Допомога";
 			this->helpToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::helpToolStripMenuItem_Click);
 			// 
 			// developersToolStripMenuItem
 			// 
 			this->developersToolStripMenuItem->Name = L"developersToolStripMenuItem";
-			this->developersToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->developersToolStripMenuItem->Size = System::Drawing::Size(141, 22);
 			this->developersToolStripMenuItem->Text = L"Розробники";
 			this->developersToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::developersToolStripMenuItem_Click);
 			// 
@@ -602,12 +597,16 @@ namespace Project1 {
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e)
 	{
 		loadData->ShowDialog();
+		edit->ShowDialog();
 		Rez[0].SetC("Somov Ivan Nikolaevich");//192 строка хранит даные о кандидатах
 		Rez[1].SetC("Sokolenko Maria Dmitrievna");
 		Rez[2].SetC("Dushnarev Nikita Aleksandrovich");
 		for (int i = 0; i < amount; i++)
 		{
 			Rez[i].Seta(0);
+		};
+		for (int i = 0; i < edit->prevoteCandidates->Items->Count; i++) {
+			voteOptions->Items->Add(edit->prevoteCandidates->Items[i]);
 		}
 	}
 
@@ -756,31 +755,31 @@ namespace Project1 {
 	}
 
 
-	private: System::Void exportFileButton_Click(System::Object^ sender, System::EventArgs^ e)   // TODO try catch  файла не существует
-	{
-		saveFileDialog->Filter = "Files csv (*.csv)|*.csv";
-		try {
-			if (saveFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK)
-			{
-				string path = String_manipulator::std_string(saveFileDialog->FileName);
-				Csv_manipulator::SaveCsv(path, block.GetHead());
-				throw true;
-			}
-			else throw false;
-		}
-		catch(bool tr)
-		{
-			if (!tr) {
-				message = "Неможливо зберегти файл!";
-				ex.SetCode(7);
-				ex.SetMessage(message);
-				Exeption::Show_exeption(ex);
-			}
-			else  {
-				MessageBox::Show(this, "Дані були оновлені!", "Успіх!", MessageBoxButtons::OK, MessageBoxIcon::Information);
-			}
-		}
-	}
+	//private: System::Void exportFileButton_Click(System::Object^ sender, System::EventArgs^ e)   // TODO try catch  файла не существует
+	//{
+	//	saveFileDialog->Filter = "Files csv (*.csv)|*.csv";
+	//	try {
+	//		if (saveFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK)
+	//		{
+	//			string path = String_manipulator::std_string(saveFileDialog->FileName);
+	//			Csv_manipulator::SaveCsv(path, block.GetHead());
+	//			throw true;
+	//		}
+	//		else throw false;
+	//	}
+	//	catch(bool tr)
+	//	{
+	//		if (!tr) {
+	//			message = "Неможливо зберегти файл!";
+	//			ex.SetCode(7);
+	//			ex.SetMessage(message);
+	//			Exeption::Show_exeption(ex);
+	//		}
+	//		else  {
+	//			MessageBox::Show(this, "Дані були оновлені!", "Успіх!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+	//		}
+	//	}
+	//}
 	private: System::Void saveResultsBtn_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		
