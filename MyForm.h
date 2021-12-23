@@ -592,7 +592,7 @@ namespace Project1 {
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e)
 	{
 		loadData->ShowDialog();
-		block.getCandidates(&candi);
+		//block.getCandidates(&candi);
 		for (int i = 0; i < candi.size(); i++) {
 			voteOptions->Items->Add(String_manipulator::system_string(candi[i]));
 			edit->prevoteCandidates->Items->Add(String_manipulator::system_string(candi[i]));
