@@ -419,14 +419,18 @@ void Chain::getCandidates(vector<string>* Candi)
 {
 	Node* tmp;
 	tmp = Head;
-	vector<string> loc = *Candi;
+	vector<string> &loc = *Candi;
 	while (tmp != nullptr)
 	{
 		if (loc.size() != 0) {
+			int c = 0;
 			for (int i = 0; i < loc.size(); i++) {
 				if (loc[i] != tmp->GetV()) {
-					loc.push_back(tmp->GetV());
-				}
+					c++;
+				}	
+			}
+			if (c == loc.size()) {
+				loc.push_back(tmp->GetV());
 			}
 		}
 		else {
