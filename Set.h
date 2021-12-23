@@ -83,6 +83,7 @@ public:
 	string GetTailH();
 	void del(string h);
 	void SetAllEmpty();
+	void getCandidates(vector<string>* Candi);
 	//friend ostream& operator<<(ostream& stream, Chain& c);
 
 };
