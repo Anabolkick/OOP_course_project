@@ -37,8 +37,11 @@ namespace Project1 {
 		}
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::TextBox^ adminLogin;
-	private: System::Windows::Forms::TextBox^ adminPassword;
+	public: System::Windows::Forms::TextBox^ adminLogin;
+	private:
+	public: System::Windows::Forms::TextBox^ adminPassword;
+
+
 	private: System::Windows::Forms::Button^ adminConfirm;
 	protected:
 
@@ -125,7 +128,7 @@ namespace Project1 {
 			this->MinimumSize = System::Drawing::Size(328, 173);
 			this->Name = L"PasswordForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"Панель керування";
+			this->Text = L"Експорт";
 			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &PasswordForm::PasswordForm_FormClosed);
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -136,8 +139,6 @@ namespace Project1 {
 	}
 private: System::Void adminConfirm_Click(System::Object^ sender, System::EventArgs^ e) {
 	if (adminLogin->Text == "admin" && adminPassword->Text == "admin") {
-		AdminPanel^ adminPanel = gcnew AdminPanel();
-		adminPanel->Show();
 		PasswordForm::Hide();
 	}
 	else {

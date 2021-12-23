@@ -91,6 +91,7 @@ namespace Project1 {
 			// 
 			// prevoteAddCandidates
 			// 
+			this->prevoteAddCandidates->Anchor = System::Windows::Forms::AnchorStyles::None;
 			this->prevoteAddCandidates->Location = System::Drawing::Point(312, 48);
 			this->prevoteAddCandidates->Name = L"prevoteAddCandidates";
 			this->prevoteAddCandidates->Size = System::Drawing::Size(72, 24);

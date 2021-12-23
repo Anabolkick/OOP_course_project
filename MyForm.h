@@ -163,6 +163,7 @@ namespace Project1 {
 	private: DataLoad^ loadData = gcnew DataLoad();
 	private: AdminPanel^ panel = gcnew AdminPanel();
 	private: CandidatesEdit^ edit = gcnew CandidatesEdit();
+	private: PasswordForm^ pass = gcnew PasswordForm();
 
 
 	private: System::Windows::Forms::OpenFileDialog^ openFileDialog;
@@ -177,10 +178,12 @@ namespace Project1 {
 	private: System::Windows::Forms::ToolStripMenuItem^ helpToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ developersToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ statiToolStripMenuItem;
+	private: System::Windows::Forms::Label^ label6;
+	private: System::Windows::Forms::Button^ exportInfo;
 	private: System::Windows::Forms::ToolStripMenuItem^ chartToolStripMenuItem;
 	private: System::Windows::Forms::Label^ label5;
-	private: System::Windows::Forms::Label^ label6;
-	private: System::Windows::Forms::ToolStripMenuItem^ adminsToolStripMenuItem;
+
+
 	private: System::Windows::Forms::ToolStripMenuItem^ controlPanelToolStripMenuItem;
 
 	private: System::Void addCandidates_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -218,7 +221,6 @@ namespace Project1 {
 			this->checkBox1 = (gcnew System::Windows::Forms::CheckBox());
 			this->voteConfirm = (gcnew System::Windows::Forms::Button());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->searchButton = (gcnew System::Windows::Forms::Button());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->label5 = (gcnew System::Windows::Forms::Label());
@@ -232,28 +234,26 @@ namespace Project1 {
 			this->developersToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->statiToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->chartToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->adminsToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->controlPanelToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->exportInfo = (gcnew System::Windows::Forms::Button());
+
+			this->loadData->yesButton->Click += (gcnew System::EventHandler(this, &MyForm::yesButton_Click));
+			this->loadData->manualLoad->Click += (gcnew System::EventHandler(this, &MyForm::manualLoad_Click));
+
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->groupBox3->SuspendLayout();
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
-			this->panel->addCandidates->Click += (gcnew System::EventHandler(this, &MyForm::addCandidates_Click));
-			this->panel->exportInfoCSV->Click += (gcnew System::EventHandler(this, &MyForm::exportInfoCSV_Click));
-
-			this->loadData->yesButton->Click += (gcnew System::EventHandler(this, &MyForm::yesButton_Click));
-			this->loadData->manualLoad->Click += (gcnew System::EventHandler(this, &MyForm::manualLoad_Click));
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label1->Location = System::Drawing::Point(27, 39);
-			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label1->Location = System::Drawing::Point(20, 32);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(119, 25);
+			this->label1->Size = System::Drawing::Size(102, 20);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Введіть ПІБ";
 			// 
@@ -262,28 +262,25 @@ namespace Project1 {
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label2->Location = System::Drawing::Point(353, 39);
-			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label2->Location = System::Drawing::Point(265, 32);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(202, 25);
+			this->label2->Size = System::Drawing::Size(167, 20);
 			this->label2->TabIndex = 1;
 			this->label2->Text = L"Введіть № ID-картки";
 			// 
 			// PIB
 			// 
-			this->PIB->Location = System::Drawing::Point(32, 68);
-			this->PIB->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->PIB->Location = System::Drawing::Point(24, 55);
 			this->PIB->Name = L"PIB";
-			this->PIB->Size = System::Drawing::Size(287, 26);
+			this->PIB->Size = System::Drawing::Size(216, 22);
 			this->PIB->TabIndex = 2;
 			// 
 			// passportID
 			// 
-			this->passportID->Location = System::Drawing::Point(359, 68);
-			this->passportID->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->passportID->Location = System::Drawing::Point(269, 55);
 			this->passportID->MaxLength = 8;
 			this->passportID->Name = L"passportID";
-			this->passportID->Size = System::Drawing::Size(207, 26);
+			this->passportID->Size = System::Drawing::Size(156, 22);
 			this->passportID->TabIndex = 3;
 			// 
 			// label3
@@ -291,10 +288,9 @@ namespace Project1 {
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label3->Location = System::Drawing::Point(27, 119);
-			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label3->Location = System::Drawing::Point(20, 97);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(189, 25);
+			this->label3->Size = System::Drawing::Size(157, 20);
 			this->label3->TabIndex = 4;
 			this->label3->Text = L"Оберіть кандидата";
 			this->label3->Click += gcnew System::EventHandler(this, &MyForm::label3_Click);
@@ -303,19 +299,17 @@ namespace Project1 {
 			// 
 			this->voteOptions->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->voteOptions->FormattingEnabled = true;
-			this->voteOptions->Location = System::Drawing::Point(32, 148);
-			this->voteOptions->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->voteOptions->Location = System::Drawing::Point(24, 120);
 			this->voteOptions->Name = L"voteOptions";
-			this->voteOptions->Size = System::Drawing::Size(532, 28);
+			this->voteOptions->Size = System::Drawing::Size(400, 24);
 			this->voteOptions->TabIndex = 5;
 			// 
 			// searchByID
 			// 
-			this->searchByID->Location = System::Drawing::Point(85, 59);
-			this->searchByID->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->searchByID->Location = System::Drawing::Point(64, 48);
 			this->searchByID->MaxLength = 8;
 			this->searchByID->Name = L"searchByID";
-			this->searchByID->Size = System::Drawing::Size(265, 26);
+			this->searchByID->Size = System::Drawing::Size(200, 22);
 			this->searchByID->TabIndex = 6;
 			// 
 			// label4
@@ -323,10 +317,9 @@ namespace Project1 {
 			this->label4->AutoSize = true;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label4->Location = System::Drawing::Point(80, 31);
-			this->label4->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label4->Location = System::Drawing::Point(60, 25);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(122, 25);
+			this->label4->Size = System::Drawing::Size(100, 20);
 			this->label4->TabIndex = 7;
 			this->label4->Text = L"Пошук за ID";
 			// 
@@ -335,10 +328,9 @@ namespace Project1 {
 			this->checkBox1->AutoSize = true;
 			this->checkBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->checkBox1->Location = System::Drawing::Point(32, 207);
-			this->checkBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->checkBox1->Location = System::Drawing::Point(24, 168);
 			this->checkBox1->Name = L"checkBox1";
-			this->checkBox1->Size = System::Drawing::Size(374, 29);
+			this->checkBox1->Size = System::Drawing::Size(303, 24);
 			this->checkBox1->TabIndex = 8;
 			this->checkBox1->Text = L"Погоджуюсь на обробку мого голосу";
 			this->checkBox1->UseVisualStyleBackColor = true;
@@ -349,10 +341,9 @@ namespace Project1 {
 			this->voteConfirm->BackColor = System::Drawing::SystemColors::Control;
 			this->voteConfirm->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->voteConfirm->Location = System::Drawing::Point(32, 256);
-			this->voteConfirm->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->voteConfirm->Location = System::Drawing::Point(24, 208);
 			this->voteConfirm->Name = L"voteConfirm";
-			this->voteConfirm->Size = System::Drawing::Size(179, 34);
+			this->voteConfirm->Size = System::Drawing::Size(134, 28);
 			this->voteConfirm->TabIndex = 9;
 			this->voteConfirm->Text = L"Проголосувати";
 			this->voteConfirm->UseVisualStyleBackColor = false;
@@ -368,36 +359,21 @@ namespace Project1 {
 			this->groupBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->groupBox1->ForeColor = System::Drawing::SystemColors::ControlText;
-			this->groupBox1->Location = System::Drawing::Point(11, 364);
-			this->groupBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->groupBox1->Location = System::Drawing::Point(8, 296);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Padding = System::Windows::Forms::Padding(4, 4, 4, 4);
-			this->groupBox1->Size = System::Drawing::Size(613, 129);
+			this->groupBox1->Size = System::Drawing::Size(460, 105);
 			this->groupBox1->TabIndex = 10;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Пошук";
-			// 
-			// label6
-			// 
-			this->label6->AutoSize = true;
-			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->label6->Location = System::Drawing::Point(181, 89);
-			this->label6->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
-			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(77, 17);
-			this->label6->TabIndex = 11;
-			this->label6->Text = L"8 символів";
 			// 
 			// searchButton
 			// 
 			this->searchButton->BackColor = System::Drawing::SystemColors::Control;
 			this->searchButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->searchButton->Location = System::Drawing::Point(404, 59);
-			this->searchButton->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->searchButton->Location = System::Drawing::Point(303, 48);
 			this->searchButton->Name = L"searchButton";
-			this->searchButton->Size = System::Drawing::Size(129, 27);
+			this->searchButton->Size = System::Drawing::Size(97, 22);
 			this->searchButton->TabIndex = 8;
 			this->searchButton->Text = L"Шукати";
 			this->searchButton->UseVisualStyleBackColor = false;
@@ -416,11 +392,9 @@ namespace Project1 {
 			this->groupBox2->Controls->Add(this->label3);
 			this->groupBox2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->groupBox2->Location = System::Drawing::Point(11, 30);
-			this->groupBox2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->groupBox2->Location = System::Drawing::Point(8, 24);
 			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Padding = System::Windows::Forms::Padding(4, 4, 4, 4);
-			this->groupBox2->Size = System::Drawing::Size(613, 314);
+			this->groupBox2->Size = System::Drawing::Size(460, 255);
 			this->groupBox2->TabIndex = 11;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Голосування";
@@ -431,35 +405,32 @@ namespace Project1 {
 			this->label5->AutoSize = true;
 			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label5->Location = System::Drawing::Point(416, 98);
-			this->label5->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label5->Location = System::Drawing::Point(312, 80);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(77, 17);
+			this->label5->Size = System::Drawing::Size(62, 13);
 			this->label5->TabIndex = 10;
 			this->label5->Text = L"8 символів";
 			// 
 			// groupBox3
 			// 
 			this->groupBox3->BackColor = System::Drawing::SystemColors::Control;
+			this->groupBox3->Controls->Add(this->exportInfo);
 			this->groupBox3->Controls->Add(this->saveResultsBtn);
 			this->groupBox3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->groupBox3->ForeColor = System::Drawing::SystemColors::ControlText;
-			this->groupBox3->Location = System::Drawing::Point(11, 512);
-			this->groupBox3->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->groupBox3->Location = System::Drawing::Point(8, 416);
 			this->groupBox3->Name = L"groupBox3";
-			this->groupBox3->Padding = System::Windows::Forms::Padding(4, 4, 4, 4);
-			this->groupBox3->Size = System::Drawing::Size(613, 203);
+			this->groupBox3->Size = System::Drawing::Size(460, 165);
 			this->groupBox3->TabIndex = 11;
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"Файли";
 			// 
 			// saveResultsBtn
 			// 
-			this->saveResultsBtn->Location = System::Drawing::Point(181, 79);
-			this->saveResultsBtn->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->saveResultsBtn->Location = System::Drawing::Point(248, 64);
 			this->saveResultsBtn->Name = L"saveResultsBtn";
-			this->saveResultsBtn->Size = System::Drawing::Size(245, 59);
+			this->saveResultsBtn->Size = System::Drawing::Size(184, 48);
 			this->saveResultsBtn->TabIndex = 2;
 			this->saveResultsBtn->Text = L"Зберегти результат";
 			this->saveResultsBtn->UseVisualStyleBackColor = true;
@@ -473,13 +444,14 @@ namespace Project1 {
 			// 
 			this->menuStrip1->BackColor = System::Drawing::SystemColors::Control;
 			this->menuStrip1->ImageScalingSize = System::Drawing::Size(20, 20);
-			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
+			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
 				this->aboutToolStripMenuItem,
-					this->statiToolStripMenuItem, this->adminsToolStripMenuItem
+					this->statiToolStripMenuItem
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(631, 28);
+			this->menuStrip1->Padding = System::Windows::Forms::Padding(4, 2, 0, 2);
+			this->menuStrip1->Size = System::Drawing::Size(475, 24);
 			this->menuStrip1->TabIndex = 12;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -490,21 +462,21 @@ namespace Project1 {
 					this->developersToolStripMenuItem
 			});
 			this->aboutToolStripMenuItem->Name = L"aboutToolStripMenuItem";
-			this->aboutToolStripMenuItem->Size = System::Drawing::Size(77, 24);
+			this->aboutToolStripMenuItem->Size = System::Drawing::Size(61, 20);
 			this->aboutToolStripMenuItem->Text = L"&Довідка";
 			this->aboutToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::aboutToolStripMenuItem_Click);
 			// 
 			// helpToolStripMenuItem
 			// 
 			this->helpToolStripMenuItem->Name = L"helpToolStripMenuItem";
-			this->helpToolStripMenuItem->Size = System::Drawing::Size(177, 26);
+			this->helpToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->helpToolStripMenuItem->Text = L"Допомога";
 			this->helpToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::helpToolStripMenuItem_Click);
 			// 
 			// developersToolStripMenuItem
 			// 
 			this->developersToolStripMenuItem->Name = L"developersToolStripMenuItem";
-			this->developersToolStripMenuItem->Size = System::Drawing::Size(177, 26);
+			this->developersToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->developersToolStripMenuItem->Text = L"Розробники";
 			this->developersToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::developersToolStripMenuItem_Click);
 			// 
@@ -512,36 +484,43 @@ namespace Project1 {
 			// 
 			this->statiToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->chartToolStripMenuItem });
 			this->statiToolStripMenuItem->Name = L"statiToolStripMenuItem";
-			this->statiToolStripMenuItem->Size = System::Drawing::Size(98, 24);
+			this->statiToolStripMenuItem->Size = System::Drawing::Size(80, 20);
 			this->statiToolStripMenuItem->Text = L"&Статистика";
 			// 
 			// chartToolStripMenuItem
 			// 
 			this->chartToolStripMenuItem->Name = L"chartToolStripMenuItem";
-			this->chartToolStripMenuItem->Size = System::Drawing::Size(156, 26);
+			this->chartToolStripMenuItem->Size = System::Drawing::Size(124, 22);
 			this->chartToolStripMenuItem->Text = L"Діаграма";
 			this->chartToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::chartToolStripMenuItem_Click);
 			// 
-			// adminsToolStripMenuItem
+			// label6
 			// 
-			this->adminsToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->controlPanelToolStripMenuItem });
-			this->adminsToolStripMenuItem->Name = L"adminsToolStripMenuItem";
-			this->adminsToolStripMenuItem->Size = System::Drawing::Size(142, 24);
-			this->adminsToolStripMenuItem->Text = L"&Адміністраторам";
+			this->label6->AutoSize = true;
+			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label6->Location = System::Drawing::Point(136, 72);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(62, 13);
+			this->label6->TabIndex = 12;
+			this->label6->Text = L"8 символів";
 			// 
-			// controlPanelToolStripMenuItem
+			// exportInfo
 			// 
-			this->controlPanelToolStripMenuItem->Name = L"controlPanelToolStripMenuItem";
-			this->controlPanelToolStripMenuItem->Size = System::Drawing::Size(221, 26);
-			this->controlPanelToolStripMenuItem->Text = L"Панель керування";
-			this->controlPanelToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::controlPanelToolStripMenuItem_Click);
+			this->exportInfo->Location = System::Drawing::Point(32, 64);
+			this->exportInfo->Name = L"exportInfo";
+			this->exportInfo->Size = System::Drawing::Size(184, 48);
+			this->exportInfo->TabIndex = 3;
+			this->exportInfo->Text = L"Експортувати";
+			this->exportInfo->UseVisualStyleBackColor = true;
+			this->exportInfo->Click += gcnew System::EventHandler(this, &MyForm::exportInfo_Click);
 			// 
 			// MyForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::Control;
-			this->ClientSize = System::Drawing::Size(631, 720);
+			this->ClientSize = System::Drawing::Size(475, 592);
 			this->Controls->Add(this->groupBox3);
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->groupBox1);
@@ -549,9 +528,8 @@ namespace Project1 {
 			this->Cursor = System::Windows::Forms::Cursors::Arrow;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->MainMenuStrip = this->menuStrip1;
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
-			this->MaximumSize = System::Drawing::Size(649, 767);
-			this->MinimumSize = System::Drawing::Size(649, 767);
+			this->MaximumSize = System::Drawing::Size(491, 631);
+			this->MinimumSize = System::Drawing::Size(491, 631);
 			this->Name = L"MyForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"ChainVote";
@@ -777,31 +755,34 @@ namespace Project1 {
 	}
 
 
-	//private: System::Void exportFileButton_Click(System::Object^ sender, System::EventArgs^ e)   // TODO try catch  файла не существует
-	//{
-	//	saveFileDialog->Filter = "Files csv (*.csv)|*.csv";
-	//	try {
-	//		if (saveFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK)
-	//		{
-	//			string path = String_manipulator::std_string(saveFileDialog->FileName);
-	//			Csv_manipulator::SaveCsv(path, block.GetHead());
-	//			throw true;
-	//		}
-	//		else throw false;
-	//	}
-	//	catch(bool tr)
-	//	{
-	//		if (!tr) {
-	//			message = "Неможливо зберегти файл!";
-	//			ex.SetCode(7);
-	//			ex.SetMessage(message);
-	//			Exeption::Show_exeption(ex);
-	//		}
-	//		else  {
-	//			MessageBox::Show(this, "Дані були оновлені!", "Успіх!", MessageBoxButtons::OK, MessageBoxIcon::Information);
-	//		}
-	//	}
-	//}
+	private: System::Void exportInfo_Click(System::Object^ sender, System::EventArgs^ e)   // TODO try catch  файла не существует
+	{
+		pass->ShowDialog();
+		if (pass->adminLogin->Text == "admin" && pass->adminPassword->Text == "admin") {
+			saveFileDialog->Filter = "Files csv (*.csv)|*.csv";
+			try {
+				if (saveFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK)
+				{
+					string path = String_manipulator::std_string(saveFileDialog->FileName);
+					Csv_manipulator::SaveCsv(path, block.GetHead());
+					throw true;
+				}
+				else throw false;
+			}
+			catch (bool tr)
+			{
+				if (!tr) {
+					message = "Неможливо зберегти файл!";
+					ex.SetCode(7);
+					ex.SetMessage(message);
+					Exeption::Show_exeption(ex);
+				}
+				else {
+					MessageBox::Show(this, "Дані були оновлені!", "Успіх!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				}
+			}
+		}
+	}
 	private: System::Void saveResultsBtn_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		
@@ -899,10 +880,10 @@ namespace Project1 {
 	}
 	private: System::Void панельКеруванняToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-private: System::Void controlPanelToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	PasswordForm^ adminInfo = gcnew PasswordForm();
-	adminInfo->ShowDialog();
-}
+//private: System::Void controlPanelToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+//	PasswordForm^ adminInfo = gcnew PasswordForm();
+//	adminInfo->ShowDialog();
+//}
 };
 
 }
