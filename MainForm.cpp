@@ -1,4 +1,4 @@
-#include "MyForm.h"
+#include "MainForm.h"
 
 using namespace System;
 using namespace System::Windows::Forms;
@@ -11,6 +11,6 @@ void main(cli::array<String^>^ args)
 
 	//ProjectName - name of your project
 	//NameForm - name of the form to run
-	Project1::MyForm form;
+	Project1::MainForm form;
 	Application::Run(% form);
 }

@@ -4,9 +4,9 @@
 #include "Set.h"
 #include "Json_manipulator.h"
 #include "DataLoad.h"
-#include "MyForm2.h"
-#include "MyForm3.h"
-#include "MyForm4.h"
+#include "ExampleForm.h"
+#include "DevelopersForm.h"
+#include "ChartForm.h"
 #include "PasswordForm.h"
 #include "AdminPanel.h"
 #include "CandidatesEdit.h"
@@ -113,12 +113,12 @@ namespace Project1 {
 	using namespace System::IO;
 
 	/// <summary>
-	/// Сводка для MyForm
+	/// Сводка для MainForm
 	/// </summary>
-	public ref class MyForm : public System::Windows::Forms::Form
+	public ref class MainForm : public System::Windows::Forms::Form
 	{
 	public:
-		MyForm(void)
+		MainForm(void)
 		{
 			InitializeComponent();
 
@@ -131,7 +131,7 @@ namespace Project1 {
 		/// <summary>
 		/// Освободить все используемые ресурсы.
 		/// </summary>
-		~MyForm()
+		~MainForm()
 		{
 			if (components)
 			{
@@ -209,7 +209,7 @@ namespace Project1 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MainForm::typeid));
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->PIB = (gcnew System::Windows::Forms::TextBox());
@@ -237,8 +237,8 @@ namespace Project1 {
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->exportInfo = (gcnew System::Windows::Forms::Button());
 
-			this->loadData->yesButton->Click += (gcnew System::EventHandler(this, &MyForm::yesButton_Click));
-			this->loadData->manualLoad->Click += (gcnew System::EventHandler(this, &MyForm::manualLoad_Click));
+			this->loadData->yesButton->Click += (gcnew System::EventHandler(this, &MainForm::yesButton_Click));
+			this->loadData->manualLoad->Click += (gcnew System::EventHandler(this, &MainForm::manualLoad_Click));
 
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
@@ -293,7 +293,7 @@ namespace Project1 {
 			this->label3->Size = System::Drawing::Size(157, 20);
 			this->label3->TabIndex = 4;
 			this->label3->Text = L"Оберіть кандидата";
-			this->label3->Click += gcnew System::EventHandler(this, &MyForm::label3_Click);
+			this->label3->Click += gcnew System::EventHandler(this, &MainForm::label3_Click);
 			// 
 			// voteOptions
 			// 
@@ -334,7 +334,7 @@ namespace Project1 {
 			this->checkBox1->TabIndex = 8;
 			this->checkBox1->Text = L"Погоджуюсь на обробку мого голосу";
 			this->checkBox1->UseVisualStyleBackColor = true;
-			this->checkBox1->CheckedChanged += gcnew System::EventHandler(this, &MyForm::checkBox1_CheckedChanged);
+			this->checkBox1->CheckedChanged += gcnew System::EventHandler(this, &MainForm::checkBox1_CheckedChanged);
 			// 
 			// voteConfirm
 			// 
@@ -347,7 +347,7 @@ namespace Project1 {
 			this->voteConfirm->TabIndex = 9;
 			this->voteConfirm->Text = L"Проголосувати";
 			this->voteConfirm->UseVisualStyleBackColor = false;
-			this->voteConfirm->Click += gcnew System::EventHandler(this, &MyForm::voteConfirm_Click);
+			this->voteConfirm->Click += gcnew System::EventHandler(this, &MainForm::voteConfirm_Click);
 			// 
 			// groupBox1
 			// 
@@ -377,7 +377,7 @@ namespace Project1 {
 			this->searchButton->TabIndex = 8;
 			this->searchButton->Text = L"Шукати";
 			this->searchButton->UseVisualStyleBackColor = false;
-			this->searchButton->Click += gcnew System::EventHandler(this, &MyForm::searchButton_Click);
+			this->searchButton->Click += gcnew System::EventHandler(this, &MainForm::searchButton_Click);
 			// 
 			// groupBox2
 			// 
@@ -398,7 +398,7 @@ namespace Project1 {
 			this->groupBox2->TabIndex = 11;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Голосування";
-			this->groupBox2->Enter += gcnew System::EventHandler(this, &MyForm::groupBox2_Enter);
+			this->groupBox2->Enter += gcnew System::EventHandler(this, &MainForm::groupBox2_Enter);
 			// 
 			// label5
 			// 
@@ -434,7 +434,7 @@ namespace Project1 {
 			this->saveResultsBtn->TabIndex = 2;
 			this->saveResultsBtn->Text = L"Зберегти результат";
 			this->saveResultsBtn->UseVisualStyleBackColor = true;
-			this->saveResultsBtn->Click += gcnew System::EventHandler(this, &MyForm::saveResultsBtn_Click);
+			this->saveResultsBtn->Click += gcnew System::EventHandler(this, &MainForm::saveResultsBtn_Click);
 			// 
 			// openFileDialog
 			// 
@@ -464,21 +464,21 @@ namespace Project1 {
 			this->aboutToolStripMenuItem->Name = L"aboutToolStripMenuItem";
 			this->aboutToolStripMenuItem->Size = System::Drawing::Size(61, 20);
 			this->aboutToolStripMenuItem->Text = L"&Довідка";
-			this->aboutToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::aboutToolStripMenuItem_Click);
+			this->aboutToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainForm::aboutToolStripMenuItem_Click);
 			// 
 			// helpToolStripMenuItem
 			// 
 			this->helpToolStripMenuItem->Name = L"helpToolStripMenuItem";
 			this->helpToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->helpToolStripMenuItem->Text = L"Допомога";
-			this->helpToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::helpToolStripMenuItem_Click);
+			this->helpToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainForm::helpToolStripMenuItem_Click);
 			// 
 			// developersToolStripMenuItem
 			// 
 			this->developersToolStripMenuItem->Name = L"developersToolStripMenuItem";
 			this->developersToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->developersToolStripMenuItem->Text = L"Розробники";
-			this->developersToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::developersToolStripMenuItem_Click);
+			this->developersToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainForm::developersToolStripMenuItem_Click);
 			// 
 			// statiToolStripMenuItem
 			// 
@@ -492,7 +492,7 @@ namespace Project1 {
 			this->chartToolStripMenuItem->Name = L"chartToolStripMenuItem";
 			this->chartToolStripMenuItem->Size = System::Drawing::Size(124, 22);
 			this->chartToolStripMenuItem->Text = L"Діаграма";
-			this->chartToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::chartToolStripMenuItem_Click);
+			this->chartToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainForm::chartToolStripMenuItem_Click);
 			// 
 			// label6
 			// 
@@ -513,9 +513,9 @@ namespace Project1 {
 			this->exportInfo->TabIndex = 3;
 			this->exportInfo->Text = L"Експортувати";
 			this->exportInfo->UseVisualStyleBackColor = true;
-			this->exportInfo->Click += gcnew System::EventHandler(this, &MyForm::exportInfo_Click);
+			this->exportInfo->Click += gcnew System::EventHandler(this, &MainForm::exportInfo_Click);
 			// 
-			// MyForm
+			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
@@ -530,11 +530,11 @@ namespace Project1 {
 			this->MainMenuStrip = this->menuStrip1;
 			this->MaximumSize = System::Drawing::Size(491, 631);
 			this->MinimumSize = System::Drawing::Size(491, 631);
-			this->Name = L"MyForm";
+			this->Name = L"MainForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"ChainVote";
-			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &MyForm::MyForm_FormClosing);
-			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
+			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &MainForm::MyForm_FormClosing);
+			this->Load += gcnew System::EventHandler(this, &MainForm::MyForm_Load);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			this->groupBox2->ResumeLayout(false);
@@ -592,7 +592,7 @@ namespace Project1 {
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e)
 	{
 		loadData->ShowDialog();
-		//block.getCandidates(&candi);
+		block.getCandidates(&candi);
 		for (int i = 0; i < candi.size(); i++) {
 			voteOptions->Items->Add(String_manipulator::system_string(candi[i]));
 			edit->prevoteCandidates->Items->Add(String_manipulator::system_string(candi[i]));
@@ -843,11 +843,11 @@ namespace Project1 {
 	private: System::Void aboutToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void helpToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-		MyForm2^ helpInfo = gcnew MyForm2();
+		ExampleForm^ helpInfo = gcnew ExampleForm();
 		helpInfo->Show();
 	}
 	private: System::Void developersToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-		MyForm3^ developersInfo = gcnew MyForm3();
+		DevelopersForm^ developersInfo = gcnew DevelopersForm();
 		developersInfo->Show();
 	}
 	private: System::Void chartToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -855,7 +855,7 @@ namespace Project1 {
 		block.Win(Rez, amount);
 		try {
 			if (block.CompId(0) != 0) {
-				MyForm4^ chartForm = gcnew MyForm4();
+				ChartForm^ chartForm = gcnew ChartForm();
 				chartForm->chartResults->Series["Results"]->IsValueShownAsLabel = true;
 				for (int i = 0; i < amount; i++) {
 					if (Rez[i].Geta() != 0) {

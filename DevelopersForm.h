@@ -10,12 +10,12 @@ namespace Project1 {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Summary for MyForm3
+	/// Summary for DevelopersForm
 	/// </summary>
-	public ref class MyForm3 : public System::Windows::Forms::Form
+	public ref class DevelopersForm : public System::Windows::Forms::Form
 	{
 	public:
-		MyForm3(void)
+		DevelopersForm(void)
 		{
 			InitializeComponent();
 			//
@@ -27,7 +27,7 @@ namespace Project1 {
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~MyForm3()
+		~DevelopersForm()
 		{
 			if (components)
 			{
@@ -54,7 +54,7 @@ namespace Project1 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm3::typeid));
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(DevelopersForm::typeid));
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
@@ -116,9 +116,9 @@ namespace Project1 {
 			this->label5->Size = System::Drawing::Size(214, 20);
 			this->label5->TabIndex = 4;
 			this->label5->Text = L"Студенти групи КНТ-120";
-			this->label5->Click += gcnew System::EventHandler(this, &MyForm3::label5_Click);
+			this->label5->Click += gcnew System::EventHandler(this, &DevelopersForm::label5_Click);
 			// 
-			// MyForm3
+			// DevelopersForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
@@ -129,7 +129,7 @@ namespace Project1 {
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
-			this->Name = L"MyForm3";
+			this->Name = L"DevelopersForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"ChainVote";
 			this->ResumeLayout(false);

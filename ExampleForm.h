@@ -10,12 +10,12 @@ namespace Project1 {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Summary for MyForm2
+	/// Summary for ExampleForm
 	/// </summary>
-	public ref class MyForm2 : public System::Windows::Forms::Form
+	public ref class ExampleForm : public System::Windows::Forms::Form
 	{
 	public:
-		MyForm2(void)
+		ExampleForm(void)
 		{
 			InitializeComponent();
 			//
@@ -27,7 +27,7 @@ namespace Project1 {
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~MyForm2()
+		~ExampleForm()
 		{
 			if (components)
 			{
@@ -55,7 +55,7 @@ namespace Project1 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm2::typeid));
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(ExampleForm::typeid));
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
@@ -72,7 +72,7 @@ namespace Project1 {
 			this->pictureBox1->Size = System::Drawing::Size(472, 264);
 			this->pictureBox1->TabIndex = 0;
 			this->pictureBox1->TabStop = false;
-			this->pictureBox1->Click += gcnew System::EventHandler(this, &MyForm2::pictureBox1_Click);
+			this->pictureBox1->Click += gcnew System::EventHandler(this, &ExampleForm::pictureBox1_Click);
 			// 
 			// label1
 			// 
@@ -84,6 +84,7 @@ namespace Project1 {
 			this->label1->Size = System::Drawing::Size(406, 20);
 			this->label1->TabIndex = 1;
 			this->label1->Text = L"Приклад правильно заповненої форми голосування";
+			this->label1->Click += gcnew System::EventHandler(this, &ExampleForm::label1_Click);
 			// 
 			// pictureBox2
 			// 
@@ -105,7 +106,7 @@ namespace Project1 {
 			this->label2->TabIndex = 3;
 			this->label2->Text = L"Приклад правильно заповненої форми пошуку";
 			// 
-			// MyForm2
+			// ExampleForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
@@ -118,7 +119,7 @@ namespace Project1 {
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->MaximumSize = System::Drawing::Size(537, 511);
 			this->MinimumSize = System::Drawing::Size(537, 511);
-			this->Name = L"MyForm2";
+			this->Name = L"ExampleForm";
 			this->Text = L"ChainVote";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
@@ -129,5 +130,7 @@ namespace Project1 {
 #pragma endregion
 	private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
+private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }

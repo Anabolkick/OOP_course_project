@@ -130,12 +130,12 @@
     <ClCompile Include="Exeption.cpp" />
     <ClCompile Include="Hash.cpp" />
     <ClCompile Include="Json_manipulator.cpp" />
-    <ClCompile Include="MyForm.cpp" />
+    <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="Csv_manipulator.cpp" />
-    <ClCompile Include="MyForm1.cpp" />
     <ClCompile Include="DataLoad.cpp" />
-    <ClCompile Include="MyForm3.cpp" />
-    <ClCompile Include="MyForm4.cpp" />
+    <ClCompile Include="ExampleForm.cpp" />
+    <ClCompile Include="DevelopersForm.cpp" />
+    <ClCompile Include="ChartForm.cpp" />
     <ClCompile Include="PasswordForm.cpp" />
     <ClCompile Include="Set.cpp" />
     <ClCompile Include="String_manipulator.cpp" />
@@ -159,19 +159,19 @@
     <ClInclude Include="json\value.h" />
     <ClInclude Include="json\version.h" />
     <ClInclude Include="Json_manipulator.h" />
-    <ClInclude Include="MyForm.h">
+    <ClInclude Include="MainForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="DataLoad.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="MyForm2.h">
+    <ClInclude Include="ExampleForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="MyForm3.h">
+    <ClInclude Include="DevelopersForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="MyForm4.h">
+    <ClInclude Include="ChartForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="PasswordForm.h">
@@ -187,20 +187,20 @@
     <EmbeddedResource Include="CandidatesEdit.resx">
       <DependentUpon>CandidatesEdit.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MyForm.resx">
-      <DependentUpon>MyForm.h</DependentUpon>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DataLoad.resx">
       <DependentUpon>DataLoad.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MyForm2.resx">
-      <DependentUpon>MyForm2.h</DependentUpon>
+    <EmbeddedResource Include="ExampleForm.resx">
+      <DependentUpon>ExampleForm.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MyForm3.resx">
-      <DependentUpon>MyForm3.h</DependentUpon>
+    <EmbeddedResource Include="DevelopersForm.resx">
+      <DependentUpon>DevelopersForm.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MyForm4.resx">
-      <DependentUpon>MyForm4.h</DependentUpon>
+    <EmbeddedResource Include="ChartForm.resx">
+      <DependentUpon>ChartForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PasswordForm.resx">
       <DependentUpon>PasswordForm.h</DependentUpon>

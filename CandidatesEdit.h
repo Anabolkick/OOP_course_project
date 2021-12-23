@@ -1,4 +1,4 @@
-//#include "MyForm.h"
+//#include "MainForm.h"
 #pragma once
 
 namespace Project1 {

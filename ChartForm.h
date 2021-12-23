@@ -11,12 +11,12 @@ namespace Project1 {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Summary for MyForm4
+	/// Summary for ChartForm
 	/// </summary>
-	public ref class MyForm4 : public System::Windows::Forms::Form
+	public ref class ChartForm : public System::Windows::Forms::Form
 	{
 	public:
-		MyForm4(void)
+		ChartForm(void)
 		{
 			InitializeComponent();
 			//
@@ -28,7 +28,7 @@ namespace Project1 {
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~MyForm4()
+		~ChartForm()
 		{
 			if (components)
 			{
@@ -59,7 +59,7 @@ namespace Project1 {
 			System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
 			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			System::Windows::Forms::DataVisualization::Charting::Title^ title1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Title());
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm4::typeid));
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(ChartForm::typeid));
 			this->chartResults = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chartResults))->BeginInit();
 			this->SuspendLayout();
@@ -106,7 +106,7 @@ namespace Project1 {
 			title1->Name = L"Results";
 			this->chartResults->Titles->Add(title1);
 			// 
-			// MyForm4
+			// ChartForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
@@ -114,7 +114,7 @@ namespace Project1 {
 			this->Controls->Add(this->chartResults);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Margin = System::Windows::Forms::Padding(4);
-			this->Name = L"MyForm4";
+			this->Name = L"ChartForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"ChainVote";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chartResults))->EndInit();

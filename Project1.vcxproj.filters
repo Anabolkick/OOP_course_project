@@ -21,7 +21,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MyForm.cpp">
+    <ClCompile Include="MainForm.cpp">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
     <ClCompile Include="Csv_manipulator.cpp">
@@ -39,16 +39,16 @@
     <ClCompile Include="Exeption.cpp">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
-    <ClCompile Include="MyForm1.cpp">
-      <Filter>Файлы ресурсов</Filter>
-    </ClCompile>
     <ClCompile Include="DataLoad.cpp">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
-    <ClCompile Include="MyForm3.cpp">
+    <ClCompile Include="ExampleForm.cpp">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
-    <ClCompile Include="MyForm4.cpp">
+    <ClCompile Include="DevelopersForm.cpp">
+      <Filter>Файлы ресурсов</Filter>
+    </ClCompile>
+    <ClCompile Include="ChartForm.cpp">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
     <ClCompile Include="String_manipulator.cpp">
@@ -65,7 +65,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MyForm.h">
+    <ClInclude Include="MainForm.h">
       <Filter>Файлы ресурсов</Filter>
     </ClInclude>
     <ClInclude Include="Hash.h">
@@ -89,10 +89,10 @@
     <ClInclude Include="DataLoad.h">
       <Filter>Файлы ресурсов</Filter>
     </ClInclude>
-    <ClInclude Include="MyForm3.h">
+    <ClInclude Include="DevelopersForm.h">
       <Filter>Файлы ресурсов</Filter>
     </ClInclude>
-    <ClInclude Include="MyForm4.h">
+    <ClInclude Include="ChartForm.h">
       <Filter>Файлы ресурсов</Filter>
     </ClInclude>
     <ClInclude Include="json\allocator.h">
@@ -119,7 +119,7 @@
     <ClInclude Include="json\value.h">
       <Filter>Файлы заголовков\jsoncpp</Filter>
     </ClInclude>
-    <ClInclude Include="MyForm2.h">
+    <ClInclude Include="ExampleForm.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="AdminPanel.h">
