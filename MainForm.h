@@ -19,88 +19,6 @@ string message;
 Exeption ex;
 vector<string> candi;
 
-string Translit(wstring str)
-{
-	string N;
-	for (int i=0; i<str.size() ; i++)
-	{
-		switch (str[i])
-		{
-		case 'а': N+= "a"; break;
-		case 'б': N+= "b"; break;
-		case 'в': N+= "v"; break;
-		case 'г': N+= "g"; break;
-		case 'д': N+= "d"; break;
-		case 'е': N+= "e"; break;
-		case 'ё': N+= "ye"; break;
-		case 'ж': N+= "zh"; break;
-		case 'з': N+= "z"; break;
-		case 'и': N+= "i"; break;
-		case 'й': N+= "y"; break;
-		case 'к': N+= "k"; break;
-		case 'л': N+= "l"; break;
-		case 'м': N+= "m"; break;
-		case 'н': N+= "n"; break;
-		case 'о': N+= "o"; break;
-		case 'п': N+= "p"; break;
-		case 'р': N+= "r"; break;
-		case 'с': N+= "s"; break;
-		case 'т': N+= "t"; break;
-		case 'у': N+= "u"; break;
-		case 'ф': N+= "f"; break;
-		case 'х': N+= "ch"; break;
-		case 'ц': N+= "z"; break;
-		case 'ч': N+= "ch"; break;
-		case 'ш': N+= "sh"; break;
-		case 'щ': N+= "ch"; break;
-		case 'ъ': N+= ""; break;
-		case 'ы': N+= "y"; break;
-		case 'ь': N+= ""; break;
-		case 'э': N+= "e"; break;
-		case 'ю': N+= "yu"; break;
-		case 'я': N+= "ya"; break;
-		case 'і': N += "i"; break;
-		case 'ї': N += "yi"; break;
-		case 'А': N+= "A"; break;
-		case 'Б': N+= "B"; break;
-		case 'В': N+= "V"; break;
-		case 'Г': N+= "G"; break;
-		case 'Д': N+= "D"; break;
-		case 'Е': N+= "E"; break;
-		case 'Ё': N+= "Ye"; break;
-		case 'Ж': N+= "Zh"; break;
-		case 'З': N+= "Z"; break;
-		case 'И': N+= "I"; break;
-		case 'Й': N+= "Y"; break;
-		case 'К': N+= "K"; break;
-		case 'Л': N+= "L"; break;
-		case 'М': N+= "M"; break;
-		case 'Н': N+= "N"; break;
-		case 'О': N+= "O"; break;
-		case 'П': N+= "P"; break;
-		case 'Р': N+= "R"; break;
-		case 'С': N+= "S"; break;
-		case 'Т': N+= "T"; break;
-		case 'У': N+= "U"; break;
-		case 'Ф': N+= "F"; break;
-		case 'Х': N+= "Ch"; break;
-		case 'Ц': N+= "Z"; break;
-		case 'Ч': N+= "Ch"; break;
-		case 'Ш': N+= "Sh"; break;
-		case 'Щ': N+= "Ch"; break;
-		case 'Ъ': N+= ""; break;
-		case 'Ы': N+= "Y"; break;
-		case 'Ь': N+= ""; break;
-		case 'Э': N+= "E"; break;
-		case 'Ю': N+= "Yu"; break;
-		case 'Я': N+= "Ya"; break;
-		case 'І': N += "I"; break;
-		case 'Ї': N += "Yi"; break;
-		default: {  N += str[i]; }
-		}
-	}
-	return N;
-}
 
 namespace Project1 {
 
@@ -161,7 +79,6 @@ namespace Project1 {
 	private: System::Windows::Forms::GroupBox^ groupBox2;
 	private: System::Windows::Forms::GroupBox^ groupBox3;
 	private: DataLoad^ loadData = gcnew DataLoad();
-	private: AdminPanel^ panel = gcnew AdminPanel();
 	private: CandidatesEdit^ edit = gcnew CandidatesEdit();
 	private: PasswordForm^ pass = gcnew PasswordForm();
 
@@ -185,14 +102,6 @@ namespace Project1 {
 
 
 	private: System::Windows::Forms::ToolStripMenuItem^ controlPanelToolStripMenuItem;
-
-	private: System::Void addCandidates_Click(System::Object^ sender, System::EventArgs^ e) {
-		
-	};
-
-	private: System::Void exportInfoCSV_Click(System::Object^ sender, System::EventArgs^ e) {
-		
-	};
 
 	protected:
 
@@ -237,8 +146,8 @@ namespace Project1 {
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->exportInfo = (gcnew System::Windows::Forms::Button());
 
-			this->loadData->yesButton->Click += (gcnew System::EventHandler(this, &MainForm::yesButton_Click));
-			this->loadData->manualLoad->Click += (gcnew System::EventHandler(this, &MainForm::manualLoad_Click));
+			//this->loadData->yesButton->Click += (gcnew System::EventHandler(this, &MainForm::yesButton_Click));
+			//this->loadData->manualLoad->Click += (gcnew System::EventHandler(this, &MainForm::manualLoad_Click));
 
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
@@ -613,8 +522,6 @@ namespace Project1 {
 
 	private: System::Void manualLoad_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		//openFileDialog->Filter = "Files csv (*.csv)|*.csv";
-
 		try {
 			if (openFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK)
 			{
@@ -656,7 +563,7 @@ namespace Project1 {
 		long id = atoi(id_str.c_str());
 		String^ search = String_manipulator::system_string(block.ShowV(id));
 
-		MessageBox::Show(this, search, "Result", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		MessageBox::Show(this, search, "Результат", MessageBoxButtons::OK, MessageBoxIcon::Information);
 
 	}
 	private: System::Void voteConfirm_Click(System::Object^ sender, System::EventArgs^ e)
@@ -694,7 +601,6 @@ namespace Project1 {
 					//Vote
 					string vote = String_manipulator::std_string(voteOptions->SelectedItem->ToString());
 
-					//if (Csv_manipulator::add_csv("vote_chain.csv", id, name, vote))	 // TODO try catch
 
 					if (block.CompId(id) == -1 || block.CompId(id) == 0) {
 						Pears.SetAll(name, id, vote, block.GetTailH());
@@ -808,7 +714,8 @@ namespace Project1 {
 				isHaveWinner = true;
 			}
 		}
-		try {
+		try 
+		{
 			if (isHaveWinner)
 			{
 				saveFileDialog->Filter = "Files JSON (*.json)|*.json";

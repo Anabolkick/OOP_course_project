@@ -357,19 +357,19 @@ string Chain::ShowV(long a)
 	tmp = Head;
 	int z = CompId(a);
 	if (z == 0) {
-		vote = "No one has votted yet";
+		vote = "Ніхто ще не проголосував";
 	}
 	else if (z == 1) {
-		vote = "This ID " + to_string(a) + " voted for " + tmp->GetV();
+		vote = "ID " + to_string(a) + " проголосував за " + tmp->GetV();
 	}
 	else if (z != -1) {
-		vote = "This ID " + to_string(a) + " voted for ";
+		vote = "ID " + to_string(a) + " проголосував за ";
 		for (int i = 0; i < z - 1; i++) {
 			tmp = tmp->GetNext();
 		}
 		vote = vote + tmp->GetV();
 	}
-	else { vote = "This ID " + to_string(a) + " hasn`t votted yet"; }
+	else { vote = "ID " + to_string(a) + " ще не проголосував"; }
 	return vote;
 }
 
@@ -439,32 +439,5 @@ void Chain::getCandidates(vector<string>* Candi)
 		tmp = tmp->GetNext();
 	}
 }
-
-//перегрузка оператора <<
-
-//ostream& operator<<(ostream& stream, Chain& c)
-//{
-//	Node* tmp, * current = nullptr;
-//
-//	tmp = c.GetHead();
-//	int a = 0;
-//	Hash h;
-//	if (tmp != nullptr) {
-//		stream << c.GetSiz();
-//		while (tmp != nullptr) {
-//			string check = tmp->GetN() + to_string(tmp->GetID());
-//			if (tmp->GetH() == h.getHash(check, 16)) {
-//				stream << tmp->GetID() << tmp->GetN() << tmp->GetV() << endl;
-//			}
-//			else {
-//				tmp->del(tmp->GetID());
-//			}
-//			current = tmp;
-//
-//			tmp = tmp->GetNext();
-//		}
-//	}
-//	return stream;
-//}
 
 

@@ -125,7 +125,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AdminPanel.cpp" />
     <ClCompile Include="CandidatesEdit.cpp" />
     <ClCompile Include="Exeption.cpp" />
     <ClCompile Include="Hash.cpp" />
@@ -141,9 +140,6 @@
     <ClCompile Include="String_manipulator.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AdminPanel.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
     <ClInclude Include="CandidatesEdit.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -181,9 +177,6 @@
     <ClInclude Include="String_manipulator.h" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AdminPanel.resx">
-      <DependentUpon>AdminPanel.h</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="CandidatesEdit.resx">
       <DependentUpon>CandidatesEdit.h</DependentUpon>
     </EmbeddedResource>

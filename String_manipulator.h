@@ -12,4 +12,7 @@ public:;
 	static string std_string(String^ str);
 	static String^ system_string(string str);
 	static wstring std_wstring(String^ str);
+	static wstring std_wstring(string str);
+	static string Translit(wstring str);
+
 };
