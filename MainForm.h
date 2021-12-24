@@ -19,88 +19,6 @@ string message;
 Exeption ex;
 vector<string> candi;
 
-string Translit(wstring str)
-{
-	string N;
-	for (int i=0; i<str.size() ; i++)
-	{
-		switch (str[i])
-		{
-		case 'à': N+= "a"; break;
-		case 'á': N+= "b"; break;
-		case 'â': N+= "v"; break;
-		case 'ã': N+= "g"; break;
-		case 'ä': N+= "d"; break;
-		case 'å': N+= "e"; break;
-		case '¸': N+= "ye"; break;
-		case 'æ': N+= "zh"; break;
-		case 'ç': N+= "z"; break;
-		case 'è': N+= "i"; break;
-		case 'é': N+= "y"; break;
-		case 'ê': N+= "k"; break;
-		case 'ë': N+= "l"; break;
-		case 'ì': N+= "m"; break;
-		case 'í': N+= "n"; break;
-		case 'î': N+= "o"; break;
-		case 'ï': N+= "p"; break;
-		case 'ð': N+= "r"; break;
-		case 'ñ': N+= "s"; break;
-		case 'ò': N+= "t"; break;
-		case 'ó': N+= "u"; break;
-		case 'ô': N+= "f"; break;
-		case 'õ': N+= "ch"; break;
-		case 'ö': N+= "z"; break;
-		case '÷': N+= "ch"; break;
-		case 'ø': N+= "sh"; break;
-		case 'ù': N+= "ch"; break;
-		case 'ú': N+= ""; break;
-		case 'û': N+= "y"; break;
-		case 'ü': N+= ""; break;
-		case 'ý': N+= "e"; break;
-		case 'þ': N+= "yu"; break;
-		case 'ÿ': N+= "ya"; break;
-		case '³': N += "i"; break;
-		case '¿': N += "yi"; break;
-		case 'À': N+= "A"; break;
-		case 'Á': N+= "B"; break;
-		case 'Â': N+= "V"; break;
-		case 'Ã': N+= "G"; break;
-		case 'Ä': N+= "D"; break;
-		case 'Å': N+= "E"; break;
-		case '¨': N+= "Ye"; break;
-		case 'Æ': N+= "Zh"; break;
-		case 'Ç': N+= "Z"; break;
-		case 'È': N+= "I"; break;
-		case 'É': N+= "Y"; break;
-		case 'Ê': N+= "K"; break;
-		case 'Ë': N+= "L"; break;
-		case 'Ì': N+= "M"; break;
-		case 'Í': N+= "N"; break;
-		case 'Î': N+= "O"; break;
-		case 'Ï': N+= "P"; break;
-		case 'Ð': N+= "R"; break;
-		case 'Ñ': N+= "S"; break;
-		case 'Ò': N+= "T"; break;
-		case 'Ó': N+= "U"; break;
-		case 'Ô': N+= "F"; break;
-		case 'Õ': N+= "Ch"; break;
-		case 'Ö': N+= "Z"; break;
-		case '×': N+= "Ch"; break;
-		case 'Ø': N+= "Sh"; break;
-		case 'Ù': N+= "Ch"; break;
-		case 'Ú': N+= ""; break;
-		case 'Û': N+= "Y"; break;
-		case 'Ü': N+= ""; break;
-		case 'Ý': N+= "E"; break;
-		case 'Þ': N+= "Yu"; break;
-		case 'ß': N+= "Ya"; break;
-		case '²': N += "I"; break;
-		case '¯': N += "Yi"; break;
-		default: {  N += str[i]; }
-		}
-	}
-	return N;
-}
 
 namespace Project1 {
 
@@ -228,8 +146,8 @@ namespace Project1 {
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->exportInfo = (gcnew System::Windows::Forms::Button());
 
-			this->loadData->yesButton->Click += (gcnew System::EventHandler(this, &MainForm::yesButton_Click));
-			this->loadData->manualLoad->Click += (gcnew System::EventHandler(this, &MainForm::manualLoad_Click));
+			//this->loadData->yesButton->Click += (gcnew System::EventHandler(this, &MainForm::yesButton_Click));
+			//this->loadData->manualLoad->Click += (gcnew System::EventHandler(this, &MainForm::manualLoad_Click));
 
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
@@ -796,7 +714,8 @@ namespace Project1 {
 				isHaveWinner = true;
 			}
 		}
-		try {
+		try 
+		{
 			if (isHaveWinner)
 			{
 				saveFileDialog->Filter = "Files JSON (*.json)|*.json";
