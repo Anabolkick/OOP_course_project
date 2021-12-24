@@ -695,6 +695,10 @@ namespace Project1 {
 				max_votes = Rez[i].Geta();
 				isHaveWinner = true;
 			}
+			else if (Rez[i].Geta() == max_votes)
+			{
+				isHaveWinner = false;
+			}
 		}
 		try 
 		{
@@ -709,13 +713,16 @@ namespace Project1 {
 					MessageBox::Show(this, "Файл JSON було збережено!", "Успіх!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 					throw true;
 				}
-			
+			}
+			else
+			{
+				throw false;
 			}
 		}
-		catch(bool tr)
+		catch(bool isHaveWin)
 		{
-			if (!tr) {
-				message = "Кандидати мають 0 голосів!";
+			if (!isHaveWin) {
+				message = "Лідуючі кандидати мають однакову кількість голосів!";
 				ex.SetCode(4);
 				ex.SetMessage(message);
 				Exeption::Show_exeption(ex);
