@@ -82,11 +82,7 @@ namespace Project1 {
 	private: CandidatesEdit^ edit = gcnew CandidatesEdit();
 	private: PasswordForm^ pass = gcnew PasswordForm();
 
-
 	private: System::Windows::Forms::OpenFileDialog^ openFileDialog;
-
-
-
 
 	private: System::Windows::Forms::SaveFileDialog^ saveFileDialog;
 	private: System::Windows::Forms::Button^ saveResultsBtn;
@@ -146,8 +142,8 @@ namespace Project1 {
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->exportInfo = (gcnew System::Windows::Forms::Button());
 
-			//this->loadData->yesButton->Click += (gcnew System::EventHandler(this, &MainForm::yesButton_Click));
-			//this->loadData->manualLoad->Click += (gcnew System::EventHandler(this, &MainForm::manualLoad_Click));
+			this->loadData->yesButton->Click += (gcnew System::EventHandler(this, &MainForm::yesButton_Click));
+			this->loadData->manualLoad->Click += (gcnew System::EventHandler(this, &MainForm::manualLoad_Click));
 
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
