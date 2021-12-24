@@ -613,8 +613,6 @@ namespace Project1 {
 
 	private: System::Void manualLoad_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		//openFileDialog->Filter = "Files csv (*.csv)|*.csv";
-
 		try {
 			if (openFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK)
 			{
@@ -656,7 +654,7 @@ namespace Project1 {
 		long id = atoi(id_str.c_str());
 		String^ search = String_manipulator::system_string(block.ShowV(id));
 
-		MessageBox::Show(this, search, "Result", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		MessageBox::Show(this, search, "Результат", MessageBoxButtons::OK, MessageBoxIcon::Information);
 
 	}
 	private: System::Void voteConfirm_Click(System::Object^ sender, System::EventArgs^ e)
@@ -694,7 +692,6 @@ namespace Project1 {
 					//Vote
 					string vote = String_manipulator::std_string(voteOptions->SelectedItem->ToString());
 
-					//if (Csv_manipulator::add_csv("vote_chain.csv", id, name, vote))	 // TODO try catch
 
 					if (block.CompId(id) == -1 || block.CompId(id) == 0) {
 						Pears.SetAll(name, id, vote, block.GetTailH());
