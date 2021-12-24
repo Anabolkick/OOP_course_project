@@ -13,6 +13,6 @@ public:;
 	static String^ system_string(string str);
 	static wstring std_wstring(String^ str);
 	static wstring std_wstring(string s_str);
-	static string Translit(string str);
+	static string Translit(wstring str);
 
 };

@@ -20,7 +20,8 @@ void Json_manipulator::SaveJson(string path, Candidates winner, vector<Candidate
 		root["participants"] = Json::arrayValue;
 		for (int i = 0; i < participants.capacity(); i++)
 		{
-			string name = String_manipulator::Translit(participants[i].GetC());
+			wstring wname = String_manipulator::std_wstring(participants[i].GetC());
+			string name = String_manipulator::Translit(wname);
 
 			root["participants"][i]["name"] = Json::stringValue;
 			root["participants"][i]["name"] = name;
@@ -29,7 +30,8 @@ void Json_manipulator::SaveJson(string path, Candidates winner, vector<Candidate
 		}
 
 		root["winner"];
-		string name = String_manipulator::Translit(winner.GetC());
+		wstring wname = String_manipulator::std_wstring(winner.GetC());
+		string name = String_manipulator::Translit(wname);
 
 		root["winner"]["name"] = Json::stringValue;
 		root["winner"]["name"] = name;
