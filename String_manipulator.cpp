@@ -24,15 +24,14 @@ String^ String_manipulator::system_string(string str)
 
 wstring String_manipulator::std_wstring(String^ str)
 {
-	System::String^ managedString = str;
-	wstring new_string = msclr::interop::marshal_as<std::wstring>(managedString);
+	wstring new_string = msclr::interop::marshal_as<wstring>(str);
 	return 	new_string;
 }
 
 wstring String_manipulator::std_wstring(string str)
 {
-	string managedString = str;
-	wstring new_string = msclr::interop::marshal_as<std::wstring>(managedString);
+	String^ sys_str = String_manipulator::system_string(str);
+	wstring new_string = msclr::interop::marshal_as<wstring>(sys_str);
 	return 	new_string;
 }
 

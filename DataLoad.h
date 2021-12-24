@@ -1,8 +1,4 @@
 #pragma once
-#include "Exeption.h"
-#include "Csv_manipulator.h"
-#include "String_manipulator.h"
-
 
 namespace Project1 {
 
