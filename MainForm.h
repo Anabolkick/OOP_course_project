@@ -601,7 +601,7 @@ namespace Project1 {
 		amount = candi.size();
 		for (int i = amount; i < edit->prevoteCandidates->Items->Count;i++ ) {
 			voteOptions->Items->Add(edit->prevoteCandidates->Items[i]);
-			string t= String_manipulator::std_string(edit->prevoteCandidates->Items->ToString());
+			string t= String_manipulator::std_string(edit->prevoteCandidates->Items[i]->ToString());
 			candi.push_back(t);
 			++amount;
 		}
