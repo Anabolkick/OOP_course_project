@@ -161,7 +161,6 @@ namespace Project1 {
 	private: System::Windows::Forms::GroupBox^ groupBox2;
 	private: System::Windows::Forms::GroupBox^ groupBox3;
 	private: DataLoad^ loadData = gcnew DataLoad();
-	private: AdminPanel^ panel = gcnew AdminPanel();
 	private: CandidatesEdit^ edit = gcnew CandidatesEdit();
 	private: PasswordForm^ pass = gcnew PasswordForm();
 
@@ -185,14 +184,6 @@ namespace Project1 {
 
 
 	private: System::Windows::Forms::ToolStripMenuItem^ controlPanelToolStripMenuItem;
-
-	private: System::Void addCandidates_Click(System::Object^ sender, System::EventArgs^ e) {
-		
-	};
-
-	private: System::Void exportInfoCSV_Click(System::Object^ sender, System::EventArgs^ e) {
-		
-	};
 
 	protected:
 
