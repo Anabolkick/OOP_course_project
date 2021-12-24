@@ -522,28 +522,14 @@ namespace Project1 {
 
 	private: System::Void manualLoad_Click(System::Object^ sender, System::EventArgs^ e)
 	{
-		try {
-			if (openFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK)
-			{
-				string path = String_manipulator::std_string(openFileDialog->FileName);
-				TryImportCSV(path);
-				loadData->Close();
-				throw true;
-			}
-			else throw false;
-		}
-		catch(bool tr)
+		
+		if (openFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK)
 		{
-			if (!tr) {
-				message = "Неможливо відкрити файловий діалог";
-				ex.SetCode(6);
-				ex.SetMessage(message);
-				Exeption::Show_exeption(ex);
-			}
-			else {
-				MessageBox::Show(this, "Дані були загружені!", "Успіх!", MessageBoxButtons::OK, MessageBoxIcon::Information);
-			}
+			string path = String_manipulator::std_string(openFileDialog->FileName);
+			TryImportCSV(path);
+			loadData->Close();
 		}
+		
 	};
 
 	private: System::Void yesButton_Click(System::Object^ sender, System::EventArgs^ e)
