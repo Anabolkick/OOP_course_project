@@ -11,9 +11,8 @@
 #include "AdminPanel.h"
 #include "CandidatesEdit.h"
 
-//using namespace std;
 Chain block;
-int amount=0;//192 строка
+int amount=0;
 Candidates* Rez;
 string message;
 Exeption ex;
