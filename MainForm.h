@@ -39,10 +39,6 @@ namespace Project1 {
 		MainForm(void)
 		{
 			InitializeComponent();
-
-			//
-			//TODO: добавьте код конструктора
-			//
 		}
 
 	protected:
@@ -578,9 +574,8 @@ namespace Project1 {
 					string id_str = String_manipulator::std_string(passportID->Text);
 					long id = atoi(id_str.c_str());
 
-					//Name
-					string name = String_manipulator::std_string(PIB->Text);
-					//Vote
+			
+					string name = String_manipulator::std_string(PIB->Text);		
 					string vote = String_manipulator::std_string(voteOptions->SelectedItem->ToString());
 
 
@@ -643,7 +638,7 @@ namespace Project1 {
 	}
 
 
-	private: System::Void exportInfo_Click(System::Object^ sender, System::EventArgs^ e)   // TODO try catch  файла не существует
+	private: System::Void exportInfo_Click(System::Object^ sender, System::EventArgs^ e)   
 	{
 		pass->ShowDialog();
 		if (pass->adminLogin->Text == "admin" && pass->adminPassword->Text == "admin") {
@@ -776,10 +771,6 @@ namespace Project1 {
 	}
 	private: System::Void панель еруванн€ToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-//private: System::Void controlPanelToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-//	PasswordForm^ adminInfo = gcnew PasswordForm();
-//	adminInfo->ShowDialog();
-//}
 };
 
 }
