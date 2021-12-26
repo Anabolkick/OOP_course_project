@@ -174,7 +174,7 @@ void Chain::del(string h)
 		Tail = prev;
 		delete todel;
 	}
-	else if (CompH(Head, H.GetH()) != 1) {//удаление
+	else if (CompH(h) != 1) {//удаление
 		Node* current = Head, * prev = nullptr, * next = nullptr;
 		while (current->GetH() != H.GetH()) {
 			prev = current;
@@ -257,7 +257,7 @@ bool Chain::add(Node V)
 
 
 
-int Chain::CompH(Node* head, string H)
+int Chain::CompH( string H)
 {
 	Hash h;
 	string str;

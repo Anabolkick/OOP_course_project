@@ -75,7 +75,7 @@ public:
 	int GetSiz();
 	bool add(Node V);// добавленние данних
 	
-	int CompH(Node* head, string H);
+	int CompH( string H);
 	int CompId( long id);
 	Candidates* Voice(Candidates* Vote, int amount);
 	Candidates* Win(Candidates* Vote, int amount);
