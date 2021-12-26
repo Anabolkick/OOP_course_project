@@ -155,7 +155,7 @@ void Node::SetAllEmpty()
 	pPrev = nullptr;
 }
 
-void Chain::del(string h)//не забіть добавить Name+to_string(Id)
+void Chain::del(string h)
 {
 	Hash H;
 	H.getHash(h, 16);

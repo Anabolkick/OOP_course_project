@@ -751,6 +751,7 @@ namespace Project1 {
 					if (Rez[i].Geta() != 0) {
 						String^ tmp = String_manipulator::system_string(Rez[i].GetC());
 						chartForm->chartResults->Series["Results"]->Points->AddXY(tmp, Rez[i].Geta());
+						chartForm->chartResults->Series["Results"]->Label = "#PERCENT\n#VALX";
 					}
 				}
 				chartForm->Show();
