@@ -642,6 +642,7 @@ namespace Project1 {
 		pass->ShowDialog();
 		if (pass->adminLogin->Text == "admin" && pass->adminPassword->Text == "admin") {
 			saveFileDialog->Filter = "Files csv (*.csv)|*.csv";
+			saveFileDialog->FileName = "";
 			try {
 				if (saveFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK)
 				{
@@ -699,7 +700,7 @@ namespace Project1 {
 			if (isHaveWinner)
 			{
 				saveFileDialog->Filter = "Files JSON (*.json)|*.json";
-
+				saveFileDialog->FileName = "";
 				if (saveFileDialog->ShowDialog() == Windows::Forms::DialogResult::OK)
 				{
 					string path = String_manipulator::std_string(saveFileDialog->FileName);
