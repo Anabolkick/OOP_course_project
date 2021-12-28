@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Project1", "Project1.vcxproj", "{E20F9BF4-DB5C-4D51-ADA0-44AAFBB1F159}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ChainVote", "Project1.vcxproj", "{E20F9BF4-DB5C-4D51-ADA0-44AAFBB1F159}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ChainVote", "..\ChainVote\ChainVote.vdproj", "{44BDA391-994B-46C8-88D7-58543A69F828}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{E20F9BF4-DB5C-4D51-ADA0-44AAFBB1F159}.Release|x64.Build.0 = Release|x64
 		{E20F9BF4-DB5C-4D51-ADA0-44AAFBB1F159}.Release|x86.ActiveCfg = Release|Win32
 		{E20F9BF4-DB5C-4D51-ADA0-44AAFBB1F159}.Release|x86.Build.0 = Release|Win32
+		{44BDA391-994B-46C8-88D7-58543A69F828}.Debug|x64.ActiveCfg = Debug
+		{44BDA391-994B-46C8-88D7-58543A69F828}.Debug|x86.ActiveCfg = Debug
+		{44BDA391-994B-46C8-88D7-58543A69F828}.Release|x64.ActiveCfg = Release
+		{44BDA391-994B-46C8-88D7-58543A69F828}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
